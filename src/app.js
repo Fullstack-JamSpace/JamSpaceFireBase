@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './css/app.css';
 import Routes from './routes';
-import Following from './following';
-import Navbar from './navbar';
+import Following from './components/following';
+import Navbar from './components/navbar';
 
 class App extends Component {
   render() {
