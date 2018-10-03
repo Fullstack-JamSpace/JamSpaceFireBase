@@ -14,7 +14,7 @@ export default class Viewer extends Component {
       }
     });
 
-
+    // OB: these peer ids are ultimately public and shared with everyone, so logner term we should think about how to make sure an attacker couldn't "impersonate" a user by simply creating a peer with the victim's same peer id
     let viewerPeerId =
       'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
@@ -32,11 +32,13 @@ export default class Viewer extends Component {
       call.answer();
       console.log('call answered');
       call.on('stream', function(stream) {
+        // OB: should probably do a `setState` here and then in render <video srcObject={this.state.stream} />
         myVideo.srcObject = stream;
         console.log('stream added to video object');
       });
     });
 
+    // OB: refs again, but you might not need it
     const myVideo = document.getElementById('myVideo');
   }
 

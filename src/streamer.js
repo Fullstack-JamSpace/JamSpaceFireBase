@@ -1,6 +1,7 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
 
+// OB: chop the logs
 export default class Streamer extends Component {
   componentDidMount() {
     let streamerPeerId = 'streamerJavierLilahJackie';
@@ -12,6 +13,7 @@ export default class Streamer extends Component {
       console.log('my id is ', id);
     });
 
+    // OB: considered an anti-pattern in react to use DOM methods, the recommended altnerative is refs: https://reactjs.org/docs/refs-and-the-dom.html
     const myVideo = document.getElementById('myVideo');
     let streamerStream;
     navigator.mediaDevices
@@ -21,6 +23,7 @@ export default class Streamer extends Component {
         streamerStream = stream;
       });
 
+    // OB: soon you might want to attach this to the instance, `this.call = ...` so that you can use it in other lifecycle hooks, e.g. `componentWillUnmount`
     let call;
     peer.on('connection', conn => {
       console.log('conected - streamerStream', streamerStream);
@@ -32,6 +35,8 @@ export default class Streamer extends Component {
     });
 
   }
+  // OB: should disconnect peer / call when component unmounts
+  // OB: should stop stream when component unmounts
 
   render() {
     return (
