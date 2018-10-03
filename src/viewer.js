@@ -4,7 +4,7 @@ import db from './firebase';
 import * as firebase from 'firebase';
 
 
-export default class PeerViewer extends Component {
+export default class Viewer extends Component {
 
 
   componentDidMount() {

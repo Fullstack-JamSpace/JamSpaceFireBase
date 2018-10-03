@@ -1,7 +1,7 @@
 import React from 'react';
 
-const SignupForm = props => (
-  <form className="submit-form" onSubmit={props.onFormSubmit}>
+const LoginForm = props => (
+  <form className="submit-form" onSubmit={props.handleLogin}>
     <div>
       <label htmlFor="email">Email Address</label>
       <input type="email" name="email" required />
@@ -14,4 +14,4 @@ const SignupForm = props => (
   </form>
 );
 
-export default SignupForm;
+export default LoginForm;
