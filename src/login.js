@@ -1,60 +1,37 @@
 import * as firebase from 'firebase';
 import db from './firebase';
-import React, { Component } from 'react';
-import SignupForm from './signup-form';
+import React, { Component, Fragment } from 'react';
+import LoginForm from './login-form';
 import history from './history';
 
 export default class Login extends Component {
   constructor(){
     super();
-    this.signOut = this.signOut.bind(this)
-    this.handleSignup = this.handleSignup.bind(this)
-    this.handleLogin = this.handleLogin.bind(this)
+    this.handleLogin = this.handleLogin.bind(this) //do we need this?
   }
 
-  signOut(){
-    firebase.auth().signOut();
-  }
-
-  handleSignup = event => {
+  handleLogin = event => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const displayName = event.target.displayName.value;
-    const imageUrl = event.target.imageUrl.value;
 
     const emailRef = db.collection('jammers').doc(`${email}`)
     emailRef.get().then(user => {
-      if (!user.exists) {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+      if (user.exists) {
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          .then(() => firebase.auth().signInWithEmailAndPassword(email, password))
 
-          db.collection('jammers').doc(`${email}`).set({
-            email,
-            firstName,
-            lastName,
-            displayName,
-            imageUrl
-        })
-      } else alert('That email already has an account with us')
+      } else alert('This user does not exist')
     })
     history.push('/viewer')
   }
 
-  handleLogin(event){
-
-  }
-
   render(){
-    console.log('current user: ', firebase.auth().currentUser());
-    const currentUser = firebase.auth().currentUser()
-
     return (
-      <React.Fragment>
+      <Fragment>
         <h1>Welcome to Jamspace, baby!</h1>
-        <SignupForm handleSignup={this.handleSignup} />
-      </React.Fragment>
+        <LoginForm handleLogin={this.handleLogin} />
+      </Fragment>
     )
   }
 }

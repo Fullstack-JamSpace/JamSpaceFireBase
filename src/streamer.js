@@ -1,7 +1,7 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
 
-export default class PeerStreamer extends Component {
+export default class Streamer extends Component {
   componentDidMount() {
     let streamerPeerId = 'streamerJavierLilahJackie';
 
