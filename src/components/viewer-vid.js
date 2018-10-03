@@ -1,11 +1,9 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
-import db from './firebase';
 import * as firebase from 'firebase';
 
 
-export default class Viewer extends Component {
-
+export default class ViewerVid extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {

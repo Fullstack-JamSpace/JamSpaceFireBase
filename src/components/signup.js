@@ -1,8 +1,8 @@
 import * as firebase from 'firebase';
-import db from './firebase';
+import db from '../firebase';
 import React, { Component, Fragment } from 'react';
 import SignupForm from './signup-form';
-import history from './history';
+import history from '../history';
 
 export default class SignUp extends Component {
   constructor(){

@@ -1,8 +1,8 @@
 import * as firebase from 'firebase';
-import db from './firebase';
+import db from '../firebase';
 import React, { Component, Fragment } from 'react';
 import LoginForm from './login-form';
-import history from './history';
+import history from '../history';
 
 export default class Login extends Component {
   constructor(){
