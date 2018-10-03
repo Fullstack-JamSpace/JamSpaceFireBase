@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StreamerVid, ViewerVid } from '.';
 import { Link } from 'react-router-dom';
-import * as firebase from '../firebase';
+import * as firebase from 'firebase';
 import db from '../firebase';
 
 
