@@ -1,57 +1,49 @@
 import * as firebase from 'firebase';
 import db from './firebase';
-import firebaseui from 'firebaseui';
 import React, { Component } from 'react';
+import SignupForm from './signup-form';
+import history from './history';
 
 export default class Login extends Component {
   constructor(){
     super();
     this.signOut = this.signOut.bind(this)
-  }
-
-  componentDidMount(){
-    const ui = new firebaseui.auth.AuthUI(firebase.auth());
-    {
-    // ui.start('#firebaseui-auth-container', {
-    //   signInOptions: [
-    //     {
-    //       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    //       requireDisplayName: false
-    //     }
-    //   ]
-    // });
-    }
-    const uiConfig = {
-      callbacks: {
-        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-          // User successfully signed in.
-          // Return type determines whether we continue the redirect automatically
-          // or whether we leave that to developer to handle.
-          return true;
-        },
-        uiShown: function() {
-          // The widget is rendered.
-          // Hide the loader.
-          document.getElementById('loader').style.display = 'none';
-        }
-      },
-      // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-      signInFlow: 'popup',
-      signInSuccessUrl: '/viewer',
-      signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      ],
-      // Terms of service url.
-      // tosUrl: '<your-tos-url>',
-      // Privacy policy url.
-      // privacyPolicyUrl: '<your-privacy-policy-url>'
-    };
-    ui.start('#firebaseui-auth-container', uiConfig)
+    this.handleSignup = this.handleSignup.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
   }
 
   signOut(){
     firebase.auth().signOut();
+  }
+
+  handleSignup = event => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const firstName = event.target.firstName.value;
+    const lastName = event.target.lastName.value;
+    const displayName = event.target.displayName.value;
+    const imageUrl = event.target.imageUrl.value;
+
+    const emailRef = db.collection('users').doc(`${email}`)
+    emailRef.get().then(user => {
+      if (!user.exists) {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+
+          db.collection('users').doc(`${email}`).set({
+            email,
+            firstName,
+            lastName,
+            displayName,
+            imageUrl
+        })
+      } else alert('That email already has an account with us')
+    })
+    history.push('/viewer')
+  }
+
+  handleLogin(event){
+
   }
 
   render(){
@@ -60,14 +52,7 @@ export default class Login extends Component {
     return (
       <React.Fragment>
         <h1>Welcome to Jamspace, baby!</h1>
-
-        {
-        firebase.auth().currentUser ? <button onClick={this.signOut}>Sign out</button> : null
-        }
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
-
-
+        <SignupForm handleSignup={this.handleSignup} />
       </React.Fragment>
     )
   }
