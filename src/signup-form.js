@@ -13,7 +13,7 @@ const SignupForm = props => (
       <input type="email" name="email" required />
       <br />
       <label htmlFor="password">Password</label>
-      <input type="text" name="password" required />
+      <input type="text" minLength='6' name="password" required />
       <br />
       <label htmlFor="displayName">Display Name</label>
       <input type="text" name="displayName" required />

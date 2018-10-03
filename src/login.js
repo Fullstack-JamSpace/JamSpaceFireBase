@@ -25,12 +25,12 @@ export default class Login extends Component {
     const displayName = event.target.displayName.value;
     const imageUrl = event.target.imageUrl.value;
 
-    const emailRef = db.collection('users').doc(`${email}`)
+    const emailRef = db.collection('jammers').doc(`${email}`)
     emailRef.get().then(user => {
       if (!user.exists) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
 
-          db.collection('users').doc(`${email}`).set({
+          db.collection('jammers').doc(`${email}`).set({
             email,
             firstName,
             lastName,
@@ -47,7 +47,8 @@ export default class Login extends Component {
   }
 
   render(){
-    console.log('current user: ', firebase.auth());
+    console.log('current user: ', firebase.auth().currentUser());
+    const currentUser = firebase.auth().currentUser()
 
     return (
       <React.Fragment>
