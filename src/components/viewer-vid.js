@@ -5,7 +5,6 @@ import * as firebase from 'firebase';
 
 export default class ViewerVid extends Component {
 
-
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
