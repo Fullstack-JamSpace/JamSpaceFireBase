@@ -8,6 +8,7 @@ import {
 } from './components'
 
 export default class Routes extends Component {
+  // OB: dead code
   componentDidMount() {
       //auth stuff?
   }

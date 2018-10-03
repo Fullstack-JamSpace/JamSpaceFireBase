@@ -1,3 +1,4 @@
+// OB: unused variable firebase
 import * as firebase from 'firebase';
 import db from './firebase';
 import React, { Component, Fragment } from 'react';
@@ -12,6 +13,7 @@ export default class SignUp extends Component {
 
   handleSignup = event => {
     event.preventDefault();
+    // OB: ditto, could wrap up some of this logic into SubmitForm
     const email = event.target.email.value;
     const password = event.target.password.value;
     const firstName = event.target.firstName.value;
@@ -19,6 +21,7 @@ export default class SignUp extends Component {
     const displayName = event.target.displayName.value;
     const imageUrl = event.target.imageUrl.value;
 
+    // OB: consider making a function for all the firebase stuff
     const emailRef = db.collection('jammers').doc(`${email}`)
     emailRef.get().then(user => {
       if (!user.exists) {
