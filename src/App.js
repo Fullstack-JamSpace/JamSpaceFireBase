@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Routes from './routes'
+import Routes from './routes';
+import Following from './following';
 import Navbar from './navbar';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <Navbar />
-      <Routes />
+        <Navbar />
+        <div id="mainContainer">
+          <Following />
+          <Routes />
+        </div>
       </div>
     );
   }

@@ -44,7 +44,8 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-end;
+  justify-content: center;
+
 }
 
 nav a {
@@ -54,6 +55,17 @@ nav a {
 .header {
   text-align: left;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  padding: .75em;
+}
+
+#mainContainer {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
   padding: .5em;
+}
+
+#following {
+  width: 25%;
 }
