@@ -5,6 +5,7 @@ import './App.css';
 import PeerJSStreamer from './peerJSStreamer';
 import PeerJSViewer from './peerJSViewer';
 import { Route, Switch } from 'react-router-dom';
+import Login from './login';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
       <Switch>
         <Route exact path='/streamer' component={PeerJSStreamer}/>
         <Route exact path='/viewer' component={PeerJSViewer}/>
+        <Route exact path='/login' component={Login}/>
       </Switch>
       </div>
     );

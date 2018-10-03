@@ -1,8 +1,20 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
+import db from './firebase';
+import * as firebase from 'firebase';
+
 
 export default class PeerViewer extends Component {
+
+
   componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        console.log('USER HERE!: ', user);
+      }
+    });
+
+
     let viewerPeerId =
       'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
