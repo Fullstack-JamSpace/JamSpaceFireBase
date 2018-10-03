@@ -1,7 +1,7 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
 
-export default class Streamer extends Component {
+export default class StreamerVid extends Component {
   componentDidMount() {
     let streamerPeerId = 'streamerJavierLilahJackie';
 
@@ -36,7 +36,6 @@ export default class Streamer extends Component {
   render() {
     return (
       <div>
-        <p>hi streamer</p>
         <video id="myVideo" autoPlay muted />
       </div>
     );

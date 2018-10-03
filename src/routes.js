@@ -1,26 +1,21 @@
-import React, {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
-import {
-  SignUp,
-  Login,
-  Streamer,
-  Viewer,
-} from './components'
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { SignUp, Login, StreamerVid, ViewerVid, StreamPage } from './components';
 
 export default class Routes extends Component {
   componentDidMount() {
-      //auth stuff?
+    //auth stuff?
   }
 
   render() {
-
     return (
       <Switch>
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/streamer" component={Streamer} />
-        <Route exact path="/viewer" component={Viewer} />
+        <Route exact path="/streamer" component={StreamerVid} />
+        <Route exact path="/viewer" component={ViewerVid} />
+        <Route exact path="/stream" component={StreamPage} />
       </Switch>
-    )
+    );
   }
 }
