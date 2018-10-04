@@ -5,6 +5,7 @@ const Navbar = () => (
   <div className="header App-header">
     <h3>JamSpace Baby</h3>
     <nav>
+      <Link to="/semantic">SemanticTest</Link> <br></br>
       <Link to="/signup">Sign Up</Link> <br></br>
       <Link to="/login">Login</Link><br></br>
       <Link to="/streamer">Streamer</Link><br></br>
