@@ -7,7 +7,7 @@ export default class StreamerVid extends Component {
   }
 
   componentDidMount() {
-    let { displayName } = this.props.displayName
+    let { displayName } = this.props
     let streamerPeerId = displayName;
 
     const peer = new Peer(streamerPeerId);
@@ -27,13 +27,13 @@ export default class StreamerVid extends Component {
       });
 
     let call;
-    peer.on('connection', conn => {
-      console.log('conected - streamerStream', streamerStream);
-      console.log('conected - conn object', conn);
-      console.log('conected - conn.peer', conn.peer);
-      console.log('connections', peer.connections);
+    peer.on('connection', async conn => {
       call = peer.call(conn.peer, streamerStream)
-      console.log('connections - CALL MADE');
+      // console.log('conected - streamerStream', streamerStream);
+      // console.log('conected - conn object', conn);
+      // console.log('conected - conn.peer', conn.peer);
+      // console.log('connections', peer.connections);
+      // console.log('connections - CALL MADE');
     });
 
   }

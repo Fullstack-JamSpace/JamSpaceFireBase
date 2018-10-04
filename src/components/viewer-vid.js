@@ -4,16 +4,20 @@ import * as firebase from 'firebase';
 
 
 export default class ViewerVid extends Component {
+  constructor () {
+    super();
+  }
 
   componentDidMount() {
-    let { displayName } = this.props.displayName
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log('USER HERE!: ', user);
       }
     });
 
-
+    const { displayName } = this.props
+    console.log('PROPS: ', displayName);
     // let viewerPeerId =
     //   'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
@@ -25,6 +29,7 @@ export default class ViewerVid extends Component {
     });
 
     let conn = peer.connect(displayName);
+    // 'viewerJavierLilahJackie'
 
     peer.on('call', function(call) {
       // Answer the call, providing our mediaStream
