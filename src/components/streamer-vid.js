@@ -18,9 +18,17 @@ export default class StreamerVid extends Component {
     });
 
     const myVideo = document.getElementById('myVideo');
+    // const options = {
+    //   'constraints': {
+    //     'mandatory': {
+    //       'OfferToReceiveAudio': true,
+    //       'OfferToReceiveVideo': true
+    //     }
+    //   }
+    // }
     let streamerStream;
     navigator.mediaDevices
-      .getUserMedia({ audio: true, video: true })
+      .getUserMedia({ video: true, audio: true })
       .then(stream => {
         myVideo.srcObject = stream;
         streamerStream = stream;
@@ -42,10 +50,8 @@ export default class StreamerVid extends Component {
 
     return (
       <div>
-        <video id="myVideo" autoPlay muted />
+        <video id="myVideo" autoPlay muted/>
       </div>
     );
   }
 }
-
-
