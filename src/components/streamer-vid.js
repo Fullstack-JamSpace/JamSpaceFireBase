@@ -22,6 +22,7 @@ export default class StreamerVid extends Component {
     navigator.mediaDevices
       .getUserMedia({ audio: true, video: true })
       .then(stream => {
+        console.log('STREAM: ', stream)
         myVideo.srcObject = stream;
         streamerStream = stream;
       });
