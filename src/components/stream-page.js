@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { StreamerVid, ViewerVid } from '.';
 import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
@@ -20,23 +20,34 @@ export default class StreamPage extends Component {
   }
 
   async componentDidMount(){
-    const channelOwner = this.props.match.params.displayName;
-    const jammerRef = await db.collection('jammers').doc(`${channelOwner}`).get()
-    const jammer = await jammerRef.data() || {};
-    await firebase.auth().onAuthStateChanged(user => {
-      if (user.email === jammer.email) this.setState( { isStreamer: true } )
+    try {
+      let jammer = [];
+      const channelOwner = this.props.match.params.displayName;
+      const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
+
+      await jammerRef.forEach(x => {
+        if (x.data()) jammer.push(x.data());
+      });
+
+      await firebase.auth().onAuthStateChanged(user => {
+        if (jammer.length && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
     });
-    console.log('state check: ', this.state);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
   render(){
     const { isStreamer } = this.state;
+    const displayName = this.props.match.params.displayName;
+
     return (
       isStreamer ?
-        <div>Welcome to your stream page, streamer!</div> :
+        <Fragment>
+          <StreamerVid displayName={displayName} />
+        </Fragment> :
         <div>Welcome to the streamer's page, viewer!</div>
-
     )
   }
 }

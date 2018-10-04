@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 export default class ViewerVid extends Component {
 
   componentDidMount() {
+    let { displayName } = this.props.displayName
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log('USER HERE!: ', user);
@@ -13,17 +14,17 @@ export default class ViewerVid extends Component {
     });
 
 
-    let viewerPeerId =
-      'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
+    // let viewerPeerId =
+    //   'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
-    const peer = new Peer(viewerPeerId);
+    const peer = new Peer();
     console.log('peer created', peer);
 
     peer.on('open', id => {
       console.log('my id is ', id);
     });
 
-    let conn = peer.connect('streamerJavierLilahJackie');
+    let conn = peer.connect(displayName);
 
     peer.on('call', function(call) {
       // Answer the call, providing our mediaStream
