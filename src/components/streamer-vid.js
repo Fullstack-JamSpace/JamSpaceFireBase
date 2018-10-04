@@ -2,8 +2,13 @@ import Peer from 'peerjs';
 import React, { Component } from 'react';
 
 export default class StreamerVid extends Component {
+  constructor () {
+    super();
+  }
+
   componentDidMount() {
-    let streamerPeerId = 'streamerJavierLilahJackie';
+    let { displayName } = this.props
+    let streamerPeerId = displayName;
 
     const peer = new Peer(streamerPeerId);
     console.log('peer created', peer);
@@ -22,18 +27,19 @@ export default class StreamerVid extends Component {
       });
 
     let call;
-    peer.on('connection', conn => {
-      console.log('conected - streamerStream', streamerStream);
-      console.log('conected - conn object', conn);
-      console.log('conected - conn.peer', conn.peer);
-      console.log('connections', peer.connections);
+    peer.on('connection', async conn => {
       call = peer.call(conn.peer, streamerStream)
-      console.log('connections - CALL MADE');
+      // console.log('conected - streamerStream', streamerStream);
+      // console.log('conected - conn object', conn);
+      // console.log('conected - conn.peer', conn.peer);
+      // console.log('connections', peer.connections);
+      // console.log('connections - CALL MADE');
     });
 
   }
 
   render() {
+
     return (
       <div>
         <video id="myVideo" autoPlay muted />

@@ -25,7 +25,7 @@ export default class SignUp extends Component {
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
           .then(() => firebase.auth().createUserWithEmailAndPassword(email, password))
 
-          db.collection('jammers').doc(`${displayName}`).set({
+          db.collection('jammers').doc(`${email}`).set({
             email,
             firstName,
             lastName,
