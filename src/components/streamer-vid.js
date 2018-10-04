@@ -18,14 +18,7 @@ export default class StreamerVid extends Component {
     });
 
     const myVideo = document.getElementById('myVideo');
-    // const options = {
-    //   'constraints': {
-    //     'mandatory': {
-    //       'OfferToReceiveAudio': true,
-    //       'OfferToReceiveVideo': true
-    //     }
-    //   }
-    // }
+
     let streamerStream;
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })

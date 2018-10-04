@@ -1,0 +1,8 @@
+.following-item {
+  background-color: light-grey;
+  border: solid black 0.5px;
+}
+
+.following-live-icon {
+  background-image: 'https://cdn2.iconfinder.com/data/icons/iconslandplayer/PNG/256x256/PlainGreen/RecordPressed.png';
+}
