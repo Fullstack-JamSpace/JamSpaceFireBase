@@ -34,7 +34,7 @@ export default class SignUp extends Component {
         })
       } else alert('That email already has an account with us')
     })
-    history.push('/viewer')
+    history.push('/')
   }
 
   render(){
