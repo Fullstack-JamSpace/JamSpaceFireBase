@@ -47,7 +47,9 @@ export default class StreamPage extends Component {
         <Fragment>
           <StreamerVid displayName={displayName} />
         </Fragment> :
-        <div>Welcome to the streamer's page, viewer!</div>
+        <Fragment>
+          <ViewerVid displayName={displayName} />
+        </Fragment>
     )
   }
 }
