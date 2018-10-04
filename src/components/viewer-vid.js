@@ -48,7 +48,7 @@ export default class ViewerVid extends Component {
     return (
       <div>
         <p>hi viewer</p>
-        <video id="myVideo" autoPlay muted />
+        <video id="myVideo" autoPlay />
       </div>
     );
   }
