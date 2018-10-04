@@ -23,7 +23,7 @@ export default class Login extends Component {
 
       } else alert('This user does not exist')
     })
-    history.push('/viewer')
+    history.push('/')
   }
 
   render(){
