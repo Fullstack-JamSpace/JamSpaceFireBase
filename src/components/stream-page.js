@@ -30,7 +30,7 @@ export default class StreamPage extends Component {
       });
 
       await firebase.auth().onAuthStateChanged(user => {
-        if (jammer.length && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
+        if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
     });
     } catch (error) {
       console.log(error);
