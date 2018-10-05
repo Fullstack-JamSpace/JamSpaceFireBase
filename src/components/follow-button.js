@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import db from '../firebase';
+import '../css/follow-button.css'
 
 //if following contains displayName render disabled button
 
@@ -8,7 +9,7 @@ export default class FollowButton extends Component {
   constructor() {
     super()
     this.state = {
-      email: '',
+      user: {},
       isFollowing: false
     }
   }
@@ -16,9 +17,12 @@ export default class FollowButton extends Component {
   async componentDidMount() {
     try {
       await firebase.auth().onAuthStateChanged(async user => {
-        const emailRef = await db.collection('jammers').doc(`${user.email}`).get()
-        const email = emailRef.id //email to be used for querying user's following field
-        this.setState({email})
+        const userRef = await db.collection('jammers').doc(`${user.email}`).get()
+        this.setState({user: userRef.data()})
+        const following = userRef.data().following
+        if(following && following.indexOf(this.props.displayName) !== -1) {
+          this.setState({isFollowing: true})
+        }
       })
     } catch (error) {
       console.log(error);
@@ -26,40 +30,38 @@ export default class FollowButton extends Component {
   }
 
   handleClick = async () => {
+    const { user, isFollowing } = this.state
+    const streamer = this.props.displayName
     try{
-      const userEmail = this.state.email
-      const streamer = this.props.displayName
-      const userRef = await db.collection('jammers').doc(`${userEmail}`)
-      const user = await db.collection('jammers').doc(`${userEmail}`).get()
-      
-      await userRef.update({...user.data(),
-        following: firebase.firestore.FieldValue.arrayUnion(`${streamer}`)
-      })      
+      const userData = await db.collection('jammers').doc(`${user.email}`)
+      if(!isFollowing) {
+        await userData.update({...user,
+          following: firebase.firestore.FieldValue.arrayUnion(`${streamer}`)
+        })
+      } else {
+        await userData.update({...user,
+          following: firebase.firestore.FieldValue.arrayRemove(`${streamer}`)
+        })  
+      }
     } catch (error) {
       console.error(error)
     }
-    //use array.remove() to drop users that dont exist in following
   }
 
   render() {
+    const { isFollowing } = this.state
     return (
-      <div>
-        <button class="ui active button" onClick={this.handleClick} floated='right'>
-          <i class="user icon"></i>
-          Follow
-        </button>
-      </div>
+      !isFollowing
+      ? 
+      <button className="follow-button ui active button" onClick={this.handleClick}>
+        <i className="user icon"></i>
+        Follow
+      </button>
+      : 
+      <button className="follow-button active ui button" onClick={this.handleClick}>
+        <i className="user icon"></i>
+        UnFollow
+      </button>
     )
   }
 };
-
-//if already following :
-
-/*
-
-<button class="ui disabled button">
-  <i class="user icon"></i>
-  Followed
-</button>
-
-*/
