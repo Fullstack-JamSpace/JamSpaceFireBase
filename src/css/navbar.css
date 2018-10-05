@@ -1,0 +1,91 @@
+.header {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  padding: .75em;
+  height: 105px;
+}
+
+.App-logo {
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 0 10px 15px;
+}
+
+.App-logo:hover {
+  box-shadow: 0px 0px 2px white;
+}
+
+.logo-and-text{
+  display: flex;
+  width: 96px;
+}
+
+#header-logo-text{
+  font-family: 'Fugaz One', cursive;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,.9);
+}
+
+#header-logo-text:hover{
+  color: white;
+}
+
+.nav-options{
+  width: 80%;
+  margin: 0px 2%;
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+}
+
+.nav-item{
+  height: 30px;
+}
+
+.nav-link {
+  height: 10px;
+  text-decoration: none;
+  position: relative;
+  top: 70%;
+}
+
+.ui.secondary.inverted.pointing.menu.active.item{
+  border-style: none;
+}
+
+.drop-choice {
+  color: black;
+}
+
+.dropdown.icon{
+  position: relative;
+  left: 60px;
+  bottom: 17px;
+}
+
+#user-sprite{
+  height: 60px;
+  width: 60px;
+  position: relative;
+  bottom: 60px;
+  left: 67px;
+  border-radius: 50%;
+}
+
+#drop-text{
+  color: rgb(255, 255, 255, .9);
+  flex-wrap: nowrap;
+}
+
+#drop-text:hover{
+  color: white;
+}
+
+#user-drop-down {
+  position: relative;
+  top: 15px;
+}

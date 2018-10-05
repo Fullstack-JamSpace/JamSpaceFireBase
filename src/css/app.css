@@ -2,16 +2,11 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 8%;
-  /* padding: 20px; */
   color: white;
+  background-color: #1b1c1d;
+  display: flex;
+  position: relative;
 }
 
 .App-title {
@@ -20,6 +15,30 @@
 
 .App-intro {
   font-size: large;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between{
+  justify-content: space-between
+}
+
+.no-deco{
+  text-decoration: none;
+  list-style-type: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+nav a {
+  padding: .5em;
 }
 
 @keyframes App-logo-spin {
@@ -40,25 +59,6 @@ button {
  width: 654px;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-
-}
-
-nav a {
-  padding: .5em;
-}
-
-.header {
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  padding: .75em;
-}
-
 #mainContainer {
   text-align: left;
   display: flex;
@@ -68,4 +68,8 @@ nav a {
 
 #following {
   width: 25%;
+}
+
+.right.menu{
+  height: 30px;
 }
