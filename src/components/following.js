@@ -10,7 +10,7 @@ export default class Following extends Component {
   constructor(){
     super()
     this.state = {
-      following: ['dang', 'jav1jav', 'friendoBuddyfriendGuy', 'myfriendbuddy', 'guypal', 'friendo', 'personIKnow', 'anotherPersonIknow', 'personIdontknonw', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+      following: [],
       isStreaming: true
     }
   }
@@ -18,10 +18,10 @@ export default class Following extends Component {
   async componentDidMount(){
     try {
       await firebase.auth().onAuthStateChanged(async user => {
-        // const emailRef = await db.collection('jammers').doc(`${user.email}`).get()
-        // const email = emailRef.id //email to be used for querying user's following field
-
-        //this.setState({following: })
+        const userRef = await db.collection('jammers').doc(`${user.email}`).get()
+        const userData = await userRef.data()
+        const following = userData.following
+        this.setState({following})
       })
     } catch (error) {
       console.log(error);
@@ -35,18 +35,21 @@ export default class Following extends Component {
         <p>FOLLOWING:</p>
         <Segment inverted>
           <List divided inverted id='following-list'>
-            { following.map(userName => {
-              return userName !== ''
-              ? (
-                <List.Item className='following-item'>
-                  <Link id='following-item-link' to='{`/channels/${userName}`}'>{userName}</Link>
-                  <List.Content floated='right'>
-                    { isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
-                  </List.Content>
-                </List.Item>
-              )
-              : <List.Item className='following-item-empty'>''</List.Item>
-            })}
+            { !following
+            ? <h2>Follow somebody already cmon</h2>
+            : following.map(userName => {
+                return userName !== ''
+                ? (
+                  <List.Item className='following-item' key={userName}>
+                    <Link id='following-item-link' to='{`/channels/${userName}`}'>{userName}</Link>
+                    <List.Content floated='right'>
+                      { isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
+                    </List.Content>
+                  </List.Item>
+                )
+                : <List.Item className='following-item-empty'>''</List.Item>
+              })
+            }
           </List>
         </Segment>
       </div>

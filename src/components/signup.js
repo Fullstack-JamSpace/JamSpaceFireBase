@@ -42,7 +42,7 @@ export default class SignUp extends Component {
     return (
       <Fragment>
         <h1>Welcome to Jamspace, baby!</h1>
-        <SignupForm handleSignup={this.handleSignup} />
+        <SignupForm handleSubmit={this.handleSignup} />
       </Fragment>
     )
   }
