@@ -2,18 +2,14 @@ import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import db from '../firebase';
 
-//get email of currently logged in user
-
-//if following doesnt exist create collection on user's db before next step
-
-//add userName of streamer to 'following' collection
-
+//if following contains displayName render disabled button
 
 export default class FollowButton extends Component {
   constructor() {
     super()
     this.state = {
-      email: ''
+      email: '',
+      isFollowing: false
     }
   }
 
@@ -30,21 +26,25 @@ export default class FollowButton extends Component {
   }
 
   handleClick = async () => {
-    console.log('email:   ', this.state.email)
-    console.log('name;    ', this.props.displayName)
-    const userEmail = this.state.email
-    const streamer = this.props.displayName
-    const user = db.collection('jammers').doc(`${userEmail}`)
-    await user.update({
-      followers: firebase.firestore.FieldValue.arrayUnion(`${streamer}`)
-    })
+    try{
+      const userEmail = this.state.email
+      const streamer = this.props.displayName
+      const userRef = await db.collection('jammers').doc(`${userEmail}`)
+      const user = await db.collection('jammers').doc(`${userEmail}`).get()
+      
+      await userRef.update({...user.data(),
+        following: firebase.firestore.FieldValue.arrayUnion(`${streamer}`)
+      })      
+    } catch (error) {
+      console.error(error)
+    }
     //use array.remove() to drop users that dont exist in following
   }
 
   render() {
     return (
       <div>
-        <button class="ui active button" onClick={this.handleClick}>
+        <button class="ui active button" onClick={this.handleClick} floated='right'>
           <i class="user icon"></i>
           Follow
         </button>
