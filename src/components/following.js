@@ -20,7 +20,7 @@ export default class Following extends Component {
       await firebase.auth().onAuthStateChanged(async user => {
         const emailRef = await db.collection('jammers').doc(`${user.email}`).get()
         const email = emailRef.id //email to be used for querying user's following field
-
+        
         //this.setState({following: })
       })
     } catch (error) {
