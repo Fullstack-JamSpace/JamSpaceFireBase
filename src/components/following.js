@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import { List, Segment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../css/following.css';
+import { getCurrentUser } from '../utils'
 
 export default class Following extends Component {
   constructor(){
@@ -16,16 +17,24 @@ export default class Following extends Component {
   }
 
   async componentDidMount(){
-    try {
-      await firebase.auth().onAuthStateChanged(async user => {
-        const userRef = await db.collection('jammers').doc(`${user.email}`).get()
-        const userData = await userRef.data()
-        const following = userData.following
-        this.setState({following})
-      })
-    } catch (error) {
-      console.log(error);
+    const jammer = await getCurrentUser()
+    this.setState({
+      jammer: jammer
+    })
+    console.log('following.js | result of getCurrentUser:', jammer)
+    if (jammer && jammer.email) {
+      try {
+        await firebase.auth().onAuthStateChanged(async user => {
+          const userRef = await db.collection('jammers').doc(`${user.email}`).get()
+          const userData = await userRef.data()
+          const following = userData.following
+          this.setState({following})
+        })
+      } catch (error) {
+        console.log(error);
+      }
     }
+
   }
 
   render() {

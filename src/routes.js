@@ -14,7 +14,8 @@ export default class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/streamer" component={StreamerVid} />
         <Route exact path="/viewer" component={ViewerVid} />
-        <Route exact path="/account" component={AccountInfo} />
+        <Route exact path="/channels/:displayName/account" component={AccountInfo} />
+        <Route exact path="/channels/:displayName/profile" component={StreamPage} />
         <Route exact path="/channels/:displayName" component={StreamPage} />
         <Route exact path="/" component={Home} />
         <Route component={PageNotFound} />

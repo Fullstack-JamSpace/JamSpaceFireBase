@@ -57,7 +57,7 @@ export default class Navbar extends Component {
             </Link>
             <Menu.Menu position="right">
             {
-              jammer.email ? <ProfileIcon jammer={jammer}/>
+              (jammer && jammer.email) ? <ProfileIcon jammer={jammer}/>
               : <LoginSignup activeItem={activeItem} handleItemClick={this.handleItemClick} />
             }
             </Menu.Menu>
