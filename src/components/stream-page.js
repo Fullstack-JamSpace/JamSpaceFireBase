@@ -3,6 +3,7 @@ import { StreamerVid, ViewerVid } from '.';
 import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 import db from '../firebase';
+import FollowButton from './follow-button'
 
 
 
@@ -49,6 +50,7 @@ export default class StreamPage extends Component {
         </Fragment> :
         <Fragment>
           <ViewerVid displayName={displayName} />
+          <FollowButton displayName={displayName} />
         </Fragment>
     )
   }
