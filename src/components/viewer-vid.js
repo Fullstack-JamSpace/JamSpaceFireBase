@@ -2,7 +2,6 @@ import Peer from 'peerjs';
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 
-
 export default class ViewerVid extends Component {
   constructor () {
     super();
@@ -12,7 +11,7 @@ export default class ViewerVid extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log('USER HERE!: ', user);
+        //console.log('USER HERE!: ', user);
       }
     });
 
