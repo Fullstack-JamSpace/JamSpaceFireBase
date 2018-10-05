@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, SemanticTest, PageNotFound } from './components';
+import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, AccountInfo, SemanticTest, PageNotFound } from './components';
 
 export default class Routes extends Component {
   componentDidMount() {
@@ -15,6 +15,7 @@ export default class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/streamer" component={StreamerVid} />
         <Route exact path="/viewer" component={ViewerVid} />
+        <Route exact path="/account" component={AccountInfo} />
         <Route exact path="/channels/:displayName" component={StreamPage} />
         <Route exact path="/" component={SemanticTest} />
         <Route component={PageNotFound} />
