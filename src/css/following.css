@@ -1,8 +1,11 @@
-.following-item {
-  background-color: light-grey;
-  border: solid black 0.5px;
+#following-item-link:hover {
+  text-shadow: 0px 0px 3px white;
 }
 
-.following-live-icon {
-  background-image: 'https://cdn2.iconfinder.com/data/icons/iconslandplayer/PNG/256x256/PlainGreen/RecordPressed.png';
+i:hover {
+  text-shadow: 0px 0px 3px white;
+}
+
+.following-item-empty {
+  color: black;
 }
