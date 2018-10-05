@@ -3,14 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import './css/app.css';
 import Routes from './routes';
 import Following from './components/following';
-<<<<<<< HEAD
 import Navbar from './components/navbar/navbar.js';
 import 'semantic-ui-css/semantic.min.css';
-=======
-import Navbar from './components/navbar';
 import * as firebase from 'firebase';
-import db from './firebase';
->>>>>>> master
 
 class App extends Component {
   constructor() {

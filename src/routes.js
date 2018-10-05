@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-<<<<<<< HEAD
-import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, Home, PageNotFound } from './components';
-=======
-import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, AccountInfo, SemanticTest, PageNotFound } from './components';
->>>>>>> master
+import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, AccountInfo, PageNotFound, Home } from './components';
 
 export default class Routes extends Component {
   componentDidMount() {
