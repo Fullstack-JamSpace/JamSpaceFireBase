@@ -1,9 +1,6 @@
 import React from 'react';
 import { List, Container, Segment, Button, Divider } from 'semantic-ui-react'
-// import 'semantic-ui'
-// import 'semantic-ui-css'
 import 'semantic-ui-css/semantic.min.css';
-// import '../semantic/dist/semantic.min.css';
 
 
 class SemanticTest extends React.Component {

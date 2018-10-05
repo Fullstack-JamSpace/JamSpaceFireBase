@@ -55,6 +55,14 @@ export default class Navbar extends Component {
            <Link to="/viewer">Viewer</Link> <br />
           </Menu.Item>
 
+          <Menu.Item
+            name="account"
+            active={activeItem === 'account'}
+            onClick={this.handleItemClick}
+          >
+           <Link to="/account">Account</Link> <br />
+          </Menu.Item>
+
         </Menu>
       </div>
       )
