@@ -1,0 +1,11 @@
+#following-item-link:hover {
+  text-shadow: 0px 0px 3px white;
+}
+
+i:hover {
+  text-shadow: 0px 0px 3px white;
+}
+
+.following-item-empty {
+  color: black;
+}
