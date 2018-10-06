@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-<<<<<<< HEAD
 import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, AccountInfo, PageNotFound, Home, Channels, About, StreamNav } from './components';
-=======
-import { SignUp, Login, StreamerVid, ViewerVid, StreamPage, AccountInfo, PageNotFound, Home, Channels, About } from './components';
 import StreamerAbout from './components/streamer-about'
->>>>>>> master
+
 
 export default class Routes extends Component {
   componentDidMount() {
