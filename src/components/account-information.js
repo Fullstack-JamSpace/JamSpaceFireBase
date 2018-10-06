@@ -20,7 +20,7 @@ class AccountInfo extends React.Component {
     const lastName = event.target.lastName.value;
     const displayName = event.target.displayName.value;
     const imageUrl = event.target.imageUrl.value;
-    const jammerRef = await db.collection('jammers').doc(`${this.state.jammer.email}`)
+    const jammerRef = await db.collection('jammers').doc(`${this.state.jammer.id}`)
     await jammerRef.update({...this.state.jammer, email, firstName, lastName, displayName, imageUrl})
     this.props.history.push("/")
 
