@@ -30,7 +30,6 @@ export default class Navbar extends Component {
 
   render() {
     const { activeItem, jammer } = this.state;
-    console.log('navbar.js | STATE CHECK: ', this.state);
     return (
       <div className="header App-header">
         <Link to="/">
@@ -40,7 +39,7 @@ export default class Navbar extends Component {
           </div>
         </Link>
         <div className="nav-options">
-          <Menu inverted pointing secondary>
+          <Menu inverted pointing secondary >
               <Menu.Item
                 as={Link} to="/channels"
                 name="channels"

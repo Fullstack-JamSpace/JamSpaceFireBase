@@ -2,12 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react'
 import '../../css/navbar.css';
-// import history from '../../history';
 import * as firebase from 'firebase'
 
 export class ProfileIcon extends Component{
 
-  handleLogout = evt => {
+  handleLogout = () => {
     firebase.auth().signOut()
   }
 
@@ -54,7 +53,7 @@ export class ProfileIcon extends Component{
       <Fragment>
       <div id='user-drop-down'>
         <img id='user-sprite' src={jammer.imageUrl} alt='user-pic'/>
-        <Dropdown trigger={trigger} options={options} />
+          <Dropdown trigger={trigger} options={options} />
       </div>
       </Fragment>
     )
