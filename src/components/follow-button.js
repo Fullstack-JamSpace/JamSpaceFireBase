@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import db from '../firebase';
 import '../css/follow-button.css'
-import { getStreamer } from '../utils'
+import { Button } from 'semantic-ui-react';
+import { getCurrentUser } from '../utils';
+
+//if following contains displayName render disabled button
 
 export default class FollowButton extends Component {
   constructor() {
@@ -15,20 +18,18 @@ export default class FollowButton extends Component {
   }
 
   async componentDidMount() {
-    let streamer = {}
+    let streamer = {};
     try {
-      await firebase.auth().onAuthStateChanged(async user => {
-        const userRef = await db.collection('jammers').doc(`${user.email}`).get()
-        const streamerRef = await db.collection('jammers').where('displayName', '==', `${this.props.displayName}`).get()
-        streamerRef.forEach(doc => streamer = doc.data())
-        //const streamerData = await getStreamer(streamerRef)
+      const user = await getCurrentUser()
+      const following = user.following;
+      if (following && following.includes(this.props.displayName)) {
+        this.setState({isFollowing: true})
+      }
 
-        this.setState({user: userRef.data(), streamer})
-        const following = userRef.data().following
-        if(following && following.indexOf(this.props.displayName) !== -1) {
-          this.setState({isFollowing: true})
-        }
-      })
+      const streamerRef = await db.collection('jammers').where('displayName', '==', `${this.props.displayName}`).get()
+      streamerRef.forEach(doc => streamer = doc.data())
+
+      this.setState({ user, streamer })
     } catch (error) {
       console.log(error);
     }
@@ -47,14 +48,17 @@ export default class FollowButton extends Component {
         await streamerData.update({...streamer,
           followers: streamer.followers += 1
         })
+
       } else {
         await userData.update({...user,
           following: firebase.firestore.FieldValue.arrayRemove(`${streamer.displayName}`)
         })
         await streamerData.update({...streamer,
           followers: streamer.followers -= 1
-        })  
+        })
       }
+
+      this.setState({ isFollowing : !isFollowing })
     } catch (error) {
       console.error(error)
     }
@@ -64,16 +68,8 @@ export default class FollowButton extends Component {
     const { isFollowing } = this.state
     return (
       !isFollowing
-      ? 
-      <button className="follow-button ui active button" onClick={this.handleClick}>
-        <i className="user icon"></i>
-        Follow
-      </button>
-      : 
-      <button className="follow-button active ui button" onClick={this.handleClick}>
-        <i className="user icon"></i>
-        UnFollow
-      </button>
+      ? <Button className='follow-button' onClick={this.handleClick} icon='user' content='Follow' />
+      : <Button positive className='follow-button' onClick={this.handleClick} icon='checkmark' content='Following'/>
     )
   }
 };

@@ -48,10 +48,8 @@ nav a {
 
 video {
  background-color: #ddd;
- border-radius: 7px;
- margin: 10px 0px 0px 10px;
- width: 320px;
- height: 240px;
+ width: 896px;
+ height: 504px;
 }
 
 button {
@@ -64,10 +62,6 @@ button {
   display: flex;
   flex-direction: row;
   padding: .5em;
-}
-
-#following {
-  width: 25%;
 }
 
 .right.menu{

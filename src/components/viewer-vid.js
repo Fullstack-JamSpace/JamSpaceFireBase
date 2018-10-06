@@ -28,7 +28,8 @@ export default class ViewerVid extends Component {
     });
 
     // omri suggested that we may need to use the connection to properly disconnect when a user closes the view - commenting out now b/c of the linter
-    // let conn = peer.connect(displayName);
+    // commenting the line below out caused no viewer connection to be established
+    let conn = peer.connect(displayName);
     // 'viewerJavierLilahJackie'
 
     peer.on('call', function(call) {

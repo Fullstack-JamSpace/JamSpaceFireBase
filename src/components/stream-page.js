@@ -3,7 +3,7 @@ import { StreamerVid, ViewerVid } from '.';
 // import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 import db from '../firebase';
-import FollowButton from './follow-button'
+import '../css/stream.css'
 
 
 
@@ -20,38 +20,36 @@ export default class StreamPage extends Component {
     }
   }
 
-  async componentDidMount(){
-    try {
-      let jammer = [];
-      const channelOwner = this.props.match.params.displayName;
-      const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
+  // async componentDidMount(){
+  //   try {
+  //     let jammer = [];
+  //     const channelOwner = this.props.match.params.displayName;
+  //     const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
 
-      await jammerRef.forEach(x => {
-        if (x.data()) jammer.push(x.data());
-      });
+  //     await jammerRef.forEach(x => {
+  //       if (x.data()) jammer.push(x.data());
+  //     });
 
-      await firebase.auth().onAuthStateChanged(user => {
-        if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
-    });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //     await firebase.auth().onAuthStateChanged(user => {
+  //       if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
+  //   });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
 
   render(){
-    const { isStreamer } = this.state;
-    const displayName = this.props.match.params.displayName;
+    const { displayName, isStreamer } = this.props;
 
     return (
       isStreamer ?
-        <Fragment>
+        <div className='stream-window'>
           <StreamerVid displayName={displayName} />
-        </Fragment> :
-        <Fragment>
+        </div> :
+        <div className='stream-window'>
           <ViewerVid displayName={displayName} />
-          <FollowButton displayName={displayName} />
-        </Fragment>
+        </div>
     )
   }
 }

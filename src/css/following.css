@@ -9,3 +9,9 @@ i:hover {
 .following-item-empty {
   color: black;
 }
+
+#following {
+  width: 25%;
+  max-width: 200px;
+  min-width: 130px;
+}
