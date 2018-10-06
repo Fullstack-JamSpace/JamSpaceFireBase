@@ -5,21 +5,19 @@ import '../../css/navbar.css';
 
 export const LoginSignup = props => (
   <Fragment>
-    <Link to="/login">
       <Menu.Item
+        as={Link} to="/login"
         className="nav-item"
         name="login"
         active={props.activeItem === 'login'}
         onClick={props.handleItemClick}
       />
-    </Link>
-    <Link to="/signup">
       <Menu.Item
+        as={Link} to="/signup"
         className="nav-item"
         name="Sign Up"
         active={props.activeItem === 'Sign Up'}
         onClick={props.handleItemClick}
       />
-    </Link>
   </Fragment>
 );

@@ -2,13 +2,15 @@ import React from 'react';
 import { Form } from 'semantic-ui-react'
 
 
-const SignupForm = props => {
+const AccountFormEdit = props => {
 
   const lableWidth = 6
 
   // If component isn't passed a user, initialize values to show
   // in the form
-  const user = {
+  const user = props.user ?
+    props.user :
+    {
       firstName: 'First name',
       lastName: 'Last name',
       email: 'Email',
@@ -16,29 +18,29 @@ const SignupForm = props => {
       displayName: 'Display Name',
       imageUrl: 'Image URL'
     }
-
+  console.log('account-form-edit', props.user)
   return (
       <Form onSubmit={props.handleSubmit}>
           <Form.Input name="firstName" label="First name"
-          placeholder={user.firstName} width={lableWidth} />
+          defaultValue={user.firstName} width={lableWidth} />
 
           <Form.Input name="lastName" label="Last name"
-          placeholder={user.lastName} width={lableWidth} />
+          defaultValue={user.lastName} width={lableWidth} />
 
           <Form.Input name="email" label="Email"
-          placeholder={user.email} width={lableWidth} required />
+          defaultValue={user.email} width={lableWidth} />
 
           <Form.Input name="password" label="Password"
-          placeholder={user.password} width={lableWidth} minLength="6" required />
+          defaultValue={user.password} width={lableWidth} />
 
           <Form.Input name="displayName" label="Display name"
-          placeholder={user.displayName} width={lableWidth} />
+          defaultValue={user.displayName} width={lableWidth} />
 
           <Form.Input name="imageUrl" label="Image URL"
-          placeholder={user.imageUrl} width={lableWidth}/>
+          defaultValue={user.imageUrl} width={lableWidth} />
 
-          <Form.Button type="submit">Submit</Form.Button>
+          <Form.Button type="submit" >Submit</Form.Button>
       </Form>
 )};
 
-export default SignupForm;
+export default AccountFormEdit;

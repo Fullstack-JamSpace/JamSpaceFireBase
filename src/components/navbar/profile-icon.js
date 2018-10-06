@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
 import '../../css/navbar.css';
-import history from '../../history';
+// import history from '../../history';
+import * as firebase from 'firebase'
 
 export class ProfileIcon extends Component{
 
   handleLogout = evt => {
-
+    firebase.auth().signOut()
   }
 
   render(){
@@ -32,13 +33,13 @@ export class ProfileIcon extends Component{
       },
       { key: 'profile',
         text: (
-          <Link className='no-deco' to={`/${jammer.displayName}/profile`}>
+          <Link className='no-deco' to={`/channels/${jammer.displayName}/profile`}>
             <p className='drop-choice'>Profile</p>
           </Link>
         )
       },
       { key: 'settings', text: (
-        <Link className='no-deco' to={`/${jammer.displayName}/accountSettings`}>
+        <Link className='no-deco' to={`/channels/${jammer.displayName}/account`}>
           <p className='drop-choice'>Account Settings</p>
         </Link>
       ) },

@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { StreamerVid, ViewerVid } from '.';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 import db from '../firebase';
 import FollowButton from './follow-button'

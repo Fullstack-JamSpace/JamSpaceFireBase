@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import logo from '../../logo.jpg';
@@ -30,7 +30,7 @@ export default class Navbar extends Component {
 
   render() {
     const { activeItem, jammer } = this.state;
-    console.log('STATE CHECK: ', this.state);
+    console.log('navbar.js | STATE CHECK: ', this.state);
     return (
       <div className="header App-header">
         <Link to="/">
@@ -41,23 +41,21 @@ export default class Navbar extends Component {
         </Link>
         <div className="nav-options">
           <Menu inverted pointing secondary>
-            <Link to="/channels">
               <Menu.Item
+                as={Link} to="/channels"
                 name="channels"
                 active={activeItem === 'channels'}
                 onClick={this.handleItemClick}
               />
-            </Link>
-            <Link to="/about">
               <Menu.Item
+                as={Link} to="/about"
                 name="About Jamspace"
                 active={activeItem === 'About Jamspace'}
                 onClick={this.handleItemClick}
               />
-            </Link>
             <Menu.Menu position="right">
             {
-              jammer.email ? <ProfileIcon jammer={jammer}/>
+              (jammer && jammer.email) ? <ProfileIcon jammer={jammer}/>
               : <LoginSignup activeItem={activeItem} handleItemClick={this.handleItemClick} />
             }
             </Menu.Menu>

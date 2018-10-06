@@ -2,9 +2,9 @@ import Peer from 'peerjs';
 import React, { Component } from 'react';
 
 export default class StreamerVid extends Component {
-  constructor () {
-    super();
-  }
+  // constructor () {
+  //   super();
+  // }
 
   componentDidMount() {
     let { displayName } = this.props
@@ -27,9 +27,17 @@ export default class StreamerVid extends Component {
         streamerStream = stream;
       });
 
-    let call;
+
+    // omri has said that we will want to properly close a connection when a user
+    // leave the stream page and that to do so we wil need to assign the peer.call
+    // to a var (const, let, whatev) and then in componentDidUnmount call
+    // call.disconnect() or something
+    // as of now, commenting this out and line 38 b/c linter is pissed about this
+    // let call;
     peer.on('connection', async conn => {
-      call = peer.call(conn.peer, streamerStream)
+      peer.call(conn.peer, streamerStream)
+      // call = peer.call(conn.peer, streamerStream)
+
       // console.log('conected - streamerStream', streamerStream);
       // console.log('conected - conn object', conn);
       // console.log('conected - conn.peer', conn.peer);

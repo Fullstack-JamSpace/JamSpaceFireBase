@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 
 export default class ViewerVid extends Component {
-  constructor () {
-    super();
-  }
+  // constructor () {
+  //   super();
+  // }
 
   componentDidMount() {
 
@@ -27,7 +27,8 @@ export default class ViewerVid extends Component {
       console.log('my id is ', id);
     });
 
-    let conn = peer.connect(displayName);
+    // omri suggested that we may need to use the connection to properly disconnect when a user closes the view - commenting out now b/c of the linter
+    // let conn = peer.connect(displayName);
     // 'viewerJavierLilahJackie'
 
     peer.on('call', function(call) {
