@@ -17,3 +17,14 @@ export const getCurrentUser = async () => {
     return {};
   }
 };
+
+export const getStreamer = async displayName => {
+  let streamer = {}
+  try {
+    const streamerRef = await db.collection('jammers').where('displayName', '==', `${displayName}`).get()
+    streamerRef.forEach(doc => streamer = doc.data())
+  } catch (error) {
+    console.log(error);
+    return streamer;
+  }
+}

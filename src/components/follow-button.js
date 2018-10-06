@@ -41,7 +41,6 @@ export default class FollowButton extends Component {
     try{
       const userData = await db.collection('jammers').doc(`${user.email}`)
       const streamerData = await db.collection('jammers').doc(`${streamer.email}`)
-
       if(!isFollowing) {
         await userData.update({...user,
           following: firebase.firestore.FieldValue.arrayUnion(`${streamer.displayName}`),

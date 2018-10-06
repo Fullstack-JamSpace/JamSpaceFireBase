@@ -11,6 +11,7 @@ export default class Following extends Component {
   constructor(){
     super()
     this.state = {
+      jammer: {},
       following: [],
       isStreaming: true
     }
