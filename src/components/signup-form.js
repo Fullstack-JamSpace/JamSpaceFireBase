@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Container } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
 const SignupForm = props => {

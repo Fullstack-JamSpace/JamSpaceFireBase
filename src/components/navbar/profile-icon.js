@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { Menu, Dropdown } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import { Dropdown } from 'semantic-ui-react'
 import '../../css/navbar.css';
-import history from '../../history';
+// import history from '../../history';
 import * as firebase from 'firebase'
 
 export class ProfileIcon extends Component{

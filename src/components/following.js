@@ -49,8 +49,8 @@ export default class Following extends Component {
             : following.map(userName => {
                 return userName !== ''
                 ? (
-                  <List.Item className='following-item' key={userName}>
-                    <Link id='following-item-link' to='{`/channels/${userName}`}'>{userName}</Link>
+                  <List.Item as={Link} to={`/channels/${userName}`} className='following-item' key={userName}>
+                    {/* <Link id='following-item-link' to='{`/channels/${userName}`}'>{userName}</Link> */}
                     <List.Content floated='right'>
                       { isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
                     </List.Content>
