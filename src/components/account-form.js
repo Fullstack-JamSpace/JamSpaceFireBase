@@ -30,7 +30,7 @@ const AccountForm = props => {
           <Form.Input name="email" label="Email"
           value={user.email} width={lableWidth} readOnly />
 
-          <Form.Input name="password" label="Password"
+          <Form.Input type="password" name="password" label="Password"
           value={user.password} width={lableWidth} readOnly />
 
           <Form.Input name="displayName" label="Display name"

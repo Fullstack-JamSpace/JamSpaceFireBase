@@ -4,34 +4,57 @@ import 'semantic-ui-css/semantic.min.css';
 import { getCurrentUser } from '../utils'
 import AccountForm from './account-form';
 import AccountFormEdit from './account-form-edit';
+
 import db from '../firebase'
+import { UpdateSuccessful } from './update-successful';
+import { UpdateError } from './update-error';
+
+// form edit modes
+const UPDATE_ERROR = 'UPDATE_ERROR'
+const UPDATE_SUCCESS = 'UPDATE_SUCCESS'
+const READING = 'READING'
+const EDITING = 'EDITING'
 
 
 class AccountInfo extends React.Component {
   state = {
     jammer: '',
-    editMode: false
+    editMode: READING
   };
-
-  handleSubmit = async (event) => {
-    const email = event.target.email.value;
-    //const password = event.target.password.value;
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const displayName = event.target.displayName.value;
-    const imageUrl = event.target.imageUrl.value;
-    const jammerRef = await db.collection('jammers').doc(`${this.state.jammer.email}`)
-    await jammerRef.update({...this.state.jammer, email, firstName, lastName, displayName, imageUrl})
-    this.props.history.push("/")
-
-    // console.log('account-information.js | event values: ', email, firstName, lastName, displayName, imageUrl)
-  }
 
   handleEdit = event => {
     event.preventDefault();
     this.setState ({
-      editMode: true
+      editMode: EDITING
     })
+  }
+
+  handleClickSuccessError = event => {
+    event.preventDefault();
+    this.setState ({
+      editMode: READING
+    })
+  }
+
+  handleSubmit = async (event) => {
+    const firstName = event.target.firstName.value;
+    const lastName = event.target.lastName.value;
+    const displayName = event.target.displayName.value;
+    const imageUrl = event.target.imageUrl.value;
+    try {
+      const jammerRef = await db.collection('jammers').doc(`${this.state.jammer.email}`)
+      await jammerRef.update({...this.state.jammer, firstName, lastName, displayName, imageUrl})
+      const updatedJammer = await getCurrentUser()
+      this.setState ({
+        jammer: updatedJammer,
+        editMode: UPDATE_SUCCESS
+      })
+    } catch (error) {
+      console.log('account-information.js | error writing update to firebase:', error)
+      this.setState ({
+        editMode: UPDATE_ERROR
+      })
+    }
   }
 
   async componentDidMount(){
@@ -41,17 +64,32 @@ class AccountInfo extends React.Component {
     })
   }
 
+  renderEditForm = () => {
+      switch (this.state.editMode) {
+      case READING: {
+        return  <AccountForm handleSubmit={this.handleEdit} user={this.state.jammer} />
+      }
+      case EDITING: {
+        return <AccountFormEdit handleSubmit={this.handleSubmit} user={this.state.jammer} />
+      }
+      case UPDATE_SUCCESS: {
+        return  <UpdateSuccessful handleClick={this.handleClickSuccessError} user={this.state.jammer} />
+      }
+      case UPDATE_ERROR: {
+        return  <UpdateError handleClick={this.handleClickSuccessError} user={this.state.jammer} />
+      }
+      default: {
+        return  <UpdateError user={this.state.jammer} />
+      }
+    }
+  }
+
+
   render() {
     console.log('account-information.js | this.state', this.state)
     return (
-
       <Container>
-      {this.state.editMode ?
-      <AccountFormEdit handleSubmit={this.handleSubmit} user={this.state.jammer} />
-      :
-      <AccountForm handleSubmit={this.handleEdit} user={this.state.jammer} />
-      }
-
+        {this.renderEditForm()}
       </Container>
     )
   }

@@ -27,11 +27,11 @@ const AccountFormEdit = props => {
           <Form.Input name="lastName" label="Last name"
           defaultValue={user.lastName} width={lableWidth} />
 
-          <Form.Input name="email" label="Email"
-          defaultValue={user.email} width={lableWidth} />
+          <Form.Input name="email" label="Email (cannot be changed at this time)"
+          defaultValue={user.email} width={lableWidth} disabled />
 
-          <Form.Input name="password" label="Password"
-          defaultValue={user.password} width={lableWidth} />
+          <Form.Input type="password" name="password" label="Password (cannot be changed at this time)"
+          value='123456' width={lableWidth} disabled />
 
           <Form.Input name="displayName" label="Display name"
           defaultValue={user.displayName} width={lableWidth} />

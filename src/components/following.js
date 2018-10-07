@@ -20,25 +20,29 @@ export default class Following extends Component {
   async componentDidMount(){
     const jammer = await getCurrentUser()
     this.setState({
-      jammer: jammer
+      jammer: jammer,
+      following: jammer ? jammer.following : []
     })
     console.log('following.js | result of getCurrentUser:', jammer)
-    if (jammer && jammer.email) {
-      try {
-        await firebase.auth().onAuthStateChanged(async user => {
-          const userRef = await db.collection('jammers').doc(`${user.email}`).get()
-          const userData = await userRef.data()
-          const following = userData.following
-          this.setState({following})
-        })
-      } catch (error) {
-        console.log(error);
-      }
-    }
+
+
+    // if (jammer && jammer.email) {
+    //   try {
+    //     await firebase.auth().onAuthStateChanged(async user => {
+    //       const userRef = await db.collection('jammers').doc(`${user.email}`).get()
+    //       const userData = await userRef.data()
+    //       const following = userData.following
+    //       this.setState({following})
+    //     })
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
 
   }
 
   render() {
+    console.log('following.js | render | this.state', this.state)
     const { following, isStreaming } = this.state
     return (
       <div id="following">
