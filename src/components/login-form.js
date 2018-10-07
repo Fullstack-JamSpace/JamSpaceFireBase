@@ -9,7 +9,7 @@ const LoginForm = props => {
     <Form.Input name="email" label="Email"
     placeholder="Email" width={lableWidth} required />
 
-    <Form.Input name="password" label="Password"
+    <Form.Input type="password" name="password" label="Password"
     placeholder="Password" width={lableWidth} required />
 
     <Form.Button type="submit">Submit</Form.Button>
