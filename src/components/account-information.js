@@ -25,7 +25,7 @@ class AccountInfo extends React.Component {
       await jammerRef.update({...this.state.jammer, email, firstName, lastName, displayName, imageUrl})
       this.props.history.push(`/channels/${this.state.jammer.displayName}/update-successful`)
     } catch (error) {
-
+      console.log('account-information.js | error writing update to firebase:', error)
     }
 
     // console.log('account-information.js | event values: ', email, firstName, lastName, displayName, imageUrl)
