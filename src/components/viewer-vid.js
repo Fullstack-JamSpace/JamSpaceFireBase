@@ -48,7 +48,6 @@ export default class ViewerVid extends Component {
   render() {
     return (
       <div>
-        <p>hi viewer</p>
         <video id="myVideo" autoPlay />
       </div>
     );
