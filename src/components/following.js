@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import db from '../firebase';
-import * as firebase from 'firebase';
 import { List, Segment } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
 import '../css/following.css';
 import { getCurrentUser } from '../utils'
 
@@ -18,27 +16,15 @@ export default class Following extends Component {
   }
 
   async componentDidMount(){
-    const jammer = await getCurrentUser()
-    this.setState({
-      jammer: jammer,
-      following: jammer ? jammer.following : []
+    const currUser = await getCurrentUser()
+
+    db.collection('jammers').doc(currUser.email).onSnapshot( (doc) => {
+      const x = doc.data()
+      this.setState({
+        jammer: x,
+        following: x.following
+      })
     })
-    console.log('following.js | result of getCurrentUser:', jammer)
-
-
-    // if (jammer && jammer.email) {
-    //   try {
-    //     await firebase.auth().onAuthStateChanged(async user => {
-    //       const userRef = await db.collection('jammers').doc(`${user.email}`).get()
-    //       const userData = await userRef.data()
-    //       const following = userData.following
-    //       this.setState({following})
-    //     })
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
-
   }
 
   render() {
@@ -55,7 +41,6 @@ export default class Following extends Component {
                 return userName !== ''
                 ? (
                   <List.Item as={Link} to={`/channels/${userName}`} className='following-item' key={userName}>{userName}
-                    {/* <Link id='following-item-link' to='{`/channels/${userName}`}'>{userName}</Link> */}
                     <List.Content floated='right'>
                       { isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
                     </List.Content>
