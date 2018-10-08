@@ -7,10 +7,6 @@ export const getCurrentUser = async () => {
     if (currentJammer) {
       const currentJammerObject = await db.collection('jammers').doc(currentJammer.email).get();
       const currentJammerData = currentJammerObject.data();
-      // console.log('utils.js | firebase.auth().currentUser', currentJammer);
-      // console.log('utils.js | currentJammer.uid', currentJammer.uid);
-      // console.log('utils.js | currentJammer.email', currentJammer.email);
-      // console.log('utils.js | currentJammerData', currentJammerData);
       return {...currentJammerData, id: currentJammer.email, uid: currentJammer.uid}
     } else {
       return null;

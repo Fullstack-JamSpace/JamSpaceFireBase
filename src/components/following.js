@@ -19,10 +19,10 @@ export default class Following extends Component {
     const currUser = await getCurrentUser()
 
     db.collection('jammers').doc(currUser.email).onSnapshot( (doc) => {
-      const x = doc.data()
+      const userData = doc.data()
       this.setState({
-        jammer: x,
-        following: x.following
+        jammer: userData,
+        following: userData.following
       })
     })
   }
