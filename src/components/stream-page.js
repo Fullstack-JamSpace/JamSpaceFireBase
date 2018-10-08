@@ -1,8 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { StreamerVid, ViewerVid } from '.';
-// import { Link } from 'react-router-dom';
-import * as firebase from 'firebase';
-import db from '../firebase';
+import { StreamerVid, ViewerVid, StreamTitleCat } from '.';
 import '../css/stream.css'
 
 
@@ -13,41 +10,16 @@ import '../css/stream.css'
 // Otherwise, let them view only.
 
 export default class StreamPage extends Component {
-  constructor(){
-    super()
-    this.state = {
-      isStreamer: false
-    }
-  }
-
-  // async componentDidMount(){
-  //   try {
-  //     let jammer = [];
-  //     const channelOwner = this.props.match.params.displayName;
-  //     const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
-
-  //     await jammerRef.forEach(x => {
-  //       if (x.data()) jammer.push(x.data());
-  //     });
-
-  //     await firebase.auth().onAuthStateChanged(user => {
-  //       if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
-  //   });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-
   render(){
     const { displayName, isStreamer } = this.props;
-
     return (
       isStreamer ?
         <div className='stream-window'>
+          <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>
           <StreamerVid displayName={displayName} />
         </div> :
         <div className='stream-window'>
+          <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>
           <ViewerVid displayName={displayName} />
         </div>
     )

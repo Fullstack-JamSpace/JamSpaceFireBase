@@ -24,6 +24,6 @@ export const getStreamer = async displayName => {
     streamerRef.forEach(doc => streamer = doc.data())
   } catch (error) {
     console.log(error);
-    return streamer;
   }
+  return streamer;
 }
