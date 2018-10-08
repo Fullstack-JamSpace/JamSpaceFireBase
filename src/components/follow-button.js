@@ -37,7 +37,7 @@ export default class FollowButton extends Component {
 
   handleClick = async () => {
     const { user, isFollowing, streamer } = this.state
-    if(!streamer.followers) streamer.followers = 0
+    if(!followers) followers = 0
     try{
       const userData = await db.collection('jammers').doc(`${user.email}`)
       const streamerData = await db.collection('jammers').doc(`${streamer.email}`)
@@ -46,16 +46,18 @@ export default class FollowButton extends Component {
           following: firebase.firestore.FieldValue.arrayUnion(`${streamer.displayName}`),
         })
         await streamerData.update({...streamer,
-          followers: streamer.followers += 1
+          followers: followers += 1
         })
 
       } else {
         await userData.update({...user,
           following: firebase.firestore.FieldValue.arrayRemove(`${streamer.displayName}`)
         })
-        await streamerData.update({...streamer,
-          followers: streamer.followers -= 1
-        })
+        if(followers > 0) {
+          await streamerData.update({...streamer,
+            followers: followers -= 1
+          })
+        }
       }
 
       this.setState({ isFollowing : !isFollowing })

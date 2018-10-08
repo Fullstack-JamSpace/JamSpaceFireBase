@@ -24,12 +24,20 @@ export default class StreamerAbout extends Component {
   }
 
   render() {
-    const { jammer } = this.state
-    console.log('streamer-about current jammer:  ', jammer)
+    const { imageUrl, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, bio, photos } = this.state.jammer
+    
     return (
       <div id="streamer-about">
-        yo streamah
+        <div id='streamer-profile-photo' src={imageUrl}
       </div>
     )
   }
 }
+
+
+<i class="spotify icon"></i>
+<i class="facebook f icon"></i>
+<i class="twitter icon"></i>
+<i class="instagram icon"></i>
+<i class="soundcloud icon"></i>
+<i class="bandcamp icon"></i>
