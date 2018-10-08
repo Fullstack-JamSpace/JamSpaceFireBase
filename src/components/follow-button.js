@@ -37,6 +37,7 @@ export default class FollowButton extends Component {
 
   handleClick = async () => {
     const { user, isFollowing, streamer } = this.state
+    let followers = streamer.followers
     if(!followers) followers = 0
     try{
       const userData = await db.collection('jammers').doc(`${user.email}`)

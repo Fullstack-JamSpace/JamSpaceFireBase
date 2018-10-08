@@ -10,34 +10,34 @@ export default class StreamerAbout extends Component {
   constructor(){
     super()
     this.state = {
-      jammer: {},
+      user: {},
     }
   }
 
   async componentDidMount(){
     try {
-      const jammer = await getCurrentUser()
-      this.setState({jammer})
+      const user = await getCurrentUser()
+      this.setState({user})
     } catch (error) {
       console.log(error);
     }
   }
 
   render() {
-    const { imageUrl, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, bio, photos } = this.state.jammer
+    const { displayName, imageUrl, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, bio, photos } = this.state.user
     
     return (
       <div id="streamer-about">
-        <div id='streamer-profile-photo' src={imageUrl}
+        <img id="streamer-profile-photo" src={imageUrl} />
+        <div id="streamer-info">
+          <h2 id="streamer-name">{displayName}></h2>
+          <div id="streamer-social-media">
+
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 
-<i class="spotify icon"></i>
-<i class="facebook f icon"></i>
-<i class="twitter icon"></i>
-<i class="instagram icon"></i>
-<i class="soundcloud icon"></i>
-<i class="bandcamp icon"></i>
