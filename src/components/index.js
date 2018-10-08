@@ -11,3 +11,4 @@ export { PageNotFound } from './page-not-found'
 export { UpdateSuccessful } from './update-successful.js'
 export { UpdateError } from './update-error.js'
 export {default as StreamNav} from './stream-nav'
+export {default as StreamTitleCat} from './stream-title-cat';
