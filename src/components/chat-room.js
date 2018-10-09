@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import db from '../firebase';
 import * as firebase from 'firebase';
 import '../css/chat-room.css';
-//import { Image, Header, Card, Container, Icon } from 'semantic-ui-react'
 import { getCurrentUser, getStreamer} from '../utils'
 
 export default class StreamerAbout extends Component {
@@ -11,8 +10,10 @@ export default class StreamerAbout extends Component {
     super()
     this.state = {
       user: {},
-      streamer: {}
+      streamer: {},
+      messages: []
     }
+    this.textInput = React.createRef();
   }
 
   async componentDidMount(){
@@ -20,81 +21,55 @@ export default class StreamerAbout extends Component {
       const { displayName } = this.props
       const user = await getCurrentUser()
       const streamer = await getStreamer(displayName)
-      console.log('USSER:  ', user)
-      this.setState({user, streamer})
+      db.collection('jammers').doc(streamer.email).onSnapshot(doc => {
+        const streamerData = doc.data()
+        this.setState({
+          user, streamer,
+          messages: streamerData.messages})
+        })
     } catch (error) {
       console.log(error);
     }
   }
 
-  //
+  focusTextInput = () => {
+    this.textInput.current.focus();
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    const { user, streamer } = this.state
+    const text = event.target.message.value
+    event.target.message.value = ''
+    const message = user.displayName + ':    ' + text
+    try {
+      const streamerData = await db.collection('jammers').doc(streamer.email)
+      await streamerData.update({...streamer,
+        messages: firebase.firestore.FieldValue.arrayUnion(message)
+      })
+    } catch(error) {
+      console.error(error)
+    }
+  }
 
   render() {
+    const { user, messages } = this.state
     return (
       <div className="left aligned segment" id="chat-room">
-        <div class="ui minimal comments">
-          <h3 class="ui dividing header">Chat</h3>
-          <div class="comment">
-            <a class="avatar">
-              <img src="/images/avatar/small/matt.jpg" />
-            </a>
-            <div class="content">
-              <a class="author">Matt</a>
-              <div class="metadata">
-                <span class="date">Today at 5:42PM</span>
-              </div>
-              <div class="text">
-                How artistic!
-              </div>
-              <div class="actions">
-                <a class="reply">Reply</a>
-              </div>
-            </div>
-          </div>
-          <div class="comment">
-            <a class="avatar">
-              <img src="/images/avatar/small/elliot.jpg" />
-            </a>
-            <div class="content">
-              <a class="author">Elliot Fu</a>
-              <div class="metadata">
-                <span class="date">Yesterday at 12:30AM</span>
-              </div>
-              <div class="text">
-                <p>This has been very useful for my research. Thanks as well!</p>
-              </div>
-              <div class="actions">
-                <a class="reply">Reply</a>
-              </div>
-            </div>
-          </div>
-          <div class="comments">
-            <div class="comment">
-              <a class="avatar">
-                <img src="/images/avatar/small/jenny.jpg" />
-              </a>
-              <div class="content">
-                <a class="author">Jenny Hess</a>
-                <div class="metadata">
-                  <span class="date">Just now</span>
-                </div>
-                <div class="text">
-                  Elliot you are always so right :)
-                </div>
-                <div class="actions">
-                  <a class="reply">Reply</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="ui comments">
+          <h3 className="ui dividing header">Chat</h3>
+          { !messages
+            ? <div className="comment">-------------------------</div>
+            : messages.map(message => <div className="comment" key={message}>{message}</div>)
+          }
         </div>
-        <form class="ui reply form">
-          <div class="field">
-            <textarea></textarea>
+        <form className="ui reply form" onSubmit={this.handleSubmit}>
+          <div className="field">
+            <textarea name="message" ref={this.textInput}></textarea>
           </div>
-          <div class="ui blue labeled submit icon button">
-            <i class="icon edit"></i> Add Reply
-          </div>
+          <button id="write-message-button" type="submit" onClick={this.focusTextInput}>
+            <i className="icon edit"></i>
+          </button>
         </form>
       </div>
     )

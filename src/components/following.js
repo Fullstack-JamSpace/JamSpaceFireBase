@@ -17,7 +17,6 @@ export default class Following extends Component {
 
   async componentDidMount(){
     const currUser = await getCurrentUser()
-
     db.collection('jammers').doc(currUser.email).onSnapshot( (doc) => {
       const userData = doc.data()
       this.setState({
@@ -28,7 +27,6 @@ export default class Following extends Component {
   }
 
   render() {
-    console.log('following.js | render | this.state', this.state)
     const { following, isStreaming } = this.state
     return (
       <div id="following">

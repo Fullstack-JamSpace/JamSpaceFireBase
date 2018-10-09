@@ -2,4 +2,12 @@
   width: 600px;
   padding: 40px;
   background-color: white;
+  min-width: 300px;
+}
+
+#write-message-button {
+  background-color: #4088ed;
+  color: white;
+  display: flex-grow;
+  width: 10rem;
 }
