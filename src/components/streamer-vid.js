@@ -10,7 +10,16 @@ export default class StreamerVid extends Component {
     let { displayName } = this.props
     let streamerPeerId = displayName;
 
-    const peer = new Peer(streamerPeerId);
+    // for explanation of iceServers see comment on line 23 of viewer-vid.js, where the peer
+    // connection is made for the viewer
+    const iceServers = {
+      'iceServers': [
+        { 'urls': 'stun:stun.services.mozilla.com' },
+        { 'urls': 'stun:stun.l.google.com:19302' },
+        { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
+       ] };
+
+    const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers});
     console.log('peer created', peer);
 
     peer.on('open', id => {
