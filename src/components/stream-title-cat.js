@@ -11,6 +11,7 @@ export default class StreamTitleCat extends Component {
       streamTitle: '',
       streamCategory: '',
       streamer: {},
+      activeButton: ''
     }
   }
 
@@ -21,7 +22,7 @@ export default class StreamTitleCat extends Component {
   }
 
   handleChange = async (e, { name, value }) => {
-    await this.setState({ [name]: value })
+    await this.setState({ [name]: value, upToDate: false })
   }
 
   handleSubmit = async (evt) => {
@@ -30,6 +31,7 @@ export default class StreamTitleCat extends Component {
     try {
       const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
       await streamerRef.update({...streamer, streamTitle, streamCategory})
+      this.setState( { upToDate: true })
     } catch (error) {
       console.log(error)
     }
@@ -37,7 +39,7 @@ export default class StreamTitleCat extends Component {
 
   render() {
     const { isStreamer } = this.props;
-    const { streamTitle, streamCategory, streamer } = this.state
+    const { streamTitle, streamCategory, streamer, upToDate } = this.state
     const options = [
       {key: 1, text: 'Single Performer', value: 'Single Performer'},
       {key: 2, text: 'Band', value: 'Band'},
@@ -49,7 +51,7 @@ export default class StreamTitleCat extends Component {
       isStreamer ?
       <div className='flex stream-header'>
         <img className='streamer-thumb' src={streamer.imageUrl} alt=''/>
-        <Form id='title-category-form' onSubmit={this.handleSubmit}>
+        <Form id='title-category-form' onSubmit={this.handleSubmit} autocomplete='off'>
           <Form.Group>
             <Form.Input id='title-input' placeholder='Stream Title' name='streamTitle' value={streamTitle} onChange={this.handleChange} />
             <Form.Dropdown
@@ -60,7 +62,10 @@ export default class StreamTitleCat extends Component {
               onChange={this.handleChange}
               options={options}
             />
-            <Form.Button id='update-btn' content='Update' />
+            { upToDate ?
+                <Form.Button positive id='update-btn' content='Streaming!' />
+              : <Form.Button id='update-btn' content='Stream' />
+            }
           </Form.Group>
         </Form>
       </div>
