@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import FollowButton from './follow-button';
-import { StreamPage } from '.';
+import { StreamPage, StreamerAbout } from '.';
 import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
@@ -62,7 +62,7 @@ export default class StreamAboutMenu extends Component {
         <Segment basic>
           { activeItem === 'stream' ?
             <StreamPage isStreamer={isStreamer} displayName={displayName}/>
-            : <div>about page</div>
+            : <StreamerAbout name={displayName}/>
           }
         </Segment>
       </div>

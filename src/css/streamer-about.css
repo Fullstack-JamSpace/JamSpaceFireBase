@@ -1,0 +1,55 @@
+#streamer-about {
+  display: flex;
+}
+
+#bio {
+  border: solid black 1px;
+}
+
+#bio-header {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#bandcamp {
+  color: white;
+  background-color: #629aa9; 
+}
+
+#soundcloud {
+  color: white;
+  background-color: #ff8800;
+}
+
+#spotify {
+  color: white;
+  background-color: #1db954;
+}
+
+#itunes {
+  color: white;
+  background-color: #4ed4b3;
+}
+
+#followers {
+  text-align: center;
+}
+
+#social-media {
+  align-items: center;
+  justify-content: center;
+  margin-right: 19px;
+}
+
+/* OR:  
+
+
+#social-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+
+*/;
