@@ -25,7 +25,6 @@ export default class FollowButton extends Component {
       if (following && following.includes(this.props.displayName)) {
         this.setState({isFollowing: true})
       }
-
       const streamerRef = await db.collection('jammers').where('displayName', '==', `${this.props.displayName}`).get()
       streamerRef.forEach(doc => streamer = doc.data())
 
@@ -39,7 +38,7 @@ export default class FollowButton extends Component {
     const { user, isFollowing, streamer } = this.state
     let followers = streamer.followers
     if(!followers) followers = 0
-    try{
+    try {
       const userData = await db.collection('jammers').doc(`${user.email}`)
       const streamerData = await db.collection('jammers').doc(`${streamer.email}`)
       if(!isFollowing) {
