@@ -42,16 +42,16 @@ export default class StreamerVid extends Component {
     // to a var (const, let, whatev) and then in componentDidUnmount call
     // call.disconnect() or something
     // as of now, commenting this out and line 38 b/c linter is pissed about this
-    let call;
+    // let call;
     peer.on('connection', async conn => {
       peer.call(conn.peer, streamerStream)
-      call = peer.call(conn.peer, streamerStream)
+      // call = peer.call(conn.peer, streamerStream)
 
-      console.log('conected - streamerStream', streamerStream);
-      console.log('conected - conn object', conn);
-      console.log('conected - conn.peer', conn.peer);
-      console.log('connections', peer.connections);
-      console.log('connections - CALL MADE');
+      // console.log('conected - streamerStream', streamerStream);
+      // console.log('conected - conn object', conn);
+      // console.log('conected - conn.peer', conn.peer);
+      // console.log('connections', peer.connections);
+      // console.log('connections - CALL MADE');
     });
 
   }
