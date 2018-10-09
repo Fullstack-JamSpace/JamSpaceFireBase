@@ -19,7 +19,7 @@ export default class StreamerVid extends Component {
         { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
        ] };
 
-    const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 80, config: iceServers});
+    const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers});
     console.log('peer created', peer);
 
     peer.on('open', id => {
