@@ -69,25 +69,10 @@ export default class StreamerVid extends Component {
   async componentWillUnmount(){
     const { peer } = this.state;
     const { displayName } = this.props
-    const myVideo = document.getElementById('myVideo');
-    let streamerStream;
-
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
     await streamerRef.update({...streamer, isStreaming: false})
-    console.log('PEER: ', peer)
     peer.destroy();
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then(stream => {
-        myVideo.srcObject = stream;
-        streamerStream = stream;
-        let tracks = stream.getTracks();
-
-        tracks.forEach(track => track.stop())
-        myVideo.srcObject = null;
-      });
-    console.log('UNMOUNTED')
   }
 
   render() {

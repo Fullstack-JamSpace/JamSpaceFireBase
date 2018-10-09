@@ -22,6 +22,7 @@ export default class StreamAboutMenu extends Component {
       let jammer = [];
       const channelOwner = this.props.match.params.displayName;
       const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
+      console.log('STATE CHECK 2: ', jammerRef)
 
       await jammerRef.forEach(x => {
         if (x.data()) jammer.push(x.data());
