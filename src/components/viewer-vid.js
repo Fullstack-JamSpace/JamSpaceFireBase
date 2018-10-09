@@ -20,7 +20,18 @@ export default class ViewerVid extends Component {
     // let viewerPeerId =
     //   'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
-    const peer = new Peer({host: 'jampspace-01-peerjs-01.herokuapp.com', port: 80});
+
+    const iceServers = {
+       'iceServers': [
+         { 'urls': 'stun:stun.services.mozilla.com' },
+         { 'urls': 'stun:stun.l.google.com:19302' },
+         { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
+        ] };
+
+    // var peer = new Peer({
+    //   config: iceServers
+    // });
+    const peer = new Peer({host: 'jampspace-01-peerjs-01.herokuapp.com', port: 80, config: iceServers});
     console.log('peer created', peer);
 
     peer.on('open', id => {
