@@ -10,6 +10,7 @@
 .stream-header{
   position: relative;
   max-width: 895px;
+  padding: 10px;
 }
 
 .streamer-thumb{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
-import logo from '../../logo.jpg';
+import logo from '../../pics/logo.jpg';
 import '../../css/navbar.css';
 import {LoginSignup} from './login-signup';
 import * as firebase from 'firebase';
