@@ -11,3 +11,8 @@
   display: flex-grow;
   width: 10rem;
 }
+
+#messages {
+  overflow: scroll;
+  max-height: 300px;
+}

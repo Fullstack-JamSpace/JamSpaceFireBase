@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import '../css/chat-room.css';
 import { getCurrentUser, getStreamer} from '../utils'
 
-export default class StreamerAbout extends Component {
+export default class ChatRoom extends Component {
   constructor(){
     super()
     this.state = {
@@ -56,7 +56,7 @@ export default class StreamerAbout extends Component {
     const { user, messages } = this.state
     return (
       <div className="left aligned segment" id="chat-room">
-        <div className="ui comments">
+        <div className="ui comments" id="messages">
           <h3 className="ui dividing header">Chat</h3>
           { !messages
             ? <div className="comment">-------------------------</div>
