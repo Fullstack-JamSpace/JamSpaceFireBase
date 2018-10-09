@@ -1,5 +1,6 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
+import '../css/streamer-vid.css'
 
 export default class StreamerVid extends Component {
   // constructor () {
