@@ -27,12 +27,13 @@ export default class Navbar extends Component {
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleLogoClick = () => this.setState({ activeItem: '' })
 
   render() {
     const { activeItem, jammer } = this.state;
     return (
       <div className="header App-header">
-        <Link to="/">
+        <Link to="/" onClick={this.handleLogoClick}>
           <div className="logo-and-text">
             <img src={logo} className="App-logo" alt="logo" />
             <h3 id="header-logo-text">Jam Space</h3>
@@ -41,15 +42,15 @@ export default class Navbar extends Component {
         <div className="nav-options">
           <Menu inverted pointing secondary >
               <Menu.Item
-                as={Link} to="/channels"
-                name="channels"
-                active={activeItem === 'channels'}
+                as={Link} to="/"
+                name="Home"
+                active={activeItem === 'Home'}
                 onClick={this.handleItemClick}
               />
               <Menu.Item
-                as={Link} to="/about"
-                name="About Jamspace"
-                active={activeItem === 'About Jamspace'}
+                as={Link} to="/channels"
+                name="channels"
+                active={activeItem === 'channels'}
                 onClick={this.handleItemClick}
               />
             <Menu.Menu position="right">

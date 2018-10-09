@@ -27,3 +27,16 @@ export const getStreamer = async displayName => {
   }
   return streamer;
 }
+
+export const categoryTranslator = str => {
+  switch (str) {
+    case 'single':
+      return 'Single Category'
+    case 'band':
+      return 'Band'
+    case 'lessons':
+      return 'Lessons'
+    default:
+      return 'Production'
+  }
+}
