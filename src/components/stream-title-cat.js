@@ -51,7 +51,7 @@ export default class StreamTitleCat extends Component {
       isStreamer ?
       <div className='flex stream-header'>
         <img className='streamer-thumb' src={streamer.imageUrl} alt=''/>
-        <Form id='title-category-form' onSubmit={this.handleSubmit} autocomplete='off'>
+        <Form id='title-category-form' onSubmit={this.handleSubmit} autoComplete='off'>
           <Form.Group>
             <Form.Input id='title-input' placeholder='Stream Title' name='streamTitle' value={streamTitle} onChange={this.handleChange} />
             <Form.Dropdown
@@ -63,8 +63,8 @@ export default class StreamTitleCat extends Component {
               options={options}
             />
             { upToDate ?
-                <Form.Button positive id='update-btn' content='Streaming!' />
-              : <Form.Button id='update-btn' content='Stream' />
+                <Form.Button positive id='update-btn' content='Updated!' />
+              : <Form.Button id='update-btn' content='Update' />
             }
           </Form.Group>
         </Form>

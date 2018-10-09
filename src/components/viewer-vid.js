@@ -34,7 +34,7 @@ export default class ViewerVid extends Component {
          { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
         ] };
 
-    const peer = new Peer({host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers});
+    const peer = new Peer({host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers, secure: true});
     console.log('peer created', peer);
 
     peer.on('open', id => {

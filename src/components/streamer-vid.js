@@ -1,14 +1,19 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
 import '../css/streamer-vid.css'
+import { getStreamer } from '../utils';
+import db from '../firebase';
 
 export default class StreamerVid extends Component {
-  // constructor () {
-  //   super();
-  // }
+  constructor(){
+    super()
+    this.state = {
+      peer: ''
+    }
+  }
 
-  componentDidMount() {
-    let { displayName } = this.props
+  async componentDidMount() {
+    const { displayName } = this.props
     let streamerPeerId = displayName;
 
     // for explanation of iceServers see comment on line 23 of viewer-vid.js, where the peer
@@ -20,7 +25,8 @@ export default class StreamerVid extends Component {
         { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
        ] };
 
-    const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers});
+    const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers, secure: true});
+    this.setState({peer});
     console.log('peer created', peer);
 
     peer.on('open', id => {
@@ -55,6 +61,33 @@ export default class StreamerVid extends Component {
       // console.log('connections - CALL MADE');
     });
 
+    const streamer = await getStreamer(displayName);
+    const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
+    await streamerRef.update({...streamer, isStreaming: true})
+  }
+
+  async componentWillUnmount(){
+    const { peer } = this.state;
+    const { displayName } = this.props
+    const myVideo = document.getElementById('myVideo');
+    let streamerStream;
+
+    const streamer = await getStreamer(displayName);
+    const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
+    await streamerRef.update({...streamer, isStreaming: false})
+    console.log('PEER: ', peer)
+    peer.destroy();
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then(stream => {
+        myVideo.srcObject = stream;
+        streamerStream = stream;
+        let tracks = stream.getTracks();
+
+        tracks.forEach(track => track.stop())
+        myVideo.srcObject = null;
+      });
+    console.log('UNMOUNTED')
   }
 
   render() {
