@@ -33,9 +33,13 @@ body {
   text-align: center;
 }
 
+#bio-text{
+  color: black;
+}
+
 #bandcamp {
   color: white;
-  background-color: #629aa9; 
+  background-color: #629aa9;
 }
 
 #soundcloud {
