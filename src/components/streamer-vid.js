@@ -10,7 +10,8 @@ export default class StreamerVid extends Component {
     let { displayName } = this.props
     let streamerPeerId = displayName;
 
-
+    // for explanation of iceServers see comment on line 23 of viewer-vid.js, where the peer
+    // connection is made for the viewer
     const iceServers = {
       'iceServers': [
         { 'urls': 'stun:stun.services.mozilla.com' },

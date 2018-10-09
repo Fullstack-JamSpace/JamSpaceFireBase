@@ -20,7 +20,13 @@ export default class ViewerVid extends Component {
     // let viewerPeerId =
     //   'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
-
+    // ice servers are used by webrtc / peerjs to establish the connection to the browser clients
+    // when they are behind routers that sheild private networks from the public internet - when
+    // peerJS makes connection it uses stun server to identify its external IP and then does some
+    // math on how to get from that IP, through the private network to the users browser - then it
+    // sends that to the peer its trying to connect to.
+    // peerJS recommends we setup our own, and we had identified these settings when we were mucking
+    // with webRTC
     const iceServers = {
        'iceServers': [
          { 'urls': 'stun:stun.services.mozilla.com' },
@@ -28,9 +34,6 @@ export default class ViewerVid extends Component {
          { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
         ] };
 
-    // var peer = new Peer({
-    //   config: iceServers
-    // });
     const peer = new Peer({host: 'jampspace-01-peerjs-01.herokuapp.com', port: 80, config: iceServers});
     console.log('peer created', peer);
 
