@@ -4,6 +4,7 @@
   flex-direction: row;
   padding: .75em;
   height: 105px;
+  margin-bottom: 3px;
 }
 
 .App-logo {

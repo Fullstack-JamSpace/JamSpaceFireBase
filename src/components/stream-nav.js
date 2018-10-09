@@ -37,7 +37,7 @@ export default class StreamAboutMenu extends Component {
 
   render() {
     const { activeItem, isStreamer } = this.state;
-    const displayName = this.props.match.params.displayName;
+    const { displayName } = this.props.match.params;
 
     return (
       <div>

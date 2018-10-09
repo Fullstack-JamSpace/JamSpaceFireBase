@@ -13,3 +13,4 @@ export { UpdateError } from './update-error.js'
 export { default as StreamNav } from './stream-nav'
 export { default as StreamTitleCat } from './stream-title-cat';
 export { default as StreamerAbout } from './streamer-about'
+export { default as ChatRoom } from './chat-room'

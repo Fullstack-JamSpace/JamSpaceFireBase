@@ -1,9 +1,31 @@
+body {
+  height: 100%;
+  background: linear-gradient(0deg, #d8d8d8 87%, white 13%);
+}
+
 #streamer-about {
+  justify-content: center;
+  margin-top: 8px;
   display: flex;
+  padding-left: 20px;
+/*  background-color: #d8d8d8;
+  position: absolute;*/
+}
+
+#card {
+  margin-right: 60px;
 }
 
 #bio {
-  border: solid black 1px;
+  background-color: white;
+  padding: 12px;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 712px;
+  width: 800px;
+  border: solid lightgray 1px;
+  border-radius: 5px;
+  box-shadow: .0004px .0004px .0004px .0004px;
 }
 
 #bio-header {
@@ -40,16 +62,3 @@
   justify-content: center;
   margin-right: 19px;
 }
-
-/* OR:  
-
-
-#social-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 8px;
-}
-
-
-*/;

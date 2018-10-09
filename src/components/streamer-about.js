@@ -27,14 +27,12 @@ export default class StreamerAbout extends Component {
     }
   }
 
-  //
-
   render() {
     const { displayName, location, imageUrl, description, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, itunes, bio, photos, followers } = this.state.streamer
     const followerHeader = followers === 1 ? 'Follower' : 'Followers'
     return (
       <div id="streamer-about">
-          <Card id="card">
+        <Card id="card">
           <Image id="profile-photo" src={imageUrl} />
           <Card.Content id="card-info">
             <h2 id="name">{displayName}</h2>
@@ -60,7 +58,7 @@ export default class StreamerAbout extends Component {
               </a>
               <a href={`${itunes}`} target="_blank">
                 <button className="fluid ui button" id="itunes">
-                  <Icon name='itunes' /> Itunes</button>
+                  <Icon name='itunes' /> iTunes</button>
               </a>
               <a href={`${instagram}`} target="_blank">           
                 <button className="fluid ui button instagram" id="instagram">
