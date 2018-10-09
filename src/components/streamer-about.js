@@ -39,8 +39,8 @@ export default class StreamerAbout extends Component {
             <Card.Meta>
               <span id="location">{location}</span>
             </Card.Meta>
-            <Card.Description id="description">{description}</Card.Description> <br/> 
-            <Card.Description as={Link} to={`${website}`} id="website">{website}</Card.Description>    
+            <Card.Description id="description">{description}</Card.Description> <br/>
+            <Card.Description as={Link} to={`${website}`} id="website">{website}</Card.Description>
           </Card.Content>
           <Card.Content id="social-media">
             <div id="social-media-buttons">
@@ -54,13 +54,13 @@ export default class StreamerAbout extends Component {
               </a>
               <a  href={`${spotify}`} target="_blank">
                 <button className="fluid ui button" id="spotify">
-                  <Icon name='spotify' /> Spotify</button>  
+                  <Icon name='spotify' /> Spotify</button>
               </a>
               <a href={`${itunes}`} target="_blank">
                 <button className="fluid ui button" id="itunes">
                   <Icon name='itunes' /> iTunes</button>
               </a>
-              <a href={`${instagram}`} target="_blank">           
+              <a href={`${instagram}`} target="_blank">
                 <button className="fluid ui button instagram" id="instagram">
                   <Icon name='instagram' /> Instagram</button>
               </a>
@@ -80,7 +80,7 @@ export default class StreamerAbout extends Component {
         </Card>
         <div id="bio">
           <h2 id="bio-header">Bio:</h2> <br/>
-          <Container text><p>{bio}</p></Container>
+          <Container text><p id='bio-text'>{bio}</p></Container>
         </div>
       </div>
     )
