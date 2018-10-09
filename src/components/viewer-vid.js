@@ -20,7 +20,7 @@ export default class ViewerVid extends Component {
     // let viewerPeerId =
     //   'viewerJavierLilahJackie' + Math.floor(Math.random() * 1000);
 
-    const peer = new Peer();
+    const peer = new Peer({host: 'jampspace-01-peerjs-01.herokuapp.com', port: 80});
     console.log('peer created', peer);
 
     peer.on('open', id => {

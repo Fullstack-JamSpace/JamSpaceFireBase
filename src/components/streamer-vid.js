@@ -10,7 +10,7 @@ export default class StreamerVid extends Component {
     let { displayName } = this.props
     let streamerPeerId = displayName;
 
-    const peer = new Peer(streamerPeerId);
+    const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 80});
     console.log('peer created', peer);
 
     peer.on('open', id => {
@@ -33,16 +33,16 @@ export default class StreamerVid extends Component {
     // to a var (const, let, whatev) and then in componentDidUnmount call
     // call.disconnect() or something
     // as of now, commenting this out and line 38 b/c linter is pissed about this
-    // let call;
+    let call;
     peer.on('connection', async conn => {
       peer.call(conn.peer, streamerStream)
-      // call = peer.call(conn.peer, streamerStream)
+      call = peer.call(conn.peer, streamerStream)
 
-      // console.log('conected - streamerStream', streamerStream);
-      // console.log('conected - conn object', conn);
-      // console.log('conected - conn.peer', conn.peer);
-      // console.log('connections', peer.connections);
-      // console.log('connections - CALL MADE');
+      console.log('conected - streamerStream', streamerStream);
+      console.log('conected - conn object', conn);
+      console.log('conected - conn.peer', conn.peer);
+      console.log('connections', peer.connections);
+      console.log('connections - CALL MADE');
     });
 
   }
