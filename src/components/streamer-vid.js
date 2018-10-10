@@ -8,19 +8,26 @@ export default class StreamerVid extends Component {
   constructor(){
     super()
     this.state = {
-      peer: ''
+      peer: '',
+      conn: null,
+      stream: null
     }
+  }
+
+  // This func is bound to state so that it can be used to store the peer.connection
+  // on state when a viewer connects to the streamer. We want to store the
+  // connection so that we can properly destroy it when the connection ends
+  onConnectionCallPeerAndSendStream = (conn) => {
+    this.setState({conn})
+    this.state.peer.call(conn.peer, this.state.stream)
   }
 
   async componentDidMount() {
     const { displayName } = this.props
     let streamerPeerId = displayName;
 
-    // for explanation of iceServers see comment on line 23 of viewer-vid.js, where the peer
-    // connection is made for the viewer
-    const iceServers = {
+    const iceServers = { // for explanation of iceServers see footnote in viewer-vid.js
       'iceServers': [
-        { 'urls': 'stun:stun.services.mozilla.com' },
         { 'urls': 'stun:stun.l.google.com:19302' },
         { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
        ] };
@@ -35,31 +42,12 @@ export default class StreamerVid extends Component {
 
     const myVideo = document.getElementById('myVideo');
 
-    let streamerStream;
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
-      .then(stream => {
-        myVideo.srcObject = stream;
-        streamerStream = stream;
-      });
+    await this.setState({
+      stream: await navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+    })
+    myVideo.srcObject = this.state.stream
 
-
-    // omri has said that we will want to properly close a connection when a user
-    // leave the stream page and that to do so we wil need to assign the peer.call
-    // to a var (const, let, whatev) and then in componentDidUnmount call
-    // call.disconnect() or something
-    // as of now, commenting this out and line 38 b/c linter is pissed about this
-    // let call;
-    peer.on('connection', async conn => {
-      peer.call(conn.peer, streamerStream)
-      // call = peer.call(conn.peer, streamerStream)
-
-      // console.log('conected - streamerStream', streamerStream);
-      // console.log('conected - conn object', conn);
-      // console.log('conected - conn.peer', conn.peer);
-      // console.log('connections', peer.connections);
-      // console.log('connections - CALL MADE');
-    });
+    peer.on('connection', (conn) => this.onConnectionCallPeerAndSendStream(conn))
 
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
@@ -67,12 +55,19 @@ export default class StreamerVid extends Component {
   }
 
   async componentWillUnmount(){
-    const { peer } = this.state;
+    const { peer, stream } = this.state;  //conn?
     const { displayName } = this.props
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
     await streamerRef.update({...streamer, isStreaming: false})
+
+    // need to figure out if how to properly disconnect connections
+    // is peer.destroy sufficient? what if multiple connections?
+    // conn.disconnect() ?
     peer.destroy();
+    console.log('streamer-vid.js | peer destroyed')
+    stream.getTracks().forEach(track => track.stop())
+    console.log('streamer-vid.js | tracks stopped')
   }
 
   render() {
