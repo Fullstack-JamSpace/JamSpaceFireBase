@@ -7,7 +7,7 @@ import history from '../history';
 export default class Login extends Component {
   constructor(){
     super();
-    this.handleLogin = this.handleLogin.bind(this) //do we need this?
+    this.handleLogin = this.handleLogin.bind(this) //do we need this? // OB/JD: nope
   }
 
   handleLogin = event => {
@@ -18,6 +18,7 @@ export default class Login extends Component {
     const emailRef = db.collection('jammers').doc(`${email}`)
     emailRef.get().then(user => {
       if (user.exists) {
+        // OB/JD: this might belong in a setup code somewhere (maybe app.js)
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
           .then(() => firebase.auth().signInWithEmailAndPassword(email, password))
 

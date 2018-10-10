@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react'
 
+// OB/JD: might be able to squish this and AccountFormEdit into one component (can set `readOnly` to true or false), not an easy refactor
 
 const AccountForm = props => {
 

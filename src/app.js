@@ -17,7 +17,10 @@ class App extends Component {
 
   async componentDidMount() {
     try {
+      // OB/JD: I don't think `.onAuthStateChanged` returns a promise, so no need for await
+      // OB/JD: you start listening when the component mounts, also stop listening when it unmounts (not the most relevant to this component)
       await firebase.auth().onAuthStateChanged(async user => {
+        // OB/JD: async fn with no await inside
         if (user) {
           this.setState({ authStateEstablished: true, loggedIn: true });
         }
@@ -29,11 +32,13 @@ class App extends Component {
   }
 
   render() {
+    // OB/JD: channel your inner lumberjack
     console.log('app.js | this.state (login status)', this.state)
 
     return this.state.authStateEstablished ? (
       <div className="App">
         <Navbar />
+        {/* OB/JD: common html/css naming convention to use dash case instead of camel case, what you have is also out there */}
         <div id="mainContainer">
           <Following />
           <Routes />

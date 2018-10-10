@@ -22,6 +22,7 @@ export default class StreamAboutMenu extends Component {
       let jammer = [];
       const channelOwner = this.props.match.params.displayName;
       const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
+      // OB/JD: could query for just one thing? `.limit`
 
       await jammerRef.forEach(x => {
         if (x.data()) jammer.push(x.data());

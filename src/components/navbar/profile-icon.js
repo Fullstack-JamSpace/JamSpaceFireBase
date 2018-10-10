@@ -6,6 +6,7 @@ import * as firebase from 'firebase'
 
 export class ProfileIcon extends Component{
 
+  // OB/JD: does not need to be an arrow function
   handleLogout = () => {
     firebase.auth().signOut()
   }

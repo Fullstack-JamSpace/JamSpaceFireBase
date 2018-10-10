@@ -14,9 +14,11 @@ export default class Navbar extends Component {
     this.state = {
       jammer: false,
       jammerAuth: false
+      // OB/JD: have `activeItem` on here with some default state
     };
   }
 
+  // OB/JD: could use a higher-order component, e.g. `withUser(Navbar)`
   async componentDidMount(){
     await firebase.auth().onAuthStateChanged(async jammer => {
       if (jammer) this.setState({ jammerAuth : jammer });

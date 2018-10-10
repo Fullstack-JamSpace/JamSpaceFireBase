@@ -14,6 +14,7 @@ const LoginForm = props => {
 
     <Form.Button type="submit">Submit</Form.Button>
   </Form>
+  // OB/JD: "this is thriller"
   // <form className="submit-form" onSubmit={props.handleLogin}>
   //   {/* <div>
   //     <label htmlFor="email">Email Address</label>

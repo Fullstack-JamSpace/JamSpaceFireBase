@@ -33,6 +33,7 @@ export default class StreamerVid extends Component {
        ] };
 
     const peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers, secure: true});
+    // OB/JD: peer can be attached to the instance directly (`this.peer = peer`), `.setState` will ALSO cause re-render unnecessarily
     this.setState({peer});
     console.log('peer created', peer);
 

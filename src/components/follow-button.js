@@ -39,6 +39,7 @@ export default class FollowButton extends Component {
     let followers = streamer.followers
     if(!followers) followers = 0
     try {
+      // OB/JD: unnecessary template literal
       const userData = await db.collection('jammers').doc(`${user.email}`)
       const streamerData = await db.collection('jammers').doc(`${streamer.email}`)
       if(!isFollowing) {
@@ -46,6 +47,7 @@ export default class FollowButton extends Component {
           following: firebase.firestore.FieldValue.arrayUnion(`${streamer.displayName}`),
         })
         await streamerData.update({...streamer,
+          // OB/JD: wary of mutation here, try just followers + 1
           followers: followers += 1
         })
 
@@ -59,8 +61,11 @@ export default class FollowButton extends Component {
           })
         }
       }
-
+      // OB/JD: might be worth trying to listen for change in firebase instead of keeping track of following in both react component AND the firebase db
       this.setState({ isFollowing : !isFollowing })
+      // OB/JD: can use the function callback for setState when basing next state off of current state
+      // this.setState(currentState => ({isFollowing: !currentState.isFollowing}))
+      // which can be important for certain race conditions in react
     } catch (error) {
       console.error(error)
     }

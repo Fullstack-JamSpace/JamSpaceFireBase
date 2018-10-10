@@ -18,6 +18,7 @@ export default class StreamerAbout extends Component {
   async componentDidMount(){
     try {
       const { name } = this.props
+      // OB/JD: I'm out of puns, get rid of these
       console.log('NAME: ', name)
       const streamer = await getStreamer(name)
       console.log('STREAMER:  ', streamer)

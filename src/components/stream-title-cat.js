@@ -72,10 +72,12 @@ export default class StreamTitleCat extends Component {
       : streamer.streamTitle && streamer.streamCategory ?
       <div className='flex stream-header'>
         <img className='streamer-thumb' src={streamer.imageUrl} alt=''/>
+        {/* OB/JD: could just be `{streamer.streamTitle}`*/}
         <h3 className='stream-title'>{`${streamer.streamTitle}`}</h3>
         <p className='stream-category'>{`(${streamer.streamCategory})`}</p>
       </div>
         : null
+      // OB/JD: instead of `x ? y : null` you can just do `x && y`
     )
   }
 }

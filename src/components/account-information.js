@@ -86,6 +86,7 @@ class AccountInfo extends React.Component {
 
 
   render() {
+    // OB/JD: make a house
     console.log('account-information.js | this.state', this.state)
     return (
       <Container>

@@ -16,7 +16,7 @@ export default class Following extends Component {
   }
 
   async componentDidMount(){
-
+    // OB/JD: it wants your brains...
     // const currUser = await getCurrentUser() ? await getCurrentUser() : {}
 
     // db.collection('jammers').doc(currUser.email).onSnapshot( (doc) => {
