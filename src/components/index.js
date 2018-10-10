@@ -15,3 +15,4 @@ export { default as StreamTitleCat } from './stream-title-cat';
 export { default as StreamerAbout } from './streamer-about'
 export { default as ChatRoom } from './chat-room'
 export { default as SingleCategory } from './single-category'
+export { default as AllCategories } from './all-categories'

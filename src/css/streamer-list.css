@@ -1,0 +1,44 @@
+.jammer-list{
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+.jammer-div{
+  flex-wrap: wrap;
+  padding: 15px;
+  background-color: #48576d;
+  margin: 0px 10px 15px 10px;
+  border: 2px solid black;
+}
+
+.jammer-div:hover{
+  box-shadow: 1px 1px black;
+}
+
+.category-header{
+  width: 80vw;
+}
+
+.jammer-photo{
+  height: 225px;
+  width: 225px;
+  border: 2px solid white;
+}
+
+.jammer-title{
+  margin-top: 2px;
+  margin-bottom: 0;
+  align-self: flex-start;
+  color: white;
+}
+
+.stream-detail{
+  align-self: flex-start;
+  margin-top: 2px;
+  color: white;
+  margin-bottom: 1px;
+}
+
+#header-text{
+  font-size: 2.6em;
+}

@@ -25,6 +25,20 @@
   justify-content: space-between
 }
 
+.space-around{
+  justify-content: space-around;
+}
+
+.column{
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
 .no-deco{
   text-decoration: none;
   list-style-type: none;
