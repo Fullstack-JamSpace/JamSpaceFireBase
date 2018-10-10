@@ -6,10 +6,14 @@ import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
+import { withUser } from './components/with-user'
+const FollowButtonWithUser = withUser(FollowButton)
+const StreamPageWithUser = withUser(StreamPage)
+const StreamerAboutWithUser = withUser(StreamerAbout)
 
 export default class StreamAboutMenu extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       activeItem: 'stream',
       isStreamer: false,
@@ -38,12 +42,16 @@ export default class StreamAboutMenu extends Component {
     }
   }
 
+  componentDidUpdate() {
+    console.log('STREAM NAV UPDATE')
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     const { activeItem, isStreamer, currentUser } = this.state;
     const { displayName } = this.props.match.params;
-
+    console.log('STREAM NAV PROPS', this.props)
     return (
       <div>
         <Menu borderless>
@@ -59,15 +67,15 @@ export default class StreamAboutMenu extends Component {
           />
           { !isStreamer && currentUser ?
           <Menu.Menu position="right">
-            <FollowButton displayName={displayName} />
+            <FollowButtonWithUser displayName={displayName} />
           </Menu.Menu> : null
           }
         </Menu>
 
         <Segment basic>
           { activeItem === 'stream' ?
-            <StreamPage isStreamer={isStreamer} displayName={displayName}/>
-            : <StreamerAbout name={displayName}/>
+            <StreamPageWithUser isStreamer={isStreamer} displayName={displayName}/>
+            : <StreamerAboutWithUser name={displayName}/>
           }
         </Segment>
       </div>

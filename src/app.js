@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './css/app.css';
 import Routes from './routes';
-import Following from './components/following';
+import { Following } from './components/following';
 import Navbar from './components/navbar/navbar.js';
 import 'semantic-ui-css/semantic.min.css';
 import * as firebase from 'firebase';
+import { withUser } from './components/with-user';
+const FollowingWithUser = withUser(Following);
 
 class App extends Component {
   constructor() {
@@ -35,7 +37,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <div id="mainContainer">
-          <Following />
+          <FollowingWithUser />
           <Routes />
         </div>
       </div>
