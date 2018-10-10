@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
 import { withUser } from './components/with-user'
+
 const FollowButtonWithUser = withUser(FollowButton)
 const StreamPageWithUser = withUser(StreamPage)
 const StreamerAboutWithUser = withUser(StreamerAbout)
@@ -65,10 +66,10 @@ export default class StreamAboutMenu extends Component {
             active={activeItem === 'about'}
             onClick={this.handleItemClick}
           />
-          { !isStreamer && currentUser ?
+          { !isStreamer && currentUser &&
           <Menu.Menu position="right">
-            <FollowButtonWithUser displayName={displayName} />
-          </Menu.Menu> : null
+            <FollowButton displayName={displayName} />
+          </Menu.Menu>
           }
         </Menu>
 

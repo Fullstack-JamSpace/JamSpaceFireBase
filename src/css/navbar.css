@@ -54,16 +54,16 @@
   top: 70%;
 }
 
-.ui.secondary.inverted.pointing.menu.active.item{
-  border-style: none;
-}
-
 .ui.inverted.pointing.secondary.menu{
   height: 100px;
 }
 
 .drop-choice {
   color: black;
+}
+
+.borderless{
+  border-style: none !important;
 }
 
 #user-sprite{
