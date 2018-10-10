@@ -56,6 +56,7 @@ export default class ChatRoom extends Component {
     try {
       const streamerData = await db.collection('jammers').doc(streamer.email)
       await streamerData.update({...streamer,
+        // OB/JD: I think there's a way of doing a merge instead of a replace
         messages: firebase.firestore.FieldValue.arrayUnion(newMessage)
       })
     } catch(error) {
@@ -77,6 +78,8 @@ export default class ChatRoom extends Component {
           }
         <br/>
         </div>
+        {/* OB/JD: not using semantic UI react components */}
+        {/* OB/JD: you probably don't need both `handleSubmit` and `handleClick`, they'll both get triggered when a submit happens */}
         <form className="ui reply form" onSubmit={this.handleSubmit}>
           <div className="field">
             <textarea name="message" ref={this.textInput} id="message-input"></textarea>

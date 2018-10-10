@@ -12,6 +12,16 @@ export default class SignUp extends Component {
 
   handleSignup = event => {
     event.preventDefault();
+    // OB/JD: some sexy destructuring binding you might like...
+    /*
+    const {target: {
+      email: {value: email},
+      password: {value: password},
+      firstName: {value: firstName},
+      lastName: {value: lastName},
+      // etc
+    }} = event;
+    */
     const email = event.target.email.value;
     const password = event.target.password.value;
     const firstName = event.target.firstName.value;

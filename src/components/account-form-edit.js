@@ -4,10 +4,12 @@ import { Form } from 'semantic-ui-react'
 
 const AccountFormEdit = props => {
 
+  // OB/JD: label
   const lableWidth = 6
 
   // If component isn't passed a user, initialize values to show
   // in the form
+  // OB/JD: could use `AccountFromEdit.defaultProps`
   const user = props.user ?
     props.user :
     {
@@ -18,9 +20,11 @@ const AccountFormEdit = props => {
       displayName: 'Display Name',
       imageUrl: 'Image URL'
     }
+  // OB/JD: only you can prevent forests
   console.log('account-form-edit', props.user)
   return (
       <Form onSubmit={props.handleSubmit}>
+          {/* OB/JD: inconsistent indentation */}
           <Form.Input name="firstName" label="First name"
           defaultValue={user.firstName} width={lableWidth} />
 

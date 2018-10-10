@@ -12,6 +12,7 @@ export default class AllCategories extends Component {
   }
 
   fetchJammers = async () => {
+    // OB/JD: probably want to do `.onSnapshot` so that this component will update if a new jammer shows up or changes status
     const tempList = await db
       .collection('jammers')
       .where('isStreaming', '==', true)

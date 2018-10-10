@@ -54,6 +54,8 @@
   top: 70%;
 }
 
+/* OB/JD: maybe use a custom class name and the `!important` flag instead of competing by class specifity */
+/* OB/JD: you could also look into css-in-js */
 .ui.secondary.inverted.pointing.menu.active.item{
   border-style: none;
 }

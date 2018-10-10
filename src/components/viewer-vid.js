@@ -60,6 +60,7 @@ export default class ViewerVid extends Component {
   }
 
   async componentWillUnmount(){
+    // OB/JD: most of this doesn't need to be on state
     const { conn, call, peer, stream } = this.state;
 
     // need to figure out if how to properly disconnect and hangup call
