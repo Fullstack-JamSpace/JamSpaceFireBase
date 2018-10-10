@@ -13,7 +13,8 @@ export default class ChatRoom extends Component {
       streamer: {},
       messages: []
     }
-    this.textInput = React.createRef();
+    this.textInput = React.createRef()
+    this.scroll = React.createRef()
   }
 
   async componentDidMount(){
@@ -32,20 +33,29 @@ export default class ChatRoom extends Component {
     }
   }
 
+  handleClick = () => {
+    this.focusTextInput()
+    this.updateScroll()
+  }
+
   focusTextInput = () => {
     this.textInput.current.focus();
+  }
+
+  updateScroll = () => {
+    this.scroll.current.scrollTop = this.scroll.current.scrollHeight;
   }
 
   handleSubmit = async (event) => {
     event.preventDefault()
     const { user, streamer } = this.state
-    const text = event.target.message.value
+    const newMessage = event.target.message.value
     event.target.message.value = ''
-    const message = user.displayName + ':    ' + text
+    //const message = user.displayName + ':    ' + text
     try {
       const streamerData = await db.collection('jammers').doc(streamer.email)
       await streamerData.update({...streamer,
-        messages: firebase.firestore.FieldValue.arrayUnion(message)
+        messages: firebase.firestore.FieldValue.arrayUnion(newMessage)
       })
     } catch(error) {
       console.error(error)
@@ -56,18 +66,21 @@ export default class ChatRoom extends Component {
     const { user, messages } = this.state
     return (
       <div className="left aligned segment" id="chat-room">
-        <div className="ui comments" id="messages">
-          <h3 className="ui dividing header">Chat</h3>
+        <div className="ui comments" id="messages" ref={this.scroll}>
           { !messages
             ? <div className="comment">-------------------------</div>
-            : messages.map(message => <div className="comment" key={message}>{message}</div>)
+            : messages.map(message => <div className="comment" key={message}>
+              <b>{user.displayName + ':       '}</b>}{message}
+              </div>
+            )
           }
+        <br/>
         </div>
         <form className="ui reply form" onSubmit={this.handleSubmit}>
           <div className="field">
-            <textarea name="message" ref={this.textInput}></textarea>
+            <textarea name="message" ref={this.textInput} id="message-input"></textarea>
           </div>
-          <button id="write-message-button" type="submit" onClick={this.focusTextInput}>
+          <button id="write-message-button" type="submit" onClick={this.handleClick}>
             <i className="icon edit"></i>
           </button>
         </form>
