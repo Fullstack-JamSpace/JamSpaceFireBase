@@ -43,14 +43,14 @@ export default class Navbar extends Component {
           <Menu inverted pointing secondary >
               <Menu.Item
                 as={Link} to="/"
-                name="Home"
-                active={activeItem === 'Home'}
+                name="Browse by Category"
+                active={activeItem === 'Browse by Category'}
                 onClick={this.handleItemClick}
               />
               <Menu.Item
                 as={Link} to="/channels"
-                name="channels"
-                active={activeItem === 'channels'}
+                name="All Live Channels"
+                active={activeItem === 'All Live Channels'}
                 onClick={this.handleItemClick}
               />
             <Menu.Menu position="right">

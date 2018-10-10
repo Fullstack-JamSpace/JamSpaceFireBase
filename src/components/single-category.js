@@ -1,15 +1,77 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { categoryTranslator } from '../utils'
-import db from '../firebase'
-
+import { categoryTranslator } from '../utils';
+import db from '../firebase';
+import '../css/streamer-list.css';
 
 export default class SingleCategory extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
-      jammers: []
-    }
+      jammers: [],
+      // jammerPlaceholder: [
+      //   {
+      //     displayName: 'elmo',
+      //     email: 'Elmo@emo.com',
+      //     firstName: 'Elmo',
+      //     followers: 2,
+      //     imageUrl: 'http://www.fillmurray.com/155/155',
+      //     lastName: 'Sesame',
+      //     streamCategory: 'Single Performer',
+      //     streamTitle: "This is elmo's super sick stream"
+      //   },
+      //   {
+      //     displayName: 'elmo',
+      //     email: 'Elmo@emo.com',
+      //     firstName: 'Elmo',
+      //     followers: 2,
+      //     imageUrl: 'http://www.fillmurray.com/155/155',
+      //     lastName: 'Sesame',
+      //     streamCategory: 'Single Performer',
+      //     streamTitle: "This is elmo's super sick stream"
+      //   },
+      //   {
+      //     displayName: 'elmo',
+      //     email: 'Elmo@emo.com',
+      //     firstName: 'Elmo',
+      //     followers: 2,
+      //     imageUrl: 'http://www.fillmurray.com/155/155',
+      //     lastName: 'Sesame',
+      //     streamCategory: 'Single Performer',
+      //     streamTitle: "This is elmo's super sick stream"
+      //   },
+      //   {
+      //     displayName: 'elmo',
+      //     email: 'Elmo@emo.com',
+      //     firstName: 'Elmo',
+      //     followers: 2,
+      //     imageUrl: 'http://www.fillmurray.com/155/155',
+      //     lastName: 'Sesame',
+      //     streamCategory: 'Single Performer',
+      //     streamTitle: "This is elmo's super sick stream"
+      //   },
+      //   {
+      //     displayName: 'elmo',
+      //     email: 'Elmo@emo.com',
+      //     firstName: 'Elmo',
+      //     followers: 2,
+      //     imageUrl: 'http://www.fillmurray.com/155/155',
+      //     lastName: 'Sesame',
+      //     streamCategory: 'Single Performer',
+      //     streamTitle: "This is elmo's super sick stream"
+      //   },
+      //   {
+      //     displayName: 'elmo',
+      //     email: 'Elmo@emo.com',
+      //     firstName: 'Elmo',
+      //     followers: 2,
+      //     imageUrl: 'http://www.fillmurray.com/155/155',
+      //     lastName: 'Sesame',
+      //     streamCategory: 'Single Performer',
+      //     streamTitle: "This is elmo's super sick stream"
+      //   }
+      // ]
+    };
   }
 
   // fetchJammers gets the full list of streamers (jammers!) in the firebase
@@ -18,28 +80,45 @@ export default class SingleCategory extends Component {
   fetchJammers = async () => {
     const preCategory = this.props.match.params.category;
     const category = categoryTranslator(preCategory);
-    const tempList = await db.collection('jammers').where('streamCategory', '==', `${category}`).get()
-
+    const tempList = await db
+      .collection('jammers')
+      .where('streamCategory', '==', `${category}`)
+      .get();
     await tempList.forEach(el => {
-      console.log('ELE: ', el.data());
-      this.setState( {jammers: [...this.state.jammers, el.data()]} )
-    })
-    console.log('STATE CHECK 1: ', tempList)
-  }
+      this.setState({ jammers: [...this.state.jammers, el.data()] });
+    });
+  };
 
   async componentDidMount() {
-    await this.fetchJammers()
-    // console.log('STATE CHECK: ', this.state)
-
+    await this.fetchJammers();
   }
 
   render() {
-    // const allJammers = this.state.jammers;
-    // const liveJammers = allJammers.filter(jammer => jammer.isStreaming);
+    const allJammers = this.state.jammers;
+    const liveJammers = allJammers.filter(jammer => jammer.isStreaming);
 
     return (
-      <div></div>
-    )
+      <div className="flex column center space-around">
+        <div className='flex center category-header'>
+          <h1 id='header-text'>Live Jammers</h1>
+        </div>
+        <div className="flex streamer-list jammer-list">
+          {liveJammers.map(jammer => {
+            return (
+              <Link to={`/channels/${jammer.displayName}`} >
+                <div className="flex column jammer-div">
+                  <img className='jammer-photo' src={jammer.imageUrl} alt="" />
+                  <h4 className='jammer-title'>{jammer.streamTitle}</h4>
+                  <div className='below-title-text flex space-between'>
+                    <p className='stream-detail'>{jammer.displayName}</p>
+                    <p className='stream-detail'>{jammer.streamCategory}</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    );
   }
-
 }

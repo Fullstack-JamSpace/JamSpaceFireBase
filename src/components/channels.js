@@ -18,7 +18,7 @@ export default class Channels extends Component {
   fetchJammers = async () => {
     const jammersList = []
     const tempList = await db.collection('jammers').get()
-    tempList.forEach(el => {
+    await tempList.forEach(el => {
       jammersList.push({ ...el.data(), id: el.id })
     })
     return jammersList

@@ -31,7 +31,7 @@ export const getStreamer = async displayName => {
 export const categoryTranslator = str => {
   switch (str) {
     case 'single':
-      return 'Single Category'
+      return 'Single Performer'
     case 'band':
       return 'Band'
     case 'lessons':
