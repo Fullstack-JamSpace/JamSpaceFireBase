@@ -8,8 +8,8 @@ import db from '../firebase';
 import { getCurrentUser } from '../utils'
 
 export default class StreamAboutMenu extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       activeItem: 'stream',
       isStreamer: false,
@@ -38,12 +38,16 @@ export default class StreamAboutMenu extends Component {
     }
   }
 
+  componentDidUpdate() {
+    console.log('STREAM NAV UPDATE')
+  }
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     const { activeItem, isStreamer, currentUser } = this.state;
     const { displayName } = this.props.match.params;
-
+    console.log('')
     return (
       <div>
         <Menu borderless>
