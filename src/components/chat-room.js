@@ -43,7 +43,8 @@ export default class ChatRoom extends Component {
   }
 
   updateScroll = () => {
-    this.scroll.current.scrollTop = this.scroll.current.scrollHeight;
+    const scrollBar = this.scroll.current
+    scrollBar.scrollTop = scrollBar.scrollHeight
   }
 
   handleSubmit = async (event) => {
