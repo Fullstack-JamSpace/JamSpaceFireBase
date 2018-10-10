@@ -6,7 +6,7 @@ import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
-import { withUser } from './components/with-user'
+import { withUser } from './with-user'
 
 const FollowButtonWithUser = withUser(FollowButton)
 const StreamPageWithUser = withUser(StreamPage)
