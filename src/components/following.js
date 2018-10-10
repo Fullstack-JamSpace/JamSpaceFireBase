@@ -17,15 +17,15 @@ export default class Following extends Component {
 
   async componentDidMount(){
 
-    // const currUser = await getCurrentUser() ? await getCurrentUser() : {}
+    const currUser = await getCurrentUser()
 
-    // db.collection('jammers').doc(currUser.email).onSnapshot( (doc) => {
-    //   const userData = doc.data()
-    //   this.setState({
-    //     jammer: userData,
-    //     following: userData.following
-    //   })
-    // })
+    currUser && db.collection('jammers').doc(currUser.email).onSnapshot( (doc) => {
+      const userData = doc.data()
+      this.setState({
+        jammer: userData,
+        following: userData.following
+      })
+    })
 
   }
 
