@@ -40,3 +40,20 @@ export const categoryTranslator = str => {
       return 'Production'
   }
 }
+
+export const getLiveJammers = async () => {
+  let jammers = [];
+  const tempList = await db
+    .collection('jammers')
+    .where('isStreaming', '==', true)
+    .get();
+  await tempList.forEach(el => jammers.push(el.data()))
+  return jammers;
+};
+
+export const getAllJammers = async () => {
+  let jammers = [];
+  const tempList = await db.collection('jammers').get();
+  await tempList.forEach(el => jammers.push(el.data()))
+  return jammers;
+};

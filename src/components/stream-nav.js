@@ -57,10 +57,10 @@ export default class StreamAboutMenu extends Component {
             active={activeItem === 'about'}
             onClick={this.handleItemClick}
           />
-          { !isStreamer && currentUser ?
+          { !isStreamer && currentUser &&
           <Menu.Menu position="right">
             <FollowButton displayName={displayName} />
-          </Menu.Menu> : null
+          </Menu.Menu>
           }
         </Menu>
 

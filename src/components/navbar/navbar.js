@@ -42,15 +42,17 @@ export default class Navbar extends Component {
         <div className="nav-options">
           <Menu inverted pointing secondary >
               <Menu.Item
+                className='borderless'
                 as={Link} to="/"
                 name="Browse by Category"
                 active={activeItem === 'Browse by Category'}
                 onClick={this.handleItemClick}
               />
               <Menu.Item
+                className='borderless'
                 as={Link} to="/channels"
-                name="All Live Channels"
-                active={activeItem === 'All Live Channels'}
+                name="Browse All Channels"
+                active={activeItem === 'Browse All Channels'}
                 onClick={this.handleItemClick}
               />
             <Menu.Menu position="right">
