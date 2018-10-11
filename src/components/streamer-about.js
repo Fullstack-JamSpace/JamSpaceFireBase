@@ -18,9 +18,7 @@ export default class StreamerAbout extends Component {
   async componentDidMount(){
     try {
       const { name } = this.props
-      console.log('NAME: ', name)
       const streamer = await getStreamer(name)
-      console.log('STREAMER:  ', streamer)
       this.setState({streamer})
     } catch (error) {
       console.log(error);

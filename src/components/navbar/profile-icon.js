@@ -11,11 +11,11 @@ export class ProfileIcon extends Component{
   }
 
   render(){
-    const { jammer } = this.props;
+    const { user } = this.props;
     const trigger = (
       <span>
         <p id='drop-text'>
-          Hello, {jammer.displayName}
+          Hello, {user.displayName}
         </p>
       </span>
     )
@@ -25,20 +25,20 @@ export class ProfileIcon extends Component{
         key: 'user',
         text: (
           <span>
-            Signed in as <strong>{jammer.displayName}</strong>
+            Signed in as <strong>{user.displayName}</strong>
           </span>
         ),
         disabled: true,
       },
       { key: 'profile',
         text: (
-          <Link className='no-deco' to={`/channels/${jammer.displayName}`}>
+          <Link className='no-deco' to={`/channels/${user.displayName}`}>
             <p className='drop-choice'>Stream</p>
           </Link>
         )
       },
       { key: 'settings', text: (
-        <Link className='no-deco' to={`/channels/${jammer.displayName}/account`}>
+        <Link className='no-deco' to={`/channels/${user.displayName}/account`}>
           <p className='drop-choice'>Account Settings</p>
         </Link>
       ) },
@@ -52,7 +52,7 @@ export class ProfileIcon extends Component{
     return (
       <Fragment>
       <div id='user-drop-down'>
-        <img id='user-sprite' src={jammer.imageUrl} alt='user-pic'/>
+        <img id='user-sprite' src={user.imageUrl} alt='user-pic'/>
           <Dropdown trigger={trigger} options={options} />
       </div>
       </Fragment>

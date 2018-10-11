@@ -6,7 +6,7 @@ import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
-import { withUser } from './with-user'
+import { withOnSnapshot } from './with-on-snapshot'
 
 export default class StreamAboutMenu extends Component {
   constructor(props){
@@ -16,9 +16,10 @@ export default class StreamAboutMenu extends Component {
       isStreamer: false,
       currentUser: ''
     }
-    this.FollowButtonWithUser = withUser(FollowButton, this.props.match.params.displayName)
-    this.StreamPageWithUser = withUser(StreamPage,  this.props.match.params.displayName)
-    this.StreamerAboutWithUser = withUser(StreamerAbout,  this.props.match.params.displayName)
+    const { displayName } = this.props.match.params
+    this.FollowButtonwithOnSnapshot = withOnSnapshot(FollowButton, displayName)
+    this.StreamPagewithOnSnapshot = withOnSnapshot(StreamPage,  displayName)
+    this.StreamerAboutwithOnSnapshot = withOnSnapshot(StreamerAbout,  displayName)
   }
 
   async componentDidMount(){
@@ -67,7 +68,7 @@ export default class StreamAboutMenu extends Component {
           />
           { !isStreamer && currentUser &&
           <Menu.Menu position="right">
-            <this.FollowButtonWithUser />
+            <this.FollowButtonwithOnSnapshot />
           </Menu.Menu>
           }
         </Menu>
