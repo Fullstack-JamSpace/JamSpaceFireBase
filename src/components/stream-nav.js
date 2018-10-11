@@ -5,22 +5,20 @@ import { StreamPage, StreamerAbout } from '.';
 import '../css/stream-nav.css'
 // import * as firebase from 'firebase';
 // import db from '../firebase';
-import { getCurrentUser, getStreamer } from '../utils'
+// import { getCurrentUser, getStreamer } from '../utils'
 import { withOnSnapshot } from './with-on-snapshot'
 
 export default class StreamNav extends Component {
   constructor(props){
     super(props);
     this.state = {
-      activeItem: 'stream',
-      isStreamer: false
+      activeItem: 'stream'
     }
     this.user = this.props.user;
-    this.streamer = {}
-    this.streamer.displayName= this.props.match.params.displayName
-    this.FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, this.streamer.displayName)
-    // this.StreamPageWithOnSnapshot = withOnSnapshot(StreamPage,  this.streamer.displayName)
-    // this.StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout,  this.streamer.displayName)
+    this.displayName = this.props.match.params.displayName
+    this.FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, this.displayName)
+    // this.StreamPageWithOnSnapshot = withOnSnapshot(StreamPage,  this.displayName)
+    // this.StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout,  this.displayName)
   }
 
   async componentDidMount(){
@@ -41,8 +39,6 @@ export default class StreamNav extends Component {
       //   if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
     // });
 
-    this.setState({isStreamer: this.user.displayName === this.streamer.displayName})
-
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +47,9 @@ export default class StreamNav extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem, isStreamer } = this.state;
+    const { activeItem } = this.state;
+
+    const tempIsStreamer = this.user.displayName === this.displayName
 
     return (
       <div>
@@ -66,7 +64,7 @@ export default class StreamNav extends Component {
             active={activeItem === 'about'}
             onClick={this.handleItemClick}
           />
-          { !this.state.isStreamer && this.user &&
+          { !tempIsStreamer && this.user &&
           <Menu.Menu position="right">
             <this.FollowButtonWithOnSnapshot />
           </Menu.Menu>
@@ -75,7 +73,7 @@ export default class StreamNav extends Component {
 
         <Segment basic className='stream-window'>
           { activeItem === 'stream' ?
-            <StreamPage isStreamer={this.state.isStreamer} displayName={this.streamer.displayName} />
+            <StreamPage isStreamer={tempIsStreamer} displayName={this.displayName} />
             : <StreamerAbout name={this.streamer.displayName}/>
           }
 
