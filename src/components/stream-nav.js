@@ -3,9 +3,9 @@ import { Menu, Segment } from 'semantic-ui-react';
 import { FollowButton } from './follow-button';
 import { StreamPage, StreamerAbout } from '.';
 import '../css/stream-nav.css'
-import * as firebase from 'firebase';
-import db from '../firebase';
-import { getCurrentUser } from '../utils'
+// import * as firebase from 'firebase';
+// import db from '../firebase';
+import { getCurrentUser, getStreamer } from '../utils'
 import { withOnSnapshot } from './with-on-snapshot'
 
 export default class StreamNav extends Component {
@@ -13,31 +13,36 @@ export default class StreamNav extends Component {
     super(props);
     this.state = {
       activeItem: 'stream',
-      isStreamer: false,
-      currentUser: ''
+      isStreamer: false
     }
-    const { displayName } = this.props.match.params
-    this.FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, displayName)
-    this.StreamPageWithOnSnapshot = withOnSnapshot(StreamPage,  displayName)
-    this.StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout,  displayName)
+    this.user = this.props.user;
+    this.streamer = {}
+    this.streamer.displayName= this.props.match.params.displayName
+    this.FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, this.streamer.displayName)
+    // this.StreamPageWithOnSnapshot = withOnSnapshot(StreamPage,  this.streamer.displayName)
+    // this.StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout,  this.streamer.displayName)
   }
 
   async componentDidMount(){
     try {
-      let jammer = [];
-      const channelOwner = this.props.match.params.displayName;
-      const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
 
-      await jammerRef.forEach(x => {
-        if (x.data()) jammer.push(x.data());
-      });
 
-      await firebase.auth().onAuthStateChanged(user => {
-        if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
-    });
+      //const streamer = getStreamer(this.displayName)
 
-      const currentUser = await getCurrentUser();
-      this.setState({ currentUser });
+      // let jammer = [];
+      // const channelOwner = this.props.match.params.displayName;
+      // const jammerRef = await db.collection('jammers').where('displayName', '==', `${channelOwner}`).get();
+
+      // await jammerRef.forEach(x => {
+      //   if (x.data()) jammer.push(x.data());
+      // });
+
+      // await firebase.auth().onAuthStateChanged(user => {
+      //   if ((jammer.length && user) && (user.email === jammer[0].email)) this.setState( { isStreamer: true })
+    // });
+
+    this.setState({isStreamer: this.user.displayName === this.streamer.displayName})
+
     } catch (error) {
       console.log(error);
     }
@@ -46,8 +51,7 @@ export default class StreamNav extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem, isStreamer, currentUser } = this.state;
-    const { displayName } = this.props.match.params;
+    const { activeItem, isStreamer } = this.state;
 
     return (
       <div>
@@ -62,7 +66,7 @@ export default class StreamNav extends Component {
             active={activeItem === 'about'}
             onClick={this.handleItemClick}
           />
-          { !isStreamer && currentUser &&
+          { !this.state.isStreamer && this.user &&
           <Menu.Menu position="right">
             <this.FollowButtonWithOnSnapshot />
           </Menu.Menu>
@@ -71,8 +75,8 @@ export default class StreamNav extends Component {
 
         <Segment basic className='stream-window'>
           { activeItem === 'stream' ?
-            <StreamPage isStreamer={isStreamer} displayName={displayName} />
-            : <StreamerAbout name={displayName}/>
+            <StreamPage isStreamer={this.state.isStreamer} displayName={this.streamer.displayName} />
+            : <StreamerAbout name={this.streamer.displayName}/>
           }
 
       </Segment>
