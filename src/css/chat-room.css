@@ -1,8 +1,8 @@
 #chat-room {
-  width: 600px;
-  padding: 40px;
+  width: 18vw;
+  padding: 25px;
   background-color: white;
-  min-width: 300px;
+
 }
 
 #write-message-button {

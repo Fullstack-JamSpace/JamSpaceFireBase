@@ -11,9 +11,9 @@ export const Following = (props) => {
   const isStreaming = true
   return (
     <div id="following">
-      <p>FOLLOWING:</p>
-      <Segment inverted>
-        <List divided inverted id='following-list'>
+      <h3 id='follow-header'>FOLLOWING</h3>
+      <Segment inverted id='following-list'>
+        <List divided inverted >
           { !following
           ? <h2>Follow somebody already cmon</h2>
           : following.map(userName => {

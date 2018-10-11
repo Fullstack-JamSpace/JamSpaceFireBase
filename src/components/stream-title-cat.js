@@ -49,7 +49,7 @@ export default class StreamTitleCat extends Component {
 
     return (
       isStreamer ?
-      <div className='flex stream-header'>
+      <div className='flex stream-footer'>
         <img className='streamer-thumb' src={streamer.imageUrl} alt=''/>
         <Form id='title-category-form' onSubmit={this.handleSubmit} autoComplete='off'>
           <Form.Group>
@@ -72,8 +72,11 @@ export default class StreamTitleCat extends Component {
       : streamer.streamTitle && streamer.streamCategory ?
       <div className='flex stream-header'>
         <img className='streamer-thumb' src={streamer.imageUrl} alt=''/>
-        <h3 className='stream-title'>{`${streamer.streamTitle}`}</h3>
-        <p className='stream-category'>{`(${streamer.streamCategory})`}</p>
+        <div className='flex column'>
+          <h1 className='footer-name'> {streamer.displayName}</h1>
+          <h3 className='stream-title'>{streamer.streamTitle}</h3>
+        </div>
+        <p className='stream-category'>({streamer.streamCategory})</p>
       </div>
         : null
     )

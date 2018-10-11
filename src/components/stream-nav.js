@@ -6,7 +6,7 @@ import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
-import { withUser } from './components/with-user'
+import { withUser } from './with-user'
 
 const FollowButtonWithUser = withUser(FollowButton)
 const StreamPageWithUser = withUser(StreamPage)
@@ -55,7 +55,7 @@ export default class StreamAboutMenu extends Component {
     console.log('STREAM NAV PROPS', this.props)
     return (
       <div>
-        <Menu borderless>
+        <Menu borderless id='stream-nav'>
           <Menu.Item
             name="stream"
             active={activeItem === 'stream'}
@@ -73,7 +73,7 @@ export default class StreamAboutMenu extends Component {
           }
         </Menu>
 
-        <Segment basic>
+        <Segment basic className='stream-window'>
           { activeItem === 'stream' ?
             <StreamPageWithUser isStreamer={isStreamer} displayName={displayName}/>
             : <StreamerAboutWithUser name={displayName}/>

@@ -1,6 +1,9 @@
 .stream-window{
   display: flex;
-  width: 80vw;
+  width: 64vw;
+  height: 80vh;
+  min-width: 720px;
+  min-height: 410px;
 }
 
 .ui.borderless.menu{
@@ -8,10 +11,14 @@
   margin-left: 16px;
 }
 
-.stream-header{
-  position: relative;
-  max-width: 895px;
-  padding: 10px;
+.stream-footer{
+  min-width: 700px;
+  width: 64vw;
+  padding: 5px;
+}
+
+.field{
+  align-self: baseline;
 }
 
 .streamer-thumb{
@@ -29,7 +36,7 @@
 
 #title-input{
   margin-left: 10px;
-  width: 600px;
+  width: 35vw;
   align-self: baseline;
   font-size: 1.2em;
 }
@@ -47,12 +54,18 @@
 .stream-title{
   margin-left: 10px;
   position: relative;
-  top: 12px;
+  top: 0px;
   font-size: 1.5em;
+  margin-top: 0;
 }
 
 .stream-category{
   margin-left: 10px;
   position: relative;
   top: 43px;
+}
+
+.footer-name{
+  margin-bottom: 0;
+  margin-left: 10px;
 }
