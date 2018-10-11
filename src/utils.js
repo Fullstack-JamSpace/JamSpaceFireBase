@@ -3,11 +3,11 @@ import db from './firebase';
 
 export const getCurrentUser = async () => {
   try {
-    const currentJammer = firebase.auth().currentUser;
-    if (currentJammer) {
-      const currentJammerObject = await db.collection('jammers').doc(currentJammer.email).get();
-      const currentJammerData = currentJammerObject.data();
-      return {...currentJammerData, id: currentJammer.email, uid: currentJammer.uid}
+    const user = firebase.auth().currentUser;
+    if (user) {
+      const userRef = await db.collection('jammers').doc(user.email).get();
+      const userData = userRef.data();
+      return {...userData, id: user.email, uid: user.uid}
     } else {
       return null;
     }

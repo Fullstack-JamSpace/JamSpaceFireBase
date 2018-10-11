@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import db from '../firebase';
 import { getCurrentUser, getStreamer } from '../utils'
 
-export const withUser = (WrappedComponent, streamerDisplayName) => {
+export const withOnSnapshot = (WrappedComponent, streamerDisplayName) => {
   return class extends React.Component {
     constructor(props) {
       super(props)

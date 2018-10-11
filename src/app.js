@@ -5,8 +5,8 @@ import { Following } from './components/following';
 import Navbar from './components/navbar/navbar.js';
 import 'semantic-ui-css/semantic.min.css';
 import * as firebase from 'firebase';
-import { withUser } from './components/with-user';
-const FollowingWithUser = withUser(Following);
+import { withOnSnapshot } from './components/with-on-snapshot';
+const FollowingWithOnSnapshot = withOnSnapshot(Following);
 
 class App extends Component {
   constructor() {
@@ -37,7 +37,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <div id="mainContainer">
-          <FollowingWithUser />
+          <FollowingWithOnSnapshot />
           <Routes />
         </div>
       </div>

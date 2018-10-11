@@ -6,7 +6,6 @@ import '../css/following.css';
 import { getCurrentUser } from '../utils'
 
 export const Following = (props) => {
-  console.log('FOLLOWING COMPONENT')
   const { following } = props.user
   // const isStreaming = true
   return (

@@ -12,17 +12,18 @@ export default class Navbar extends Component {
   constructor() {
     super();
     this.state = {
-      jammer: false,
-      jammerAuth: false
+      user: false,
+      userAuth: false,
+      activeItem: ''
     };
   }
 
   async componentDidMount(){
-    await firebase.auth().onAuthStateChanged(async jammer => {
-      if (jammer) this.setState({ jammerAuth : jammer });
-      const jammerRef = db.collection('jammers').doc(`${this.state.jammerAuth.email}`);
-      const jam = await jammerRef.get();
-      this.setState({ jammer: jam.data() })
+    await firebase.auth().onAuthStateChanged(async user => {
+      if (user) this.setState({ userAuth : user });
+      const userRef = await db.collection('jammers').doc(`${this.state.userAuth.email}`).get();
+      const userData = await userRef.data();
+      this.setState({ user: userData })
     });
   }
 
@@ -30,7 +31,7 @@ export default class Navbar extends Component {
   handleLogoClick = () => this.setState({ activeItem: '' })
 
   render() {
-    const { activeItem, jammer } = this.state;
+    const { activeItem, user } = this.state;
     return (
       <div className="header App-header">
         <Link to="/" onClick={this.handleLogoClick}>
@@ -57,7 +58,7 @@ export default class Navbar extends Component {
               />
             <Menu.Menu position="right">
             {
-              (jammer && jammer.email) ? <ProfileIcon jammer={jammer}/>
+              (user && user.email) ? <ProfileIcon user={user}/>
               : <LoginSignup activeItem={activeItem} handleItemClick={this.handleItemClick} />
             }
             </Menu.Menu>

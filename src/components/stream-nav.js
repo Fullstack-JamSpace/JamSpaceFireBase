@@ -6,9 +6,9 @@ import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
-import { withUser } from './with-user'
+import { withOnSnapshot } from './with-on-snapshot'
 
-export default class StreamAboutMenu extends Component {
+export default class StreamNav extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -16,9 +16,10 @@ export default class StreamAboutMenu extends Component {
       isStreamer: false,
       currentUser: ''
     }
-    this.FollowButtonWithUser = withUser(FollowButton, this.props.match.params.displayName)
-    this.StreamPageWithUser = withUser(StreamPage,  this.props.match.params.displayName)
-    this.StreamerAboutWithUser = withUser(StreamerAbout,  this.props.match.params.displayName)
+    const { displayName } = this.props.match.params
+    this.FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, displayName)
+    this.StreamPageWithOnSnapshot = withOnSnapshot(StreamPage,  displayName)
+    this.StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout,  displayName)
   }
 
   async componentDidMount(){
@@ -42,16 +43,12 @@ export default class StreamAboutMenu extends Component {
     }
   }
 
-  componentDidUpdate() {
-    console.log('STREAM NAV UPDATE')
-  }
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     const { activeItem, isStreamer, currentUser } = this.state;
     const { displayName } = this.props.match.params;
-    console.log('STREAM NAV PROPS', this.props)
+
     return (
       <div>
         <Menu borderless id='stream-nav'>
@@ -67,14 +64,14 @@ export default class StreamAboutMenu extends Component {
           />
           { !isStreamer && currentUser &&
           <Menu.Menu position="right">
-            <this.FollowButtonWithUser />
+            <this.FollowButtonWithOnSnapshot />
           </Menu.Menu>
           }
         </Menu>
 
         <Segment basic className='stream-window'>
           { activeItem === 'stream' ?
-            <StreamPage isStreamer={isStreamer} displayName={displayName}/>
+            <StreamPage isStreamer={isStreamer} displayName={displayName} />
             : <StreamerAbout name={displayName}/>
           }
 

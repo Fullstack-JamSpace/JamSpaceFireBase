@@ -5,8 +5,6 @@ import '../css/follow-button.css';
 import { Button } from 'semantic-ui-react';
 //import { getCurrentUser } from '../utils';
 
-//if following contains displayName render disabled button
-
 export const FollowButton = (props) => {
 
   const user = props.user;
