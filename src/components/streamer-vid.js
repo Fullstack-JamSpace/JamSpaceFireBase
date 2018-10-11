@@ -47,7 +47,12 @@ export default class StreamerVid extends Component {
 
     this.videoElement.current.srcObject = this.stream;
 
-    this.peer.on('connection', conn => this.peer.call(conn.peer, this.stream));
+    this.peer.on('connection', conn => {
+      // console.log('streamer-vid.js | streamer received connection, connecting id:', conn.peer)
+      this.peer.call(conn.peer, this.stream)
+    }  )
+
+      ;
 
     this.peer.on('close', async () => {
       const currentUser = firebase.auth().currentUser;
