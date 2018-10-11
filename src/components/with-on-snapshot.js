@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import db from '../firebase';
 import { getCurrentUser, getStreamer } from '../utils'
 
@@ -43,9 +43,9 @@ export const withOnSnapshot = (WrappedComponent, streamerDisplayName) => {
 
     render() {
       const { user, streamer } = this.state
-      return !user.email 
+      return !user.email
       ? <div>...loading</div>
-      : <WrappedComponent user={this.state.user} streamer={this.state.streamer} {...this.props} />
+      : <WrappedComponent user={user} streamer={streamer} {...this.props} />
     }
   }
 }

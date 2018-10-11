@@ -28,7 +28,6 @@ export default class StreamerList extends Component{
 
   render(){
     const { jammers, live } = this.state
-    console.log('JAMMER CHECK: ', jammers)
     return (
       <div className="flex column center space-around">
         <div className='flex center category-header'>
@@ -48,7 +47,7 @@ export default class StreamerList extends Component{
         {jammers.length ? <div className="flex streamer-list jammer-list">
           {jammers.map(jammer => {
             return (
-              <Link to={`/channels/${jammer.displayName}`} >
+              <Link key='jammer' to={`/channels/${jammer.displayName}`} >
                 <div className="flex column jammer-div">
                   <img className='jammer-photo' src={jammer.imageUrl} alt="" />
                   <h4 className='jammer-title'>{jammer.streamTitle}</h4>

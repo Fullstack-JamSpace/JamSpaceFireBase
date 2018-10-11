@@ -3,7 +3,6 @@ import * as firebase from 'firebase';
 import db from '../firebase';
 import '../css/follow-button.css';
 import { Button } from 'semantic-ui-react';
-//import { getCurrentUser } from '../utils';
 
 export const FollowButton = (props) => {
 
@@ -12,7 +11,6 @@ export const FollowButton = (props) => {
 
   const streamer = props.streamer;
   let followers = streamer.followers || 0;
-  // if (!followers) followers = 0;
 
   let isFollowing = following && following.includes(streamer.displayName);
 
@@ -55,14 +53,12 @@ export const FollowButton = (props) => {
     }
   };
 
-
-
   return !isFollowing ? (
     <Button
       className="follow-button"
       onClick={handleClick}
       icon="user"
-      content={`${streamer.displayName}`}
+      content='Follow'
     />
   ) : (
     <Button
@@ -70,7 +66,7 @@ export const FollowButton = (props) => {
       className="follow-button"
       onClick={handleClick}
       icon="checkmark"
-      content={`${streamer.displayName}`}
+      content='Following'
     />
   );
 };

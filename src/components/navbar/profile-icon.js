@@ -32,7 +32,7 @@ export class ProfileIcon extends Component{
       },
       { key: 'profile',
         text: (
-          <Link className='no-deco' to={`/channels/${user.displayName}`}>
+          <Link className='no-deco list-item' to={`/channels/${user.displayName}`}>
             <p className='drop-choice'>Stream</p>
           </Link>
         )

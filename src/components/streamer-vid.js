@@ -2,6 +2,7 @@ import Peer from 'peerjs';
 import React, { Component } from 'react';
 import '../css/streamer-vid.css';
 import { getStreamer } from '../utils';
+import * as firebase from 'firebase';
 import db from '../firebase';
 
 export default class StreamerVid extends Component {
@@ -48,6 +49,15 @@ export default class StreamerVid extends Component {
 
     this.peer.on('connection', conn => this.peer.call(conn.peer, this.stream));
 
+    this.peer.on('close', async () => {
+      const currentUser = firebase.auth().currentUser;
+      const streamerRef = await db.collection('jammers').doc(currentUser.email)
+      await streamerRef.update({
+        messages: [],
+        isStreaming: false
+      })
+    })
+
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
     await streamerRef.update({ ...streamer, isStreaming: true });
@@ -58,7 +68,6 @@ export default class StreamerVid extends Component {
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
     await streamerRef.update({ ...streamer, isStreaming: false });
-
     this.peer.destroy();
     this.stream.getTracks().forEach(track => track.stop());
   }
