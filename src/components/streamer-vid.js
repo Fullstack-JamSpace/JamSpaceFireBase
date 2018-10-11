@@ -1,26 +1,37 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
-import '../css/streamer-vid.css'
+import '../css/streamer-vid.css';
 import { getStreamer } from '../utils';
 import db from '../firebase';
 
 export default class StreamerVid extends Component {
-  constructor (props) {
-    super(props)
-    this.videoElement = React.createRef()
+  constructor(props) {
+    super(props);
+    this.videoElement = React.createRef();
   }
 
   async componentDidMount() {
-    const { displayName } = this.props
+    const { displayName } = this.props;
     let streamerPeerId = displayName;
 
-    const iceServers = { // for explanation of iceServers see footnote in viewer-vid.js
-      'iceServers': [
-        { 'urls': 'stun:stun.l.google.com:19302' },
-        { 'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'javier3@gmail.com' }
-       ] };
+    const iceServers = {
+      // for explanation of iceServers see footnote in viewer-vid.js
+      iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        {
+          urls: 'turn:numb.viagenie.ca',
+          credential: 'webrtc',
+          username: 'javier3@gmail.com'
+        }
+      ]
+    };
 
-    this.peer = new Peer(streamerPeerId, {host: 'jampspace-01-peerjs-01.herokuapp.com', port: 443, config: iceServers, secure: true});
+    this.peer = new Peer(streamerPeerId, {
+      host: 'jampspace-01-peerjs-01.herokuapp.com',
+      port: 443,
+      config: iceServers,
+      secure: true
+    });
 
     console.log('peer created', this.peer);
 
@@ -28,34 +39,36 @@ export default class StreamerVid extends Component {
       console.log('my id is ', id);
     });
 
-    this.stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+    this.stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true
+    });
 
-    this.videoElement.current.srcObject = this.stream
+    this.videoElement.current.srcObject = this.stream;
 
-    this.peer.on('connection', (conn) => this.peer.call(conn.peer, this.stream))
+    this.peer.on('connection', conn => this.peer.call(conn.peer, this.stream));
 
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
-    await streamerRef.update({...streamer, isStreaming: true})
+    await streamerRef.update({ ...streamer, isStreaming: true });
   }
 
-  async componentWillUnmount(){
-    const { displayName } = this.props
+  async componentWillUnmount() {
+    const { displayName } = this.props;
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
-    await streamerRef.update({...streamer, isStreaming: false})
+    await streamerRef.update({ ...streamer, isStreaming: false });
 
     this.peer.destroy();
-    console.log('streamer-vid.js | peer destroyed')
-    this.stream.getTracks().forEach(track => track.stop())
-    console.log('streamer-vid.js | tracks stopped')
+    console.log('streamer-vid.js | peer destroyed');
+    this.stream.getTracks().forEach(track => track.stop());
+    console.log('streamer-vid.js | tracks stopped');
   }
 
   render() {
-
     return (
       <div>
-        <video id="myVideo" ref={this.videoElement} autoPlay muted/>
+        <video id="myVideo" ref={this.videoElement} autoPlay muted />
       </div>
     );
   }
