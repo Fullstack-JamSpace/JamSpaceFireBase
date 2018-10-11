@@ -53,7 +53,8 @@ export default class StreamerVid extends Component {
       const currentUser = firebase.auth().currentUser;
       const streamerRef = await db.collection('jammers').doc(currentUser.email)
       await streamerRef.update({
-        messages: []
+        messages: [],
+        isStreaming: false
       })
     })
 

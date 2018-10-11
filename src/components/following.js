@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import db from '../firebase';
+import React from 'react';
 import { List, Segment } from 'semantic-ui-react';
 import '../css/following.css';
-import { getCurrentUser } from '../utils'
+import { withOnSnapshot } from './with-on-snapshot';
+import { FollowingListItem } from './following-list-item'
+
 
 export const Following = (props) => {
   const { following } = props.user
-  // const isStreaming = true
+
   return (
     <div id="following">
       <h3 id='follow-header'>FOLLOWING</h3>
@@ -16,14 +16,10 @@ export const Following = (props) => {
           { !following
           ? <h2>Follow somebody already cmon</h2>
           : following.map(userName => {
+            const FollowingListItemWithOnSnapshot = withOnSnapshot(FollowingListItem, userName)
               return userName !== ''
-              ? (
-                <List.Item as={Link} to={`/channels/${userName}`} className='following-item' key={userName}>{userName}
-                  <List.Content floated='right'>
-                    { userName.isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
-                  </List.Content>
-                </List.Item>
-              )
+              ?
+              <FollowingListItemWithOnSnapshot />
               : <List.Item className='following-item-empty'>''</List.Item>
             })
           }
