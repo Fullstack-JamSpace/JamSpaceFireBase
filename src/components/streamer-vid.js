@@ -36,7 +36,7 @@ export default class StreamerVid extends Component {
     console.log('peer created', this.peer);
 
     this.peer.on('open', id => {
-      console.log('my id is ', id);
+      console.log('my streamer id is ', id);
     });
 
     this.stream = await navigator.mediaDevices.getUserMedia({
@@ -60,9 +60,7 @@ export default class StreamerVid extends Component {
     await streamerRef.update({ ...streamer, isStreaming: false });
 
     this.peer.destroy();
-    console.log('streamer-vid.js | peer destroyed');
     this.stream.getTracks().forEach(track => track.stop());
-    console.log('streamer-vid.js | tracks stopped');
   }
 
   render() {

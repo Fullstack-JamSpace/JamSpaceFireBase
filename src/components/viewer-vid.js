@@ -32,7 +32,7 @@ export default class ViewerVid extends Component {
     console.log('peer created', this.peer);
 
     this.peer.on('open', id => {
-      console.log('my id is ', id);
+      console.log('my viewer id is ', id);
     });
 
     this.peer.connect(displayName);
@@ -48,9 +48,7 @@ export default class ViewerVid extends Component {
 
   async componentWillUnmount() {
     this.peer.destroy();
-    console.log('streamer-vid.js | peer destroyed');
     this.stream && this.stream.getTracks().forEach(track => track.stop());
-    console.log('streamer-vid.js | tracks stopped');
   }
 
   render() {
