@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
-import FollowButton from './follow-button';
+import { FollowButton } from './follow-button';
 import { StreamPage, StreamerAbout } from '.';
 import '../css/stream-nav.css'
 import * as firebase from 'firebase';
 import db from '../firebase';
 import { getCurrentUser } from '../utils'
 import { withUser } from './with-user'
-
-const FollowButtonWithUser = withUser(FollowButton)
-const StreamPageWithUser = withUser(StreamPage)
-const StreamerAboutWithUser = withUser(StreamerAbout)
 
 export default class StreamAboutMenu extends Component {
   constructor(props){
@@ -20,6 +16,9 @@ export default class StreamAboutMenu extends Component {
       isStreamer: false,
       currentUser: ''
     }
+    this.FollowButtonWithUser = withUser(FollowButton, this.props.match.params.displayName)
+    this.StreamPageWithUser = withUser(StreamPage,  this.props.match.params.displayName)
+    this.StreamerAboutWithUser = withUser(StreamerAbout,  this.props.match.params.displayName)
   }
 
   async componentDidMount(){
@@ -68,17 +67,18 @@ export default class StreamAboutMenu extends Component {
           />
           { !isStreamer && currentUser &&
           <Menu.Menu position="right">
-            <FollowButton displayName={displayName} />
+            <this.FollowButtonWithUser />
           </Menu.Menu>
           }
         </Menu>
 
         <Segment basic className='stream-window'>
           { activeItem === 'stream' ?
-            <StreamPageWithUser isStreamer={isStreamer} displayName={displayName}/>
-            : <StreamerAboutWithUser name={displayName}/>
+            <StreamPage isStreamer={isStreamer} displayName={displayName}/>
+            : <StreamerAbout name={displayName}/>
           }
-        </Segment>
+
+      </Segment>
       </div>
     );
   }
