@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import './css/app.css';
 import Routes from './routes';
 import { Following } from './components/following';
-import { Navbar } from './components/navbar/navbar.js';
+import Navbar from './components/navbar/navbar.js';
 import 'semantic-ui-css/semantic.min.css';
 import * as firebase from 'firebase';
 import { withOnSnapshot } from './components/with-on-snapshot';
 const FollowingWithOnSnapshot = withOnSnapshot(Following);
-const NavbarWithOnSnapshot = withOnSnapshot(Navbar)
 
 class App extends Component {
   constructor() {
@@ -36,7 +35,7 @@ class App extends Component {
 
     return this.state.authStateEstablished ? (
       <div className="App">
-        <NavbarWithOnSnapshot />
+        <Navbar />
         <div id="mainContainer">
           <FollowingWithOnSnapshot />
           <Routes />
