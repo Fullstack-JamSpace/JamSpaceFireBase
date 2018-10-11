@@ -21,15 +21,16 @@ const ChatRoom = props => {
 
   const handleSubmit = async event => {
     event.preventDefault()
-    const newMessage = event.target.message.value
+    const text = event.target.message.value
     event.target.message.value = ''
+    const message = user.displayName + ':    ' + text
     focusTextInput()
     updateScroll()
-    
+
     try {
       const streamerData = await db.collection('jammers').doc(streamer.email)
       await streamerData.update({
-        messages: firebase.firestore.FieldValue.arrayUnion(newMessage),
+        messages: firebase.firestore.FieldValue.arrayUnion(message),
         merge: true
       })
     } catch(error) {
@@ -43,7 +44,7 @@ const ChatRoom = props => {
         { !messages
           ? <div className="comment">-------------------------</div>
           : messages.map(message => <div className="comment" key={message}>
-            <b>{user.displayName + ':       '}</b>{message}
+            {message}
             </div>
           )
         }
