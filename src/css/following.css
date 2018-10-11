@@ -10,8 +10,24 @@ i:hover {
   color: black;
 }
 
+#following-list{
+  border: 1px solid white;
+  width: 95%;
+}
+
 #following {
   width: 25%;
   max-width: 215px;
   min-width: 130px;
+  height: 90vh;
+  background-color: #2d2e30;
+  margin-left: 0;
+  margin-top: -10px;
+}
+
+#follow-header{
+  color: white;
+  position: relative;
+  left: 3%;
+  padding-top: 5px;
 }

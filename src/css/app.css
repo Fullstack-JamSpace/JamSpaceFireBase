@@ -62,8 +62,10 @@ nav a {
 
 video {
  background-color: #ddd;
- width: 896px;
- height: 504px;
+ min-width: 700px;
+ min-height: 394px;
+ width: 62vw;
+ height: 65vh;
 }
 
 button {
@@ -76,6 +78,8 @@ button {
   display: flex;
   flex-direction: row;
   padding: .5em;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .right.menu{

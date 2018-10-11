@@ -32,8 +32,8 @@ export class ProfileIcon extends Component{
       },
       { key: 'profile',
         text: (
-          <Link className='no-deco' to={`/channels/${jammer.displayName}/profile`}>
-            <p className='drop-choice'>Profile</p>
+          <Link className='no-deco' to={`/channels/${jammer.displayName}`}>
+            <p className='drop-choice'>Stream</p>
           </Link>
         )
       },

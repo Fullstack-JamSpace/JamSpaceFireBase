@@ -71,7 +71,7 @@ export default class ChatRoom extends Component {
           { !messages
             ? <div className="comment">-------------------------</div>
             : messages.map(message => <div className="comment" key={message}>
-              <b>{user.displayName + ':       '}</b>}{message}
+              <b>{user.displayName + ':       '}</b>{message}
               </div>
             )
           }

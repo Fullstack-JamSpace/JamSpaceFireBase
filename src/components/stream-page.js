@@ -8,15 +8,24 @@ export default class StreamPage extends Component {
     const { displayName, isStreamer } = this.props;
     return (
       isStreamer ?
-        <div className='stream-window'>
+      <div className='flex'>
+        <div className='stream-window column'>
           <StreamerVid displayName={displayName} />
-          <ChatRoom displayName={displayName} />
           <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>
-        </div> :
-        <div className='stream-window'>
-          <ViewerVid displayName={displayName} />
+        </div>
+        <div>
           <ChatRoom displayName={displayName} />
-          <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>
+        </div>
+      </div>
+         :
+         <div className='flex'>
+          <div className='stream-window column'>
+            <ViewerVid displayName={displayName} />
+            <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>
+          </div>
+          <div>
+            <ChatRoom displayName={displayName} />
+          </div>
         </div>
     )
   }

@@ -8,8 +8,6 @@ import db from '../firebase';
 import { getCurrentUser } from '../utils'
 import { withUser } from './with-user'
 
-
-
 export default class StreamAboutMenu extends Component {
   constructor(props){
     super(props);
@@ -22,8 +20,6 @@ export default class StreamAboutMenu extends Component {
     this.StreamPageWithUser = withUser(StreamPage,  this.props.match.params.displayName)
     this.StreamerAboutWithUser = withUser(StreamerAbout,  this.props.match.params.displayName)
   }
-
-
 
   async componentDidMount(){
     try {
@@ -58,7 +54,7 @@ export default class StreamAboutMenu extends Component {
     console.log('STREAM NAV PROPS', this.props)
     return (
       <div>
-        <Menu borderless>
+        <Menu borderless id='stream-nav'>
           <Menu.Item
             name="stream"
             active={activeItem === 'stream'}
@@ -76,17 +72,13 @@ export default class StreamAboutMenu extends Component {
           }
         </Menu>
 
-
-
-
-      <Segment basic>
-       <div>{this.props.match.params.displayName}</div>
+        <Segment basic className='stream-window'>
           { activeItem === 'stream' ?
             <StreamPage isStreamer={isStreamer} displayName={displayName}/>
             : <StreamerAbout name={displayName}/>
           }
 
-        </Segment>
+      </Segment>
       </div>
     );
   }

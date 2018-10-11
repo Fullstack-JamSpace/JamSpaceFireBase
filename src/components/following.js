@@ -8,12 +8,12 @@ import { getCurrentUser } from '../utils'
 export const Following = (props) => {
   console.log('FOLLOWING COMPONENT')
   const { following } = props.user
-  const isStreaming = true
+  // const isStreaming = true
   return (
     <div id="following">
-      <p>FOLLOWING:</p>
-      <Segment inverted>
-        <List divided inverted id='following-list'>
+      <h3 id='follow-header'>FOLLOWING</h3>
+      <Segment inverted id='following-list'>
+        <List divided inverted >
           { !following
           ? <h2>Follow somebody already cmon</h2>
           : following.map(userName => {
@@ -21,7 +21,7 @@ export const Following = (props) => {
               ? (
                 <List.Item as={Link} to={`/channels/${userName}`} className='following-item' key={userName}>{userName}
                   <List.Content floated='right'>
-                    { isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
+                    { userName.isStreaming ? <i className='red circle icon'></i> : <i disabled className='grey circle icon'></i> }
                   </List.Content>
                 </List.Item>
               )

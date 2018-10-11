@@ -2,3 +2,12 @@
   height: 40px;
 }
 
+#stream-nav{
+  width: 62vw;
+  min-width: 700px;
+  margin-bottom: 2px;
+}
+
+.stream-window{
+  margin-top: 0px;
+}
