@@ -51,7 +51,7 @@ const ChatRoom = props => {
       <br/>
       </div>
       <form className="ui reply form" onSubmit={handleSubmit}>
-        <input name="message" ref={textInput} id="message-input"></input>
+        <input autoComplete='off' name="message" ref={textInput} id="message-input"></input>
         <button id="write-message-button" type="submit">
           <i className="icon edit"></i>
         </button>
