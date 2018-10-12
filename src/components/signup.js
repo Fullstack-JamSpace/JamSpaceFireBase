@@ -1,16 +1,12 @@
 import * as firebase from 'firebase';
 import db from '../firebase';
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import SignupForm from './signup-form';
 import history from '../history';
 
-export default class SignUp extends Component {
-  constructor(){
-    super();
-    this.handleSignup = this.handleSignup.bind(this)
-  }
+const SignUp = () => {
 
-  handleSignup = event => {
+  const handleSignup = event => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -36,14 +32,12 @@ export default class SignUp extends Component {
     })
     history.push('/')
   }
-
-  render(){
-
-    return (
-      <Fragment>
-        <h1>Welcome to Jamspace, baby!</h1>
-        <SignupForm handleSubmit={this.handleSignup} />
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      <h1>Welcome to Jamspace, baby!</h1>
+      <SignupForm handleSubmit={handleSignup} />
+    </Fragment>
+  )
 }
+
+export default SignUp
