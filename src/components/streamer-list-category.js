@@ -9,7 +9,7 @@ const StreamerListCategory = props => {
   const category = categoryTranslator(props.match.params.category);
   const jammerList = category ? jammers.filter(jammer => jammer.streamCategory === category) : jammers
   return (
-    <div className="flex column center space-around">
+    <div className="flex column center space-around parent">
       <div className='flex center category-header'>
         <div className='flex space-between'>
           <h1 id='header-text'>Displaying: </h1>

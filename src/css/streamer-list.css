@@ -1,11 +1,12 @@
 .jammer-list{
   flex-wrap: wrap;
   padding: 15px;
+  padding-right: 0px;
 }
 
 .jammer-div{
   flex-wrap: wrap;
-  padding: 15px;
+  padding: 12px;
   background-color: #4f5154;
   margin: 0px 10px 15px 10px;
   border: 2px solid black;
@@ -23,6 +24,11 @@
   height: 225px;
   width: 225px;
   border: 2px solid white;
+}
+
+.parent{
+  height: 80%;
+  width: 80%;
 }
 
 .jammer-title{
