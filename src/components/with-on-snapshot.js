@@ -45,7 +45,7 @@ export const withOnSnapshot = (WrappedComponent, streamerDisplayName) => {
       const { user, streamer } = this.state
       return !user.email
       ? <div>...loading</div>
-      : <WrappedComponent user={user} streamer={streamer} activeItem={'stream'} {...this.props} />
+      : <WrappedComponent user={user} streamer={streamer} {...this.props} />
     }
   }
 }
