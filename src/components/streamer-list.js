@@ -6,16 +6,15 @@ import { Button } from 'semantic-ui-react';
 const StreamerList = props => {
   const { jammers, live, handleClick } = props
   return (
-    <div className="flex column center space-around">
+    <div className="flex column center space-around parent">
       <div className='flex center category-header'>
         <div className='flex space-between'>
-          <h1 id='header-text'>Displaying: </h1>
            { live ?
            <Button id='live-channels-btn' toggle active={live} onClick={handleClick}>
-            Live Channels
+            Displaying LIVE Channels
            </Button> :
            <Button id='all-channels-btn' toggle active={live} onClick={handleClick}>
-           All Channels
+           Displaying ALL Channels
           </Button>
           }
         </div>
@@ -24,7 +23,7 @@ const StreamerList = props => {
       {jammers.length ? <div className="flex streamer-list jammer-list">
         {jammers.map(jammer => {
           return (
-            <Link key='jammer' to={`/channels/${jammer.displayName}`} >
+            <Link key={jammer} to={`/channels/${jammer.displayName}`} >
               <div className="flex column jammer-div">
                 <img className='jammer-photo' src={jammer.imageUrl} alt="" />
                 <h4 className='jammer-title'>{jammer.streamTitle}</h4>

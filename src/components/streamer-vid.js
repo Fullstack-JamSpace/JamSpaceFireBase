@@ -93,7 +93,7 @@ export default class StreamerVid extends Component {
       const streamerRef = await db.collection('jammers').doc(currentUser.email);
       await streamerRef.update({
         messages: [],
-        isStreaming: false
+        // isStreaming: false
       });
     });
 

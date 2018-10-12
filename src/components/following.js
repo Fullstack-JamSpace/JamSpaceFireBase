@@ -18,7 +18,7 @@ export const Following = (props) => {
               let FollowingListItemWithOnSnapshot = withOnSnapshot(FollowingListItem, userName)
               return userName !== ''
               ?
-              <FollowingListItemWithOnSnapshot />
+              <FollowingListItemWithOnSnapshot key={userName} />
               : <List.Item className='following-item-empty'>''</List.Item>
             })
           }
