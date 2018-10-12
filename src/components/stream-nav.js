@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import { FollowButton } from './follow-button';
-import { StreamPage, StreamerAbout } from '.';
+import StreamerAbout from './streamer-about'
+import { StreamPage } from '.';
 import '../css/stream-nav.css';
 import { withOnSnapshot } from './with-on-snapshot';
 
@@ -21,6 +22,7 @@ export default class StreamNav extends Component {
     const { user } = this.props;
     const { displayName } = this.props.match.params;
     const FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, displayName);
+    const StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout, displayName);
     const isStreamer = user.displayName === displayName;
     return (
       <div>
@@ -47,7 +49,7 @@ export default class StreamNav extends Component {
           {activeItem === 'stream' ? (
             <StreamPage isStreamer={isStreamer} displayName={displayName} />
           ) : (
-            <StreamerAbout name={displayName} />
+            <StreamerAboutWithOnSnapshot />
           )}
         </Segment>
       </div>

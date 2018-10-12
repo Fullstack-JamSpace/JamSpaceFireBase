@@ -18,6 +18,10 @@ body {
   max-height: 680px;
 }
 
+#profile-photo {
+  max-height: 225px;
+}
+
 #bio {
   background-color: white;
   padding: 12px;
