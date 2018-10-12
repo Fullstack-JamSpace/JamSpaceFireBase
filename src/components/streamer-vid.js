@@ -11,6 +11,36 @@ export default class StreamerVid extends Component {
     this.videoElement = React.createRef();
   }
 
+  // Function to send heartbeats to peerjs server to keep connection open.
+  // Takes the peer instance as argument and will make peer start sending
+  // heartbeats. To stop them later use makePeerHeartbeater.stop()
+  // Heroku kills connections with no data transfer after 55 seconds, so
+  // the HB interval is set to 50s.
+
+  makePeerHeartbeater(peer) {
+    let timeoutId = 0;
+    function heartbeat() {
+      timeoutId = setTimeout(heartbeat, 50000);
+      if (peer.socket._wsOpen()) {
+        peer.socket.send({ type: 'HEARTBEAT' });
+      }
+    }
+    // Start
+    heartbeat();
+    // return
+    return {
+      start: function() {
+        if (timeoutId === 0) {
+          heartbeat();
+        }
+      },
+      stop: function() {
+        clearTimeout(timeoutId);
+        timeoutId = 0;
+      }
+    };
+  }
+
   async componentDidMount() {
     const { displayName } = this.props;
     let streamerPeerId = displayName;
@@ -32,7 +62,7 @@ export default class StreamerVid extends Component {
       port: 443,
       config: iceServers,
       secure: true,
-      debug: 3
+      debug: 0
     });
 
     console.log('peer created', this.peer);
@@ -40,6 +70,8 @@ export default class StreamerVid extends Component {
     this.peer.on('open', id => {
       console.log('my streamer id is ', id);
     });
+
+    this.heartbeat = this.makePeerHeartbeater(this.peer);
 
     this.stream = await navigator.mediaDevices.getUserMedia({
       video: true,
@@ -49,20 +81,21 @@ export default class StreamerVid extends Component {
     this.videoElement.current.srcObject = this.stream;
 
     this.peer.on('connection', conn => {
-      console.log('streamer-vid.js | streamer received connection, connecting id:', conn.peer)
-      this.peer.call(conn.peer, this.stream)
-    }  )
-
-      ;
+      console.log(
+        'streamer-vid.js | streamer received connection, connecting id:',
+        conn.peer
+      );
+      this.peer.call(conn.peer, this.stream);
+    });
 
     this.peer.on('close', async () => {
       const currentUser = firebase.auth().currentUser;
-      const streamerRef = await db.collection('jammers').doc(currentUser.email)
+      const streamerRef = await db.collection('jammers').doc(currentUser.email);
       await streamerRef.update({
         messages: [],
         isStreaming: false
-      })
-    })
+      });
+    });
 
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
@@ -71,6 +104,7 @@ export default class StreamerVid extends Component {
 
   async componentWillUnmount() {
     const { displayName } = this.props;
+    this.heartbeat.stop()
     const streamer = await getStreamer(displayName);
     const streamerRef = await db.collection('jammers').doc(`${streamer.email}`);
     await streamerRef.update({ ...streamer, isStreaming: false });

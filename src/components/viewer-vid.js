@@ -27,7 +27,7 @@ export default class ViewerVid extends Component {
       port: 443,
       config: iceServers,
       secure: true,
-      debug: 3
+      debug: 0
     });
 
     console.log('peer created', this.peer);
@@ -62,10 +62,10 @@ export default class ViewerVid extends Component {
 }
 
 // ** ICE SERERS :
-// Ice servers are used by webrtc / peerjs to establish the connection to the browser clients
-// when they are behind routers that sheild private networks from the public internet - when
-// peerJS makes connection it uses stun server to identify its external IP and then does some
-// math on how to get from that IP, through the private network to the users browser - then it
-// sends that to the peer its trying to connect to.
-// peerJS recommends we setup our own, and we had identified these settings when we were mucking
-// with webRTC
+// Ice servers are used by webrtc / peerjs to establish the connection to the
+// browser clients when they are behind routers that sheild private networks
+// from the public internet - when peerJS makes connection it uses stun server
+// to identify its external IP and then does some math on how to get from that
+// IP, through the private network to the users browser - then it sends that to
+// the peer its trying to connect to. PeerJS recommends we setup our own, and
+// we had identified these settings when we were mucking with webRTC
