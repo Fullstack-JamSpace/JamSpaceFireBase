@@ -26,7 +26,8 @@ export default class ViewerVid extends Component {
       host: 'jampspace-01-peerjs-01.herokuapp.com',
       port: 443,
       config: iceServers,
-      secure: true
+      secure: true,
+      debug: 3
     });
 
     console.log('peer created', this.peer);

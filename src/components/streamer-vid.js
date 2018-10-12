@@ -31,7 +31,8 @@ export default class StreamerVid extends Component {
       host: 'jampspace-01-peerjs-01.herokuapp.com',
       port: 443,
       config: iceServers,
-      secure: true
+      secure: true,
+      debug: 3
     });
 
     console.log('peer created', this.peer);
@@ -48,7 +49,7 @@ export default class StreamerVid extends Component {
     this.videoElement.current.srcObject = this.stream;
 
     this.peer.on('connection', conn => {
-      // console.log('streamer-vid.js | streamer received connection, connecting id:', conn.peer)
+      console.log('streamer-vid.js | streamer received connection, connecting id:', conn.peer)
       this.peer.call(conn.peer, this.stream)
     }  )
 
