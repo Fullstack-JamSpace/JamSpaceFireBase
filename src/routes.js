@@ -13,7 +13,6 @@ export default class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/streamer" component={StreamerVid} />
         <Route exact path="/viewer" component={ViewerVid} />
-        <Route exact path="/channels/old" component={Channels} />
         <Route exact path="/channels" component={StreamerList} />
         <Route exact path="/channels/:displayName/account" component={AccountInfo} />
         <Route exact path="/channels/:displayName" component={StreamNavWithOnSnapshot} />

@@ -18,7 +18,7 @@ const AccountFormEdit = props => {
       displayName: 'Display Name',
       imageUrl: 'Image URL'
     }
-  console.log('account-form-edit', props.user)
+
   return (
       <Form onSubmit={props.handleSubmit}>
           <Form.Input name="firstName" label="First name"
