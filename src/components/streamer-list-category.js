@@ -12,13 +12,12 @@ const StreamerListCategory = props => {
     <div className="flex column center space-around">
       <div className='flex center category-header'>
         <div className='flex space-between'>
-          <h1 id='header-text'>Displaying: </h1>
            { live ?
            <Button id='live-channels-btn' toggle active={live} onClick={handleClick}>
-            Live Channels
+            Displaying LIVE Channels
            </Button> :
            <Button id='all-channels-btn' toggle active={live} onClick={handleClick}>
-           All Channels
+           Displaying ALL Channels
           </Button>
           }
         </div>
