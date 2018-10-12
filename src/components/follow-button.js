@@ -10,10 +10,14 @@ export const FollowButton = (props) => {
   const following = user.following;
 
   const streamer = props.streamer;
-  let followers = streamer.followers || 0;
+  let followers = 0
+  let isFollowing = false;
 
-  let isFollowing = following && following.includes(streamer.displayName);
-
+  if(streamer) {
+    isFollowing = following && following.includes(streamer.displayName);
+    followers = streamer.followers
+  }
+  
   const handleClick = async () => {
     try {
       const userData = await db.collection('jammers')

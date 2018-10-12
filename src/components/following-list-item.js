@@ -5,24 +5,26 @@ import '../css/following.css';
 
 export const FollowingListItem = props => {
   const { streamer } = props;
-  const { displayName, isStreaming } = streamer;
+  // const { displayName, isStreaming } = streamer ? streamer;
 
   return (
+    streamer ?
     <List.Item
       as={Link}
-      to={`/channels/${displayName}`}
+      to={`/channels/${streamer.displayName}`}
       className="following-item"
-      key={displayName}
+      key={streamer.displayName}
     >
-      {displayName}
+      {streamer.displayName}
 
       <List.Content floated="right">
-        {isStreaming ? (
+        {streamer.isStreaming ? (
           <i className="red circle icon" />
         ) : (
           <i disabled className="grey circle icon" />
         )}
       </List.Content>
     </List.Item>
+    : null
   );
 };

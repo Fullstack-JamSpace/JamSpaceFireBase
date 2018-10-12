@@ -7,7 +7,6 @@ import { FollowingListItem } from './following-list-item'
 
 export const Following = (props) => {
   const { following } = props.user
-
   return (
     <div id="following">
       <h3 id='follow-header'>FOLLOWING</h3>
@@ -16,7 +15,7 @@ export const Following = (props) => {
           { !following
           ? <h2>Follow somebody already cmon</h2>
           : following.map(userName => {
-            const FollowingListItemWithOnSnapshot = withOnSnapshot(FollowingListItem, userName)
+              let FollowingListItemWithOnSnapshot = withOnSnapshot(FollowingListItem, userName)
               return userName !== ''
               ?
               <FollowingListItemWithOnSnapshot />

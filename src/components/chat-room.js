@@ -6,7 +6,7 @@ import '../css/chat-room.css';
 
 const ChatRoom = props => {
   const { user, streamer } = props
-  const { messages } = streamer
+  const { messages } = streamer ? streamer : []
   const textInput = React.createRef()
   const scroll = React.createRef()
 
