@@ -14,11 +14,12 @@
 
 #messages {
   overflow: scroll;
-  min-height: 350px;
-  max-height: 400px;
+  min-height: 450px;
+  max-height: 450px;
   padding-bottom: 40px;
 }
 
 #message-input {
-  max-height: 20px;
+  min-height: 45px;
+  max-height: 45px;
 }

@@ -5,7 +5,6 @@ import '../css/following.css';
 
 export const FollowingListItem = props => {
   const { streamer } = props;
-  // const { displayName, isStreaming } = streamer ? streamer;
 
   return (
     streamer ?

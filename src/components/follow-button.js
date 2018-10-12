@@ -5,19 +5,18 @@ import '../css/follow-button.css';
 import { Button } from 'semantic-ui-react';
 
 export const FollowButton = (props) => {
-
   const user = props.user;
   const following = user.following;
+  let isFollowing = false;
 
   const streamer = props.streamer;
   let followers = 0
-  let isFollowing = false;
 
   if(streamer) {
     isFollowing = following && following.includes(streamer.displayName);
     followers = streamer.followers
   }
-  
+
   const handleClick = async () => {
     try {
       const userData = await db.collection('jammers')
