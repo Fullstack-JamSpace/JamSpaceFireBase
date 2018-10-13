@@ -114,7 +114,7 @@ export default class StreamerVid extends Component {
 
   render() {
     return (
-      <div>
+      <div className='vid'>
         <video id="myVideo" ref={this.videoElement} autoPlay muted />
       </div>
     );

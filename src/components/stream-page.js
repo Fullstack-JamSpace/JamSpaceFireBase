@@ -11,7 +11,7 @@ const StreamPage = props => {
   return (
 
     isStreamer ?
-    <div className='flex'>
+    <div className='flex stream-root'>
       <div className='stream-window column'>
         <StreamerVid displayName={displayName} />
         <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>
@@ -21,7 +21,7 @@ const StreamPage = props => {
       </div>
     </div>
     :
-    <div className='flex'>
+    <div className='flex stream-root'>
       <div className='stream-window column'>
         <ViewerVid displayName={displayName} />
         <StreamTitleCat isStreamer={isStreamer} displayName={displayName}/>

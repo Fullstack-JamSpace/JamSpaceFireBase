@@ -70,7 +70,7 @@ export default class StreamTitleCat extends Component {
         </Form>
       </div>
       : streamer.streamTitle && streamer.streamCategory ?
-      <div className='flex stream-header'>
+      <div className='flex stream-footer-viewer'>
         <img className='streamer-thumb' src={streamer.imageUrl} alt=''/>
         <div className='flex column'>
           <h1 className='footer-name'> {streamer.displayName}</h1>
