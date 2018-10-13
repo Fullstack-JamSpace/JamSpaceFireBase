@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import db from '../firebase';
-import * as firebase from 'firebase';
-// import { } from 'semantic-ui-react';
 import '../css/streamer-about.css';
-import { Image, Header, Card, Container, Icon } from 'semantic-ui-react'
+import { Image, Card, Container, Icon } from 'semantic-ui-react'
 
 const StreamerAbout = props => {
   console.log('PROPS:  ', props)
-  const { displayName, location, imageUrl, description, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, itunes, bio, photos, followers } = props.streamer
+  const { displayName, location, imageUrl, description, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, itunes, bio, followers } = props.streamer
   const followerHeader = followers === 1 ? 'Follower' : 'Followers'
   return (
     <div id="streamer-about">
