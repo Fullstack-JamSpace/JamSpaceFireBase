@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/streamer-list.css';
-import { Button, Checkbox } from 'semantic-ui-react';
+import { Checkbox } from 'semantic-ui-react';
 import { categoryTranslator } from '../utils';
 
 const StreamerListCategory = props => {
@@ -12,18 +12,17 @@ const StreamerListCategory = props => {
   return (
     <div className="flex column center space-around parent">
       <div className='flex center category-header'>
-      { live ?
-      <div className='flex'>
-        <h1 id='displaying'>Displaying LIVE Jammers</h1>
-        <Checkbox id='live-toggle' toggle active={live} defaultChecked onClick={handleClick}/>
-      </div>
-      :
-      <div className='flex'>
-        <h1 id='displaying'>Displaying ALL Jammers</h1>
-        <Checkbox id='live-toggle' toggle active={live} defaultChecked onClick={handleClick}/>
-      </div>
-      }
-
+        { live ?
+        <div className='flex'>
+          <h1 id='displaying'>Displaying LIVE Jammers</h1>
+          <Checkbox id='live-toggle' toggle active={live} defaultChecked onClick={handleClick}/>
+        </div>
+        :
+        <div className='flex'>
+          <h1 id='displaying'>Displaying ALL Jammers</h1>
+          <Checkbox id='live-toggle' toggle active={live} defaultChecked onClick={handleClick}/>
+        </div>
+        }
       </div>
       {jammerList.length ? <div className="flex streamer-list jammer-list">
         {jammerList.map(jammer => {
@@ -46,11 +45,3 @@ const StreamerListCategory = props => {
 }
 
 export default StreamerListCategory
-
-
-{/* <Button id='live-channels-btn' toggle active={live} onClick={handleClick}>
-            Displaying LIVE Channels
-           </Button> :
-           <Button id='all-channels-btn' toggle active={live} onClick={handleClick}>
-           Displaying ALL Channels
-          </Button> */}
