@@ -16,10 +16,10 @@ i:hover {
 }
 
 #following {
+  min-height: 90vh;
   width: 25%;
   max-width: 215px;
   min-width: 130px;
-  height: 90vh;
   background-color: #2d2e30;
   margin-left: 0;
   margin-top: -10px;

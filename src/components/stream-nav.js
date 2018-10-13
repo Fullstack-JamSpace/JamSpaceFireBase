@@ -25,7 +25,7 @@ export default class StreamNav extends Component {
     const StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout, displayName);
     const isStreamer = user.displayName === displayName;
     return (
-      <div>
+      <div id='nav-root'>
         <Menu borderless id="stream-nav">
           <Menu.Item
             name="stream"
@@ -53,6 +53,6 @@ export default class StreamNav extends Component {
           )}
         </Segment>
       </div>
-    );    
+    );
   }
 };
