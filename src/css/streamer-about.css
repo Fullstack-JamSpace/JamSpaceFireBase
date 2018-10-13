@@ -8,14 +8,14 @@ body {
   margin-top: 8px;
   display: flex;
   padding-left: 20px;
-/*  background-color: #d8d8d8;
-  position: absolute;*/
+  height: 80vh;
+  width: 80vw;
 }
 
 #card {
-  margin-right: 60px;
-  min-height: 680px;  
-  max-height: 680px;
+  margin-right: 30px;
+  height: 80vh;
+  border: solid lightgray 1px;
 }
 
 #profile-photo {
@@ -27,8 +27,8 @@ body {
   padding: 12px;
   margin-left: 40px;
   margin-right: 40px;
-  height: 682px;
-  width: 800px;
+  height: 80vh;
+  width: 60vw;
   border: solid lightgray 1px;
   border-radius: 5px;
   box-shadow: .0004px .0004px .0004px .0004px;
@@ -71,4 +71,13 @@ body {
   align-items: center;
   justify-content: center;
   margin-right: 19px;
+}
+
+#name{
+  height: 30px;
+  margin-bottom: 0px;
+}
+
+#card-info{
+  height: 20%;
 }
