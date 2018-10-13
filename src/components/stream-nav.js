@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Menu, Segment } from 'semantic-ui-react';
-import { FollowButton } from './follow-button';
-import StreamerAbout from './streamer-about'
+import { Menu, Segment, Label } from 'semantic-ui-react';
 import { StreamPage } from '.';
+import { FollowButton } from './follow-button';
+import { StreamerAbout } from './streamer-about'
+import { EditProfileButton } from './edit-profile-button'
 import '../css/stream-nav.css';
 import { withOnSnapshot } from './with-on-snapshot';
 
@@ -23,8 +24,9 @@ export default class StreamNav extends Component {
     const { displayName } = this.props.match.params;
     const FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, displayName);
     const StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout, displayName);
+    const EditProfileButtonWithOnSnapshot = withOnSnapshot(EditProfileButton);
     const isStreamer = user.displayName === displayName;
-    return (
+    return user && (
       <div>
         <Menu borderless id="stream-nav">
           <Menu.Item
@@ -37,12 +39,19 @@ export default class StreamNav extends Component {
             active={activeItem === 'about'}
             onClick={handleClick}
           />
-          {!isStreamer &&
-            user && (
-              <Menu.Menu position="right">
-                <FollowButtonWithOnSnapshot />
-              </Menu.Menu>
-            )}
+          {!isStreamer ? 
+            (<Menu.Menu position="right">
+              <FollowButtonWithOnSnapshot />
+            </Menu.Menu>)
+            : activeItem === 'stream' ? 
+                (<Menu.Menu id="live-label" position="right">
+                  <Label id="live-label-text" color="red"
+                    icon="white circle" content='LIVE' horizontal/>
+                 </Menu.Menu>)
+              : (<Menu.Menu position="right">
+                  <EditProfileButtonWithOnSnapshot />
+                </Menu.Menu>)
+          }
         </Menu>
 
         <Segment basic className="stream-window">

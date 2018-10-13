@@ -11,3 +11,12 @@
 .stream-window{
   margin-top: 0px;
 }
+
+#live-label{
+  padding: 2px;
+}
+
+#live-label-text{
+  min-width: 100px;
+  padding-top: 12px;
+}
