@@ -14,7 +14,7 @@ export const Following = (props) => {
         <List divided inverted >
           { !following
           ? <div>
-              <h2>Browse The Channels</h2>
+              <h2>Browse Channels</h2>
               <h2>Find Your JamSpace!</h2>
             </div>
           : following.map(userName => {

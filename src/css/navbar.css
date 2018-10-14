@@ -3,15 +3,15 @@
   display: flex;
   flex-direction: row;
   padding: .75em;
-  height: 105px;
+  height: 115px;
   margin-bottom: 3px;
 }
 
 .App-logo {
-  height: 60px;
+  height: 70px;
   border-radius: 50%;
   display: block;
-  margin: 0 0 10px 15px;
+  margin: 0 0 10px 14px;
 }
 
 .App-logo:hover {
@@ -21,6 +21,7 @@
 .logo-and-text{
   display: flex;
   width: 96px;
+  padding-left: 10px;
 }
 
 #header-logo-text{
@@ -64,11 +65,11 @@
 
 .borderless{
   border-style: none !important;
+  font-size: 17px;
 }
 
-#user-sprite{
-  height: 60px;
-  width: 60px;
+#user-sprite{height: 66px;
+  width: 66px;
   border-radius: 50%;
 }
 
@@ -87,7 +88,6 @@
 }
 
 #user-drop-down {
-  position: relative;
   left: 20px;
   top: 10px;
   display: flex;

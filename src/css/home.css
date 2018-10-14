@@ -3,6 +3,7 @@
   justify-content: space-evenly;
   height: 85vh;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .home-img{
