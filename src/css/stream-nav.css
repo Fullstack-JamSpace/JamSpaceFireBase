@@ -20,3 +20,7 @@
   min-width: 100px;
   padding-top: 12px;
 }
+
+#nav-root{
+  width: 100%;
+}

@@ -5,7 +5,6 @@ import '../css/streamer-about.css';
 import { Image, Card, Container, Icon } from 'semantic-ui-react'
 
 export const StreamerAbout = props => {
-
   const { displayName, location, imageUrl, description, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, itunes, bio, followers } = props.streamer
   const followerHeader = followers === 1 ? 'Follower' : 'Followers'
 
@@ -59,7 +58,7 @@ export const StreamerAbout = props => {
       </Card>
       <div id="bio">
         <h2 id="bio-header">Bio:</h2> <br/>
-        <Container text><p id='bio-text'>{bio}</p></Container>
+        <Container id='bio-container' text><p id='bio-text'>{bio}</p></Container>
       </div>
     </div>
   )

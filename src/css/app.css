@@ -64,8 +64,10 @@ video {
  background-color: #ddd;
  min-width: 700px;
  min-height: 394px;
- width: 62vw;
- height: 65vh;
+ max-height: 850px;
+ width: 98%;
+ height: 100%;
+ margin-right: 20px;
 }
 
 button {
@@ -85,3 +87,10 @@ button {
 .right.menu{
   height: 30px;
 }
+
+#root{
+  height: 100%;
+  min-height: 100% !important;
+}
+
+
