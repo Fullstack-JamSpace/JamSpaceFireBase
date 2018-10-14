@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import db from '../firebase';
 import * as firebase from 'firebase';
 import Popup from 'reactjs-popup';
-import { Form, Button } from 'semantic-ui-react';
-import { StreamerAboutEdit } from './streamer-about-edit'
+import { Form, Button, Icon } from 'semantic-ui-react';
+import '../css/streamer-about-edit.css'
 import { StreamerAbout } from './streamer-about'
 import { withOnSnapshot } from './with-on-snapshot';
 
@@ -12,13 +12,14 @@ export const StreamerAboutEditButton = (props) => {
   const { email, displayName, imageUrl, location, description, soundcloud, bandcamp,
           spotify, itunes, instagram, twitter, facebook, bio } = user
 
-  const labelWidth = 6
+  const labelWidth = 14
   const contentStyle = {
-    maxWidth: "600px",
-    width: "90%"
+    border: "solid lightgray 1px",
+    display: "block",
+    maxWidth: "600px"
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     const {
       name, photo, location, description, soundcloud, bandcamp,
       spotify, itunes, instagram, twitter, facebook, bio
@@ -54,7 +55,7 @@ export const StreamerAboutEditButton = (props) => {
         />        
       }
       modal
-
+      contentStyle={contentStyle}
       >
       <Form id="form" onSubmit={handleSubmit}>
         <Form.Input name="name" label="Name (required)"width={labelWidth} defaultValue={displayName}/>
