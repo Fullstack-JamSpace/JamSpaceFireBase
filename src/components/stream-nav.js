@@ -3,7 +3,7 @@ import { Menu, Segment, Label } from 'semantic-ui-react';
 import { StreamPage } from '.';
 import { FollowButton } from './follow-button';
 import { StreamerAbout } from './streamer-about'
-import { EditProfileButton } from './edit-profile-button'
+import { StreamerAboutEditButton } from './streamer-about-edit-button'
 import '../css/stream-nav.css';
 import { withOnSnapshot } from './with-on-snapshot';
 
@@ -24,7 +24,7 @@ export default class StreamNav extends Component {
     const { displayName } = this.props.match.params;
     const FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, displayName);
     const StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout, displayName);
-    const EditProfileButtonWithOnSnapshot = withOnSnapshot(EditProfileButton);
+    const StreamerAboutEditButtonWithOnSnapshot = withOnSnapshot(StreamerAboutEditButton);
     const isStreamer = user.displayName === displayName;
     return user && (
       <div>
@@ -49,7 +49,7 @@ export default class StreamNav extends Component {
                     icon="white circle" content='LIVE' horizontal/>
                  </Menu.Menu>)
               : (<Menu.Menu position="right">
-                  <EditProfileButtonWithOnSnapshot />
+                  <StreamerAboutEditButtonWithOnSnapshot />
                 </Menu.Menu>)
           }
         </Menu>
