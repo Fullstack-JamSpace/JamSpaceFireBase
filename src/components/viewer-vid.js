@@ -1,5 +1,6 @@
 import Peer from 'peerjs';
 import React, { Component } from 'react';
+import '../css/streamer-vid.css'
 
 export default class ViewerVid extends Component {
   constructor() {
@@ -54,7 +55,7 @@ export default class ViewerVid extends Component {
 
   render() {
     return (
-      <div>
+      <div className='vid'>
         <video id="myVideo" ref={this.videoElement} autoPlay />
       </div>
     );

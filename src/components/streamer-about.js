@@ -59,7 +59,7 @@ export const StreamerAbout = props => {
       </Card>
       <div id="bio">
         <h2 id="bio-header">Bio:</h2> <br/>
-        <Container text><p id='bio-text'>{bio}</p></Container>
+        <Container id='bio-container' text><p id='bio-text'>{bio}</p></Container>
       </div>
     </div>
   )
