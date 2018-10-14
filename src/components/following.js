@@ -13,7 +13,10 @@ export const Following = (props) => {
       <Segment inverted id='following-list'>
         <List divided inverted >
           { !following
-          ? <h2>Follow somebody already cmon</h2>
+          ? <div>
+              <h2>Browse The Channels</h2>
+              <h2>Find Your JamSpace!</h2>
+            </div>
           : following.map(userName => {
               let FollowingListItemWithOnSnapshot = withOnSnapshot(FollowingListItem, userName)
               return userName !== ''
