@@ -7,7 +7,7 @@ import { withOnSnapshot } from './with-on-snapshot'
 const StreamPage = props => {
   const { displayName, isStreamer, clearChat } = props;
   const ChatRoomWithOnSnapshot = withOnSnapshot(ChatRoom, displayName)
-  console.log('stream-page.js | isStreamer from props', isStreamer)
+
   return (
 
     isStreamer ?

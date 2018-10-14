@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Popup from "reactjs-popup";
 import '../css/streamer-about.css';
 import { Image, Card, Container, Icon } from 'semantic-ui-react'
 
-const StreamerAbout = props => {
+export const StreamerAbout = props => {
   const { displayName, location, imageUrl, description, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, itunes, bio, followers } = props.streamer
   const followerHeader = followers === 1 ? 'Follower' : 'Followers'
+
   return (
     <div id="streamer-about">
       <Card id="card">
@@ -61,6 +63,4 @@ const StreamerAbout = props => {
     </div>
   )
 }
-
-export default StreamerAbout
 

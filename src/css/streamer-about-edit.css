@@ -1,0 +1,20 @@
+#form {
+  max-width: 600px;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 15px;
+  text-indent: 8px;
+  padding: 35px;
+  margin-left: 20px;
+}
+
+#submit-button {
+  color: white;
+  max-width: 76%;
+  background-color: black;
+}
+
+#close-modal-icon {
+  position: absolute;
+}
