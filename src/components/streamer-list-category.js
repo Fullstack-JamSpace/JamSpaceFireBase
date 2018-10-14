@@ -39,7 +39,7 @@ const StreamerListCategory = props => {
             </Link>
           );
         })}
-      </div> : <h1>No live jammers :(</h1>}
+      </div> : <h1>No live jammers. Get a stream going!</h1>}
     </div>
   )
 }

@@ -18,3 +18,7 @@
 #close-modal-icon {
   position: absolute;
 }
+
+div.popup-content {
+  margin-left: 50px;
+}
