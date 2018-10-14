@@ -29,7 +29,7 @@ export const Home = () => (
     <div className='container'>
       <Link className='white' to='/categories/production'>
         <img className='home-img' src={productionPic} alt=''/>
-        <h1 className='center-text-prod'>Production & Engineering</h1>
+        <h1 className='center-text-prod'>In the Studio</h1>
       </Link>
     </div>
   </div>

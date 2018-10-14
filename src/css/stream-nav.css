@@ -5,11 +5,12 @@
 #stream-nav{
   width: 62vw;
   min-width: 700px;
+  margin-top: 2px;
   margin-bottom: 2px;
 }
 
-.stream-window{
-  margin-top: 0px;
+.ui.basic.segment.stream-window {
+  margin: 0;
 }
 
 #live-label{

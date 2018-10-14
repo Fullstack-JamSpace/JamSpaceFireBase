@@ -3,6 +3,7 @@
   justify-content: space-evenly;
   height: 85vh;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .home-img{
@@ -46,7 +47,7 @@
 
 .center-text-prod{
   position: absolute;
-  top: 20%;
+  top: 36%;
   left: 55%;
   transform: translate(-50%, 50%);
 }
