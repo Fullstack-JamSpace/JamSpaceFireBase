@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   render() {
-    return this.state.authStateEstablished ? (
+    return this.state.authStateEstablished && (
       <div className="App">
         <Navbar />
         <div id="mainContainer">
@@ -39,9 +39,7 @@ class App extends Component {
           <Routes />
         </div>
       </div>
-    ) : (
-      null
-    );
+    )
   }
 }
 

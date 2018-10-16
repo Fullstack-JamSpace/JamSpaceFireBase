@@ -7,6 +7,7 @@ import {LoginSignup} from './login-signup';
 import * as firebase from 'firebase';
 import db from '../../firebase';
 import { ProfileIcon } from './profile-icon';
+import { getCurrentUser } from '../../utils'
 
 export default class Navbar extends Component {
   constructor() {
@@ -19,12 +20,8 @@ export default class Navbar extends Component {
   }
 
   async componentDidMount(){
-    await firebase.auth().onAuthStateChanged(async user => {
-      if (user) this.setState({ userAuth : user });
-      const userRef = await db.collection('jammers').doc(`${this.state.userAuth.email}`).get();
-      const userData = await userRef.data();
-      this.setState({ user: userData })
-    });
+    const user = await getCurrentUser()
+    this.setState({ user: user })
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
