@@ -7,6 +7,8 @@ import '../css/streamer-about-edit.css'
 
 export const StreamerAboutEditButton = (props) => {
   const { user } = props
+  if (!user) return null
+
   const { email, displayName, imageUrl, location, description, soundcloud, bandcamp,
           spotify, itunes, instagram, twitter, facebook, bio } = user
 
