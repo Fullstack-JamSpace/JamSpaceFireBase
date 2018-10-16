@@ -11,7 +11,7 @@ export const StreamerAbout = props => {
 
   const followerHeader = followers === 1 ? 'Follower' : 'Followers'
 
-  return streamer && (
+  return (
     <div id="streamer-about">
       <Card id="card">
         <Image id="profile-photo" src={imageUrl} />
