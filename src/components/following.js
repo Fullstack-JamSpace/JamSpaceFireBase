@@ -6,9 +6,8 @@ import { FollowingListItem } from './following-list-item'
 
 
 export const Following = (props) => {
-  // jc - adding check in case props.user is null
   const following = props.user ? props.user.following : null
-  console.log('following.js | rendering functional component')
+
   return (
     <div id="following">
       {following

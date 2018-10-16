@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { SignUp, Login, StreamerVid, ViewerVid, AccountInfo, PageNotFound, Home, StreamContainer, StreamerList, StreamerListCategory } from './components';
-// import { withOnSnapshot } from './components/with-on-snapshot'
 import { withJammers } from './components/with-jammers'
 
 export default class Routes extends Component {
 
   render() {
-    // const StreamNavWithOnSnapshot = withOnSnapshot(StreamNav)
     const StreamerListWithJammers = withJammers(StreamerList)
     const StreamerListCategoryWithJammers = withJammers(StreamerListCategory)
     return (
