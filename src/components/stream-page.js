@@ -1,11 +1,12 @@
-import React, { Fragment, Component } from 'react';
+import React from 'react';
 import '../css/stream.css'
 import { StreamerVid, ViewerVid, StreamTitleCat } from '.';
 import ChatRoom from './chat-room'
 import { withOnSnapshot } from './with-on-snapshot'
 
 const StreamPage = props => {
-  const { displayName, isStreamer, clearChat } = props;
+  // removed ', clearChat' from below to stop the console.log linter error
+  const { displayName, isStreamer } = props;
   const ChatRoomWithOnSnapshot = withOnSnapshot(ChatRoom, displayName)
 
   return (

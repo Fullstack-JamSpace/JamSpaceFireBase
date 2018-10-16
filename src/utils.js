@@ -21,7 +21,10 @@ export const getStreamer = async displayName => {
   let streamer = null
   try {
     const streamerRef = await db.collection('jammers').where('displayName', '==', `${displayName}`).get()
-    streamerRef.forEach(doc => streamer = doc.data())
+    streamerRef.forEach(doc => {
+      streamer = doc.data()
+      console.log('in getStreamer | streamer', streamer)
+    })
   } catch (error) {
     console.log(error);
   }

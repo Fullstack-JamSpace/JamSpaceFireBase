@@ -6,15 +6,20 @@ import { FollowingListItem } from './following-list-item'
 
 
 export const Following = (props) => {
-  const { following } = props.user
+  // jc - adding check in case props.user is null
+  const following = props.user ? props.user.following : null
+  console.log('following.js | rendering functional component')
   return (
     <div id="following">
-      <h3 id='follow-header'>FOLLOWING</h3>
+      {following
+      ? <h3 id='follow-header'>FOLLOWING</h3>
+      : null
+      }
       <Segment inverted id='following-list'>
         <List divided inverted >
           { !following
           ? <div>
-              <h2>Browse Channels</h2>
+              {/* <h2>Browse Channels</h2> */}
               <h2>Find Your JamSpace!</h2>
             </div>
           : following.map(userName => {

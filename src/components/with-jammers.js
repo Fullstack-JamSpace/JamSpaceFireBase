@@ -1,6 +1,6 @@
 import React from 'react';
-import db from '../firebase';
-import { getCurrentUser, getStreamer } from '../utils'
+// import db from '../firebase';
+// import { getCurrentUser, getStreamer } from '../utils'
 import { getAllJammers, getLiveJammers } from '../utils';
 
 export const withJammers = (WrappedComponent) => {

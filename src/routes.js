@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { SignUp, Login, StreamerVid, ViewerVid, AccountInfo, PageNotFound, Home, Channels,StreamNav, StreamerList, StreamerListCategory } from './components';
+import { SignUp, Login, StreamerVid, ViewerVid, AccountInfo, PageNotFound, Home, StreamNav, StreamerList, StreamerListCategory } from './components';
 import { withOnSnapshot } from './components/with-on-snapshot'
 import { withJammers } from './components/with-jammers'
 

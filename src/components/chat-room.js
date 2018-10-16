@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
+// import { Link } from 'react-router-dom'
 import db from '../firebase';
 import * as firebase from 'firebase';
 import '../css/chat-room.css';
@@ -50,12 +50,14 @@ const ChatRoom = props => {
         }
       <br/>
       </div>
+      {user &&
       <form className="ui reply form" onSubmit={handleSubmit}>
         <input autoComplete='off' name="message" ref={textInput} id="message-input"></input>
         <button id="write-message-button" type="submit">
           <i className="icon edit"></i>
         </button>
       </form>
+      }
     </div>
   )
 }

@@ -7,15 +7,17 @@ export const withOnSnapshot = (WrappedComponent, streamerDisplayName) => {
     constructor(props) {
       super(props)
       this.state = {
-        user: {},
-        streamer: {}
+        user: null,
+        streamer: null
       };
       this.unsubscribers = []
     }
 
     async componentDidMount() {
       const user = await getCurrentUser()
+
       const streamer = await getStreamer(streamerDisplayName)
+      console.log('withOnSnapshot | user', user, 'streamer', streamer, 'streamerDisplayName', streamerDisplayName)
       if(user) {
         this.unsubscribers.push(db.collection('jammers').doc(user.email).onSnapshot(doc => {
           const userData = doc.data()
@@ -43,9 +45,10 @@ export const withOnSnapshot = (WrappedComponent, streamerDisplayName) => {
 
     render() {
       const { user, streamer } = this.state
-      return !user.email
-      ? <div></div>
-      : <WrappedComponent user={user} streamer={streamer} {...this.props} />
+      // return !user.email
+      // ? <div></div>
+      // :
+      return <WrappedComponent user={user} streamer={streamer} {...this.props} />
     }
   }
 }

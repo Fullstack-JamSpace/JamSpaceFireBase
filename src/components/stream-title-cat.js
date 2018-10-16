@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Form, } from 'semantic-ui-react';
 import '../css/stream.css'
 import { getStreamer } from '../utils';
