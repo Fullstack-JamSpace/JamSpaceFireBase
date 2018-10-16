@@ -50,7 +50,7 @@ const ChatRoom = props => {
         }
       <br/>
       </div>
-      // check if the user exists (is person logged in) if not, then don't show the text imput for messages
+      {/* check if the user exists (is person logged in) if not, then don't show the text imput for messages */}
       {user &&
       <form className="ui reply form" onSubmit={handleSubmit}>
         <input autoComplete='off' name="message" ref={textInput} id="message-input"></input>

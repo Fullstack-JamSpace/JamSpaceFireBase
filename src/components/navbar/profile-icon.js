@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 import '../../css/navbar.css';
@@ -6,15 +6,9 @@ import * as firebase from 'firebase';
 
 export const ProfileIcon = props => {
 
-  this.handleItemClick =
-    props.handleItemClick
-
   this.handleLogout = () => {
     firebase.auth().signOut();
-    this.handleItemClick()
   };
-
-
 
   const { user } = props;
   const trigger = (
@@ -51,7 +45,6 @@ export const ProfileIcon = props => {
     },
     {
       key: 'sign-out',
-      name: 'Browse by Category', //hacky way to get logout to re-render nav
       text: (
         <Link className="no-deco" to="/" onClick={this.handleLogout}>
           <p className="drop-choice">Sign Out</p>

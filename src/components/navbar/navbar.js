@@ -4,8 +4,6 @@ import { Menu } from 'semantic-ui-react';
 import logo from '../../pics/logo.jpg';
 import '../../css/navbar.css';
 import {LoginSignup} from './login-signup';
-import * as firebase from 'firebase';
-import db from '../../firebase';
 import { ProfileIcon } from './profile-icon';
 import { getCurrentUser } from '../../utils'
 
@@ -55,7 +53,7 @@ export default class Navbar extends Component {
               />
             <Menu.Menu position="right">
             {
-              (user && user.email) ? <ProfileIcon user={user}/>
+              (user && user.email) ? <ProfileIcon user={user} {...this.props} />
               : <LoginSignup activeItem={activeItem} handleItemClick={this.handleItemClick} />
             }
             </Menu.Menu>
