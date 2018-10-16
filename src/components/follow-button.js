@@ -6,7 +6,7 @@ import { Button } from 'semantic-ui-react';
 
 export const FollowButton = (props) => {
   const user = props.user;
-  const following = user.following;
+  const following = user ? user.following : null;
   let isFollowing = false;
 
   const streamer = props.streamer;

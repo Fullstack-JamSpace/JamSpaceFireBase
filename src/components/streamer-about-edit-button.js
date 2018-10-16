@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import db from '../firebase';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 import Popup from 'reactjs-popup';
-import { Form, Button, Icon } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import '../css/streamer-about-edit.css'
-import { StreamerAbout } from './streamer-about'
-import { withOnSnapshot } from './with-on-snapshot';
 
 export const StreamerAboutEditButton = (props) => {
   const { user } = props
+  if (!user) return null
+
   const { email, displayName, imageUrl, location, description, soundcloud, bandcamp,
           spotify, itunes, instagram, twitter, facebook, bio } = user
 
@@ -29,7 +29,7 @@ export const StreamerAboutEditButton = (props) => {
         ...user,
         displayName: name.value,
         imageUrl: photo.value,
-        location: location.value, 
+        location: location.value,
         description: description.value,
         soundcloud: soundcloud.value,
         bandcamp: bandcamp.value,
@@ -52,7 +52,7 @@ export const StreamerAboutEditButton = (props) => {
           className="follow-button"
           icon="pencil"
           content='Edit'
-        />        
+        />
       }
       modal
       contentStyle={contentStyle}
@@ -70,7 +70,7 @@ export const StreamerAboutEditButton = (props) => {
         <Form.Input name="twitter" label="Twitter"width={labelWidth} defaultValue={twitter} />
         <Form.Input name="facebook" label="Facebook"width={labelWidth} defaultValue={facebook} />
         <Form.TextArea name="bio" label="Bio"width={labelWidth} defaultValue={bio} />
-        <Form.Button id="submit-button" 
+        <Form.Button id="submit-button"
         type="submit">
         Submit</Form.Button>
       </Form>

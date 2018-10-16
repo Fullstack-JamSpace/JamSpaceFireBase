@@ -31,8 +31,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('app.js | this.state (login status)', this.state)
-
     return this.state.authStateEstablished ? (
       <div className="App">
         <Navbar />
@@ -42,7 +40,7 @@ class App extends Component {
         </div>
       </div>
     ) : (
-      <div>Loading</div>
+      null
     );
   }
 }
