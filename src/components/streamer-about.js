@@ -9,10 +9,13 @@ import { Image, Card, Container, Icon } from 'semantic-ui-react'
 // ... although I suppose we could get a URL for a streamer that doesn't exist...
 
 export const StreamerAbout = props => {
+  const streamer = props.streamer
+  if (!streamer) return null
   const { displayName, location, imageUrl, description, facebook, twitter, instagram, website, soundcloud, bandcamp, spotify, itunes, bio, followers } = props.streamer
+
   const followerHeader = followers === 1 ? 'Follower' : 'Followers'
 
-  return (
+  return streamer && (
     <div id="streamer-about">
       <Card id="card">
         <Image id="profile-photo" src={imageUrl} />

@@ -6,6 +6,7 @@ import { StreamerAbout } from './streamer-about'
 import { StreamerAboutEditButton } from './streamer-about-edit-button'
 import '../css/stream-nav.css';
 import { withOnSnapshot } from './with-on-snapshot';
+// import { getCurrentUser } from '../utils'
 
 export default class StreamNav extends Component {
   constructor(props) {
@@ -20,15 +21,16 @@ export default class StreamNav extends Component {
   render() {
     const { handleClick } = this
     const { activeItem } = this.state
-    const { user } = this.props;
-    const { displayName } = this.props.match.params;
-    console.log('stream-nav.js | rendering | displayName', displayName )
+    // const { user } = this.props;
+    // const { displayName } = this.props.match.params;
+    const user = this.props.user
+    const displayName = this.props.displayName
+    console.log('stream-nav.js | rendering | displayName', displayName, 'props', this.props, 'user', user )
+
     const FollowButtonWithOnSnapshot = withOnSnapshot(FollowButton, displayName);
     const StreamerAboutWithOnSnapshot = withOnSnapshot(StreamerAbout, displayName);
     const StreamerAboutEditButtonWithOnSnapshot = withOnSnapshot(StreamerAboutEditButton);
     const isStreamer = user && user.displayName === displayName;
-    console.log('stream-nav.js | rendering | props', this.props )
-    console.log('stream-nav.js | rendering | user', user )
     return (
       <div id='nav-root'>
         <Menu borderless id="stream-nav">
