@@ -2,10 +2,11 @@ JamSpaceTV
 
 kick some jamz friend
 
-Setup
+
+Setup:
 
 
-MacOS/Linux
+MacOS/Linux -- 
 
 
 npm install
@@ -16,7 +17,7 @@ npm start
 
 
 
-Windows
+Windows --
 
 
 npm install
