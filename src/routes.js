@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { SignUp, Login, StreamerVid, ViewerVid, AccountInfo, PageNotFound, Home, StreamContainer, StreamerList, StreamerListCategory } from './components';
+import { SignUp, Login, About, StreamerVid, ViewerVid, AccountInfo, PageNotFound, Home, StreamContainer, StreamerList, StreamerListCategory } from './components';
 import { withJammers } from './components/with-jammers'
 
 export default class Routes extends Component {
@@ -12,6 +12,7 @@ export default class Routes extends Component {
       <Switch>
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/streamer" component={StreamerVid} />
         <Route exact path="/viewer" component={ViewerVid} />
         <Route exact path="/channels" component={StreamerListWithJammers} />

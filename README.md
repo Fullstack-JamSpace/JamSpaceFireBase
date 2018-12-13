@@ -6,7 +6,7 @@ kick some jamz friend
 Setup:
 
 
-MacOS/Linux -- 
+MacOS/Linux --
 
 
 npm install
@@ -25,3 +25,11 @@ npm install
 npm run build-watch to start the webpack process
 
 Open another terminal window; from there, npm run start-server to start the server process
+
+
+
+Push to production:
+
+npm run build
+
+firebase deploy
