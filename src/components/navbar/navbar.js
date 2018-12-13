@@ -51,6 +51,13 @@ export default class Navbar extends Component {
                 active={activeItem === 'Browse All Channels'}
                 onClick={this.handleItemClick}
               />
+              <Menu.Item
+                className='borderless'
+                as={Link} to="/about"
+                name="About"
+                active={activeItem === 'About'}
+                onClick={this.handleItemClick}
+              />
             <Menu.Menu position="right">
             {
               (user && user.email) ? <ProfileIcon user={user} {...this.props} />
