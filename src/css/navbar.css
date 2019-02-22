@@ -99,3 +99,9 @@
 .ui.dropdown{
   display: flex;
 }
+
+@media only screen and (max-width: 800px) {
+  #user-drop-down {
+    display: none;
+  }
+}
