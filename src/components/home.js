@@ -8,7 +8,7 @@ import '../css/home.css'
 
 export const Home = () => (
   <div id='home-div'>
-    <div id='categories'> 
+    <div id='category-flex-wrapper'> 
       <div className='container'>
         <Link className='white' to='/categories/single'>
           <img className='home-img' src={performerPic} alt=''/>
