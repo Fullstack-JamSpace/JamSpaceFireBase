@@ -11,9 +11,11 @@ i:hover {
 }
 
 #following-list{
+  background-color: #2d2e30;
   border: 1px solid white;
   width: 90%;
   margin-left: 4%;
+  color: ;
 }
 
 #following {
@@ -22,7 +24,7 @@ i:hover {
   width: 25%;
   max-width: 215px;
   min-width: 130px;
-  background-color: #2d2e30;
+  background: linear-gradient(180deg, #C12B45 0%, #DB6C1E 100%);
   margin-left: 0;
   margin-top: -10px;
 }

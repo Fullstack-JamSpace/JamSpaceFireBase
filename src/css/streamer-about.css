@@ -1,6 +1,7 @@
 body {
   height: 100%;
-  background: #d8d8d8;
+  background: linear-gradient(0deg, #FFFFFF -28.31%, rgba(216, 216, 216, 0.12) 4.87%, #FFFFFF 136.75%);
+  background-blend-mode: soft-light;
 }
 
 #streamer-about {
