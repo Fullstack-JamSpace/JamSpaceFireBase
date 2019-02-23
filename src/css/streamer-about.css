@@ -1,7 +1,7 @@
 body {
   height: 100%;
-  background: linear-gradient(0deg, #FFFFFF -28.31%, rgba(216, 216, 216, 0.12) 4.87%, #FFFFFF 136.75%);
-  background-blend-mode: soft-light;
+  /*background: radial-gradient(92.50px at 50.11% 35.54%, #FFF3F3 0%, #F7EFEF 100%);*/
+  background-image: url('/public/jtv-bg.png'); /*captured above gradient as image for responsive performance -- feel free to delete*/
 }
 
 #streamer-about {
