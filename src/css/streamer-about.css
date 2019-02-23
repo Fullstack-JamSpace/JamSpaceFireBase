@@ -1,7 +1,6 @@
 body {
   height: 100%;
-  /*background: radial-gradient(92.50px at 50.11% 35.54%, #FFF3F3 0%, #F7EFEF 100%);*/
-  background-image: url('/public/jtv-bg.png'); /*captured above gradient as image for responsive performance -- feel free to delete*/
+  background-image: url("../pics/jtv-bg.png"); /*captured gradient as image for performant responsiveness*/
 }
 
 #streamer-about {
