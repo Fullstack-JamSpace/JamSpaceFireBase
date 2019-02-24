@@ -125,3 +125,13 @@
     font-size: 1em;
   }
 }
+
+@media only screen and (min-width: 1292px){
+  .nav-options{
+    position: absolute;
+    left: 200px;
+  }
+  .ui.inverted.pointing.secondary.menu a.item{
+    padding-right: 6vw;
+  }
+}
