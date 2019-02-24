@@ -1,0 +1,21 @@
+#about-container{
+  padding: 1em 4em 2em 4em;
+}
+
+#about-header{
+  color: #CA3C1E;
+}
+
+.about-link{
+  color: #CA3C1E;
+}
+
+li{
+  margin-left: -40px;
+  list-style: none;
+}
+
+li::before {
+  content: "• ";
+  color: #CA3C1E;
+}

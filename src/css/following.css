@@ -20,7 +20,7 @@ i:hover {
 
 #following {
   height: 100vh;
-  min-height: 90vh;
+  min-height: 100vh;
   width: 25%;
   max-width: 215px;
   min-width: 130px;
@@ -33,7 +33,7 @@ i:hover {
   color: white;
   position: relative;
   left: 9%;
-  padding-top: 15px;
+  padding: 26px 2px 2px 2px;
   font-size: 16px;
 }
 

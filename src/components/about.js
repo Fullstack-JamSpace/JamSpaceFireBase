@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import css from '../css/about.css'
 
 export const About = () => (
-  <div>
-    <h1>About JamSpace.TV</h1>
+  <div id='about-container'>
+    <h1 id='about-header'>About JamSpace.TV</h1>
 
     <h3>LiveStreaming platform for musical performance & interaction.</h3>
 
@@ -30,10 +31,10 @@ export const About = () => (
     </p>
     <p>
       See our presentation{' '}
-      <a href="https://www.youtube.com/watch?v=qcCDYTLqq5w">here</a>.
+      <a className='about-link' href="https://www.youtube.com/watch?v=qcCDYTLqq5w">here</a>.
     </p>
     <p>
-      Our code is <a href="https://github.com/Fullstack-JamSpace">here</a>.
+      Our code is <a className='about-link' href="https://github.com/Fullstack-JamSpace">here</a>.
     </p>
 
     <h3>PLEASE NOTE: </h3>
@@ -95,18 +96,18 @@ export const About = () => (
     <h3>Team Members: </h3>
     <ul>
       <li>
-        <a href="https://www.linkedin.com/in/james-s-byrd/">James Byrd</a>
+        <a className='about-link' href="https://www.linkedin.com/in/james-s-byrd/">James Byrd</a>
       </li>
       <li>
-        <a href="https://www.linkedin.com/in/d-gilbert/">Dan Gilbert</a>
+        <a className='about-link' href="https://www.linkedin.com/in/d-gilbert/">Dan Gilbert</a>
       </li>
       <li>
-        <a href="https://www.linkedin.com/in/javiercarey/">Javier Carey</a>
+        <a className='about-link' href="https://www.linkedin.com/in/javiercarey/">Javier Carey</a>
       </li>
     </ul>
-
+    <br/>
     <div>
-      <Link to="/">Return to Home Page</Link>
+      <Link className='about-link' to="/">Return to Home Page</Link>
     </div>
   </div>
 );
