@@ -76,6 +76,8 @@ button {
 }
 
 #mainContainer {
+  position: relative;
+  top: 118px;
   text-align: left;
   display: flex;
   flex-direction: row;

@@ -1,4 +1,7 @@
 .header{
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -58,6 +61,7 @@
 
 .ui.inverted.pointing.secondary.menu{
   height: 100px;
+  width: 100vw;
 }
 
 .ui.inverted.pointing.secondary.menu a.item{
@@ -94,6 +98,12 @@
 
 #drop-text:hover{
   color: white;
+}
+
+
+#user-drop-down-container{
+  position: fixed;
+  right: 20px;
 }
 
 #user-drop-down{
