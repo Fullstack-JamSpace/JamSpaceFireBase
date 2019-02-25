@@ -28,7 +28,7 @@ const StreamerList = props => {
                 <img className='jammer-photo' src={jammer.imageUrl} alt="" />
                 <h4 className='jammer-title'>{jammer.streamTitle}</h4>
                 <div className='below-title-text flex space-between'>
-                  <p className='stream-detail'>{jammer.displayName}</p>
+                  <p id='streamer-name' className='stream-detail'>{jammer.displayName}</p>
                   <p className='stream-detail'>{jammer.streamCategory}</p>
                 </div>
               </div>

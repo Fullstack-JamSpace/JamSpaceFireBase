@@ -5,15 +5,15 @@
 }
 
 .jammer-div{
+  min-height: 314px;
   flex-wrap: wrap;
   padding: 12px;
-  background-color: #4f5154;
   margin: 0px 10px 15px 10px;
-  border: 2px solid black;
+  border: 1px solid lightgrey;
 }
 
 .jammer-div:hover{
-  box-shadow: 1px 1px black;
+  box-shadow: 1px 1px lightgrey;
 }
 
 .category-header{
@@ -23,7 +23,7 @@
 .jammer-photo{
   height: 225px;
   width: 225px;
-  border: 2px solid white;
+  border: 1px solid #C12B45;
 }
 
 .parent{
@@ -32,16 +32,19 @@
 }
 
 .jammer-title{
-  margin-top: 2px;
-  margin-bottom: 0;
+  margin: 1em 0 .5em 0;
   align-self: flex-start;
-  color: white;
+  color: black;
+}
+
+#streamer-name{
+  padding-top: 3px;
 }
 
 .stream-detail{
-  align-self: flex-start;
+  align-self: end;
   margin-top: 2px;
-  color: white;
+  color: black;
   margin-bottom: 1px;
 }
 
@@ -66,7 +69,7 @@
 }
 
 .ui.toggle.checkbox input:checked~.box:before, .ui.toggle.checkbox input:checked~label:before{
-  background-color: green !important;
+  background-color: #C12B45 !important;
 }
 
 div.flex.center.category-header {
