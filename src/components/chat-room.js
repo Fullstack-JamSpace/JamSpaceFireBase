@@ -10,10 +10,6 @@ const ChatRoom = props => {
   const textInput = React.createRef()
   const scroll = React.createRef()
 
-  const focusTextInput = () => {
-    textInput.current.focus();
-  }
-
   const updateScroll = () => {
     const scrollBar = scroll.current
     scrollBar.scrollTop = scrollBar.scrollHeight
@@ -24,7 +20,6 @@ const ChatRoom = props => {
     const text = event.target.message.value
     event.target.message.value = ''
     const message = user.displayName + ':    ' + text
-    focusTextInput()
     updateScroll()
 
     try {
@@ -53,7 +48,7 @@ const ChatRoom = props => {
       {/* check if the user exists (is person logged in) if not, then don't show the text imput for messages */}
       {user &&
       <form className="ui reply form" onSubmit={handleSubmit}>
-        <input autoComplete='off' name="message" ref={textInput} id="message-input"></input>
+        <input autoFocus autoComplete='off' name="message" id="message-input"></input>
         <button id="write-message-button" type="submit">
           <i className="icon edit"></i>
         </button>
