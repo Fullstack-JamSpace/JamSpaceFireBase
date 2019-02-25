@@ -1,6 +1,7 @@
 #chat-room {
   width: 18vw;
   padding: 25px;
+  margin-top: -56px;
   background-color: white;
   border: 1px solid lightgrey;
 
@@ -16,8 +17,7 @@
 #messages {
   word-wrap: break-word;
   overflow-y: scroll;
-  min-height: 450px;
-  max-height: 450px;
+  height: 62vh;
   padding-bottom: 40px;
 }
 
