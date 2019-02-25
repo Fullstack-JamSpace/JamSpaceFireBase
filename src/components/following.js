@@ -7,7 +7,6 @@ import { FollowingListItem } from './following-list-item'
 
 export const Following = (props) => {
   const following = props.user ? props.user.following : null
-
   return (
     <div id="following">
       {following
@@ -28,8 +27,7 @@ export const Following = (props) => {
               : <List.Item className='following-item-empty'>''</List.Item>
             })
           }
-        </List>
-      </Segment>
+        </List> </Segment>
     </div>
   );
 }
