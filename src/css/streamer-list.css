@@ -1,6 +1,8 @@
 .jammer-list{
+  width: 86vw;
   flex-wrap: wrap;
   padding: 15px;
+  padding-left: 40px;
   padding-right: 0px;
 }
 
@@ -78,4 +80,10 @@
 
 div.flex.center.category-header {
   margin-top: 12px;
+}
+
+@media only screen and (min-width: 2000px) {
+  .jammer-list{
+    width: 92vw;
+  }
 }
