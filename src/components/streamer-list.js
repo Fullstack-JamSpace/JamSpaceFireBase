@@ -26,7 +26,7 @@ const StreamerList = props => {
             <Link key={jammer} to={`/channels/${jammer.displayName}`} >
               <div className="flex column jammer-div">
                 <img className='jammer-photo' src={jammer.imageUrl} alt="" />
-                <h4 className='jammer-title'>{jammer.streamTitle}</h4>
+                <h4 className='jammer-title'>{jammer.streamTitle ? jammer.streamTitle : `${jammer.displayName} 's   Jam Space`}</h4>
                 <div className='below-title-text flex space-between'>
                   <p id='streamer-name' className='stream-detail'>{jammer.displayName}</p>
                   <p className='stream-detail'>{jammer.streamCategory}</p>

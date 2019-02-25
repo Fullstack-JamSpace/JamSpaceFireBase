@@ -38,7 +38,11 @@
 }
 
 #streamer-name{
-  padding-top: 3px;
+  padding-top: .2em;
+}
+
+.below-title-text{
+  vertical-align: bottom;
 }
 
 .stream-detail{
