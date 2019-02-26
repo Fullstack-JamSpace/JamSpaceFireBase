@@ -25,7 +25,7 @@
   height: 60px;
   width: 60px;
   border-radius: 5%;
-  border-style: solid;
+  border: solid lightgrey;
   border-width: 2px;
 }
 
