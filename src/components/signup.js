@@ -34,7 +34,6 @@ const SignUp = () => {
   }
   return (
     <Fragment>
-      <h1>Welcome to Jamspace, baby!</h1>
       <SignupForm handleSubmit={handleSignup} />
     </Fragment>
   )

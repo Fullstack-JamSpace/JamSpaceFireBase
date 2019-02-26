@@ -1,0 +1,14 @@
+#signup-form{
+  margin-left: 200px;
+  margin-top: 11px;
+}
+
+#signup-form .ui.input{
+  width: 653px!important;
+  margin-left: 11px;
+}
+
+#signup-submit-btn {
+  color: white!important;
+  background-color: #C12B45!important;
+}

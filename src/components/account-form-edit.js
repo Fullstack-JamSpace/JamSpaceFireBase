@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react'
-
+import '../css/account-form-edit.css'
 
 const AccountFormEdit = props => {
 
@@ -20,7 +20,7 @@ const AccountFormEdit = props => {
     }
 
   return (
-      <Form onSubmit={props.handleSubmit}>
+      <Form id='account-form-edit' onSubmit={props.handleSubmit}>
           <Form.Input name="firstName" label="First name"
           defaultValue={user.firstName} width={lableWidth} />
 
@@ -39,7 +39,7 @@ const AccountFormEdit = props => {
           <Form.Input name="imageUrl" label="Image URL"
           defaultValue={user.imageUrl} width={lableWidth} />
 
-          <Form.Button type="submit" >Submit</Form.Button>
+          <Form.Button id='account-form-edit-submit-btn' type="submit" >Submit</Form.Button>
       </Form>
 )};
 
