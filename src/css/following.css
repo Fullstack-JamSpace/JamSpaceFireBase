@@ -41,13 +41,17 @@ h2 {
   font-size: 21px;
 }
 
+@media only screen and (max-height: 1200px) {
+  #following{
+    padding-bottom: 1000px;
+  } 
+}
 
 @media only screen and (max-width: 1000px){
   #following {
     min-width: 140px;
   }
 }
-
 
 @media only screen and (max-width: 520px){
   #following {
