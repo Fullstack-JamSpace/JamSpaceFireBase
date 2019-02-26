@@ -9,10 +9,7 @@ export const Following = (props) => {
   const following = props.user ? props.user.following : null
   return (
     <div id="following">
-      {following
-      ? <h3 id='follow-header'>FOLLOWING</h3>
-      : null
-      }
+      <h3 id='follow-header'>FOLLOWING</h3>
       <Segment inverted id='following-list'>
         <List divided inverted >
           { !following
