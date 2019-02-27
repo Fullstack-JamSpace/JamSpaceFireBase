@@ -13,7 +13,7 @@ export const ProfileIcon = props => {
   const { user } = props;
   const trigger = (
     <span>
-      <p id="drop-text">Hello, {user.displayName}</p>
+      <p id="drop-text">{user.displayName}</p>
     </span>
   );
 

@@ -1,4 +1,7 @@
 .header{
+  position: fixed;
+  z-index: 3;
+  width: 100vw;
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -26,10 +29,11 @@
 
 #header-logo-text{
   font-family: 'Fugaz One', cursive;
+  font-weight: lighter;
   position: absolute;
   bottom: 0;
   margin-bottom: 10px;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .93);
 }
 
 #header-logo-text:hover{
@@ -57,6 +61,15 @@
 
 .ui.inverted.pointing.secondary.menu{
   height: 100px;
+  width: 100vw;
+}
+
+.ui.inverted.pointing.secondary.menu a.item{
+  color: rgba(255, 255, 255, .93)!important;
+}
+
+.ui.inverted.pointing.secondary.menu a.item:hover{
+  color: rgba(255, 255, 255)!important;
 }
 
 .drop-choice{
@@ -74,7 +87,7 @@
 }
 
 #drop-text{
-  color: rgb(255, 255, 255, .9);
+  color: rgb(255, 255, 255, .93);
   flex-wrap: nowrap;
 }
 
@@ -85,6 +98,12 @@
 
 #drop-text:hover{
   color: white;
+}
+
+
+#user-drop-down-container{
+  position: fixed;
+  right: 20px;
 }
 
 #user-drop-down{
@@ -114,5 +133,15 @@
   }
   .item{
     font-size: 1em;
+  }
+}
+
+@media only screen and (min-width: 1292px){
+  .nav-options{
+    position: absolute;
+    left: 222px;
+  }
+  .ui.inverted.pointing.secondary.menu a.item{
+    padding-right: 6vw;
   }
 }

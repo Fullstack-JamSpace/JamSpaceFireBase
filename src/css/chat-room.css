@@ -1,21 +1,23 @@
 #chat-room {
   width: 18vw;
   padding: 25px;
+  margin-top: -56px;
   background-color: white;
+  border: 1px solid lightgrey;
 
 }
 
 #write-message-button {
-  background-color: #4088ed;
+  background-color: #C12B45;
   color: white;
   display: flex-grow;
   width: 10rem;
 }
 
 #messages {
-  overflow: scroll;
-  min-height: 450px;
-  max-height: 450px;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  height: 62vh;
   padding-bottom: 40px;
 }
 

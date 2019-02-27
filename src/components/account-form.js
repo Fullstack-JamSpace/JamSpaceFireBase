@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react'
-
+import '../css/account-form.css'
 
 const AccountForm = props => {
 
@@ -20,7 +20,7 @@ const AccountForm = props => {
     }
 
   return (
-      <Form>
+      <Form id='account-form'>
           <Form.Input name="firstName" label="First name"
           value={user.firstName} width={lableWidth} readOnly />
 

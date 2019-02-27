@@ -76,12 +76,13 @@ button {
 }
 
 #mainContainer {
+  position: relative;
+  top: 118px;
   text-align: left;
   display: flex;
   flex-direction: row;
-  padding: .5em;
+  padding-top: .5em;
   margin-left: 0;
-  padding-left: 0;
 }
 
 .right.menu{

@@ -1,0 +1,29 @@
+#about-container{
+  padding: 1em 3em 2em 55px;
+}
+
+#about-header{
+  color: #C12B45;
+}
+
+.about-link{
+  color: #CA3C1E;
+}
+
+li{
+  margin-left: -30px;
+  list-style: none;
+}
+
+li::before {
+  content: "• ";
+  color: #CA3C1E;
+}
+
+
+@media only screen and (min-width: 1292px) {
+  #about-container{
+    padding-right: 72px;
+    padding-left: 72px;
+  }
+}

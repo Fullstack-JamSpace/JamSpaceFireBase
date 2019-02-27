@@ -1,5 +1,5 @@
-#following-item-link:hover {
-  text-shadow: 0px 0px 3px white;
+.following-item:hover {
+  color: white!important;
 }
 
 i:hover {
@@ -11,33 +11,46 @@ i:hover {
 }
 
 #following-list{
+  background-color: #2d2e30;
   border: 1px solid white;
   width: 90%;
   margin-left: 4%;
+  color: ;
 }
 
 #following {
-  height: 100vh;
-  min-height: 90vh;
-  width: 25%;
+  min-height: 100vh;
   max-width: 215px;
-  min-width: 130px;
-  background-color: #2d2e30;
+  min-width: 201px;
+  background: linear-gradient(180deg, #C12B45 0%, #DB6C1E 100%);
   margin-left: 0;
   margin-top: -10px;
+  margin-bottom: 0;
 }
 
 #follow-header{
   color: white;
   position: relative;
   left: 9%;
-  padding-top: 15px;
+  padding: 26px 2px 2px 2px;
   font-size: 16px;
 }
 
 h2 {
   margin-left: 4%;
   font-size: 21px;
+}
+
+@media only screen and (max-height: 1200px) {
+  #following{
+    padding-bottom: 1000px;
+  } 
+}
+
+@media only screen and (max-width: 1000px){
+  #following {
+    min-width: 140px;
+  }
 }
 
 @media only screen and (max-width: 520px){

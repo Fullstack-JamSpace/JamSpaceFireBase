@@ -1,0 +1,13 @@
+#account-form-edit{
+  margin-top: 11px;
+}
+
+#account-form-edit .ui.input{
+  width: 653px!important;
+  margin-left: 11px;
+}
+
+#account-form-edit-submit-btn {
+  color: white!important;
+  background-color: #C12B45!important;
+}

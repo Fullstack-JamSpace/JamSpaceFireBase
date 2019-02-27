@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react'
-
+import '../css/signup-form.css'
 
 const SignupForm = props => {
 
-  const lableWidth = 6
+  const lableWidth = 30
 
   // If component isn't passed a user, initialize values to show
   // in the form
@@ -18,7 +18,7 @@ const SignupForm = props => {
     }
 
   return (
-      <Form onSubmit={props.handleSubmit}>
+      <Form id='signup-form' onSubmit={props.handleSubmit}>
           <Form.Input name="firstName" label="First name"
           placeholder={user.firstName} width={lableWidth} />
 
@@ -37,7 +37,7 @@ const SignupForm = props => {
           <Form.Input name="imageUrl" label="Image URL"
           placeholder={user.imageUrl} width={lableWidth}/>
 
-          <Form.Button type="submit">Submit</Form.Button>
+          <Form.Button id='signup-submit-btn' type="submit">Submit</Form.Button>
       </Form>
 )};
 

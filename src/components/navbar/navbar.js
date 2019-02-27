@@ -58,7 +58,7 @@ export default class Navbar extends Component {
                 active={activeItem === 'About'}
                 onClick={this.handleItemClick}
               />
-            <Menu.Menu position="right">
+            <Menu.Menu id='user-drop-down-container'>
             {
               (user && user.email) ? <ProfileIcon user={user} {...this.props} />
               : <LoginSignup activeItem={activeItem} handleItemClick={this.handleItemClick} />

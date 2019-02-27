@@ -13,8 +13,8 @@ const SignUp = () => {
     const firstName = event.target.firstName.value;
     const lastName = event.target.lastName.value;
     const displayName = event.target.displayName.value;
-    const imageUrl = event.target.imageUrl.value;
-
+    let imageUrl = event.target.imageUrl.value;
+    imageUrl = imageUrl === '' ? 'http://www.freeformportland.org/wp-content/uploads/2017/06/disfigurines-fa3c03c4-6473-4e31-bc53-ce8819afc237.jpg' : imageUrl
     const emailRef = db.collection('jammers').doc(`${email}`)
     emailRef.get().then(user => {
       if (!user.exists) {
@@ -34,7 +34,6 @@ const SignUp = () => {
   }
   return (
     <Fragment>
-      <h1>Welcome to Jamspace, baby!</h1>
       <SignupForm handleSubmit={handleSignup} />
     </Fragment>
   )

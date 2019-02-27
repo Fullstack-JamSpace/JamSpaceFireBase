@@ -7,18 +7,13 @@ import { FollowingListItem } from './following-list-item'
 
 export const Following = (props) => {
   const following = props.user ? props.user.following : null
-
   return (
     <div id="following">
-      {following
-      ? <h3 id='follow-header'>FOLLOWING</h3>
-      : null
-      }
+      <h3 id='follow-header'>FOLLOWING</h3>
       <Segment inverted id='following-list'>
         <List divided inverted >
           { !following
           ? <div>
-              {/* <h2>Browse Channels</h2> */}
               <h2>Find Your JamSpace!</h2>
             </div>
           : following.map(userName => {
@@ -29,8 +24,7 @@ export const Following = (props) => {
               : <List.Item className='following-item-empty'>''</List.Item>
             })
           }
-        </List>
-      </Segment>
+        </List> </Segment>
     </div>
   );
 }
