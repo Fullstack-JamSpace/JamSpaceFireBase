@@ -1,4 +1,4 @@
-.header {
+.header{
   text-align: left;
   display: flex;
   flex-direction: row;
@@ -7,14 +7,14 @@
   margin-bottom: 3px;
 }
 
-.App-logo {
+.App-logo{
   height: 70px;
   border-radius: 50%;
   display: block;
   margin: 0 0 10px 14px;
 }
 
-.App-logo:hover {
+.App-logo:hover{
   box-shadow: 0px 0px 2px white;
 }
 
@@ -48,7 +48,7 @@
   height: 30px;
 }
 
-.nav-link {
+.nav-link{
   height: 10px;
   text-decoration: none;
   position: relative;
@@ -59,7 +59,7 @@
   height: 100px;
 }
 
-.drop-choice {
+.drop-choice{
   color: black;
 }
 
@@ -87,7 +87,7 @@
   color: white;
 }
 
-#user-drop-down {
+#user-drop-down{
   left: 20px;
   top: 10px;
   display: flex;
@@ -98,4 +98,21 @@
 
 .ui.dropdown{
   display: flex;
+}
+
+@media only screen and (max-width: 800px){
+  #user-drop-down{
+    display: none;
+  }
+  .logo-and-text {
+    display: none;
+  }
+  .ui.inverted.pointing.secondary.menu{
+    position: absolute;
+    top: -7.5em;
+    left: -5em;
+  }
+  .item{
+    font-size: 1em;
+  }
 }
